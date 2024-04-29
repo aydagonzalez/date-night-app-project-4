@@ -33,34 +33,6 @@ export default function OrderHistoryPage() {
 
 
 
-    //    // useEffect(function () {
-    //     async function fetchDataYelp() {
-    //         const YELPClientID = eventsService.getYELPKey();
-    //         console.log("token:", YELPClientID);
-    //         const YELPAPIKey = eventsService.getYELPKey();
-    //         console.log("token:", YELPAPIKey);
-    //         const url = eventsService.getURLTM();
-    //         console.log("token:", url);
-    //         try {
-    //             const response = await fetch(`${url}${token}`);
-    //             console.log("fetch(url, options):", url);
-    //             if (!response.ok) {
-    //                 throw new Error('Bad request fetching');
-    //             }
-    //             const ticketMasterData = await response.json();
-    //             console.log("RES", ticketMasterData);
-    //             setEventsFromTM(ticketMasterData)
-    //         } catch (error) {
-    //             console.error('Request to Ticket Master failed:', error);
-    //             throw error;
-    //         }
-    //     }
-    // //     fetchDataTM();
-    // // }, []);
-
-
-
-
 
     async function handleSearch(evt) {
         evt.preventDefault();
