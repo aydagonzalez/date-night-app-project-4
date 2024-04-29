@@ -36,3 +36,24 @@ export function getYELPKey() {
 
  return (FSAPIKey,FSURL)
  }
+//  -------NEW KEEP BELOW
+
+export function getConcertTokenCredentials() {
+  const token = "XsWG97LtQb51oboT24fytzT0HnumG7Zi"
+  return (token)
+}
+
+export function getConcertURLCredentials() {
+  const url = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey="
+  return (url)
+}
+
+export function getRestaurantsKeyCredentials() {
+  const key= "fsq3kuCwTIhJi2U63tQNGn26xRrZRHk/YFzNMz1UDHEMc5g="
+  return (key)
+  }
+
+export function getRestaurantsURLCredentials() {
+  const url="https://api.foursquare.com/v2/venues/search"
+  return (url)
+  }

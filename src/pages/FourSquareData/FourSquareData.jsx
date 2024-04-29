@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as eventsService from '../../utilities/events-service';
-import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
+// import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
 
 export default function FourSquareData() {
     const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ export default function FourSquareData() {
                         const response = await fetch(url, {
                             headers: {
                                 'Accept': 'application/json',
-                                'Authorization': `${token}` // Authorization header with API Key
+                                'Authorization': `${token}`
                             }
                         });
                         if (!response.ok) {

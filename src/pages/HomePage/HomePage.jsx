@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import './HomePage.css'
 // import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
@@ -17,7 +17,6 @@ export default function HomePage() {
             </div>
             <div className="">
             <Link to="/events/concerts"><h1>CON</h1></Link>
-               
             </div>
         </main>
 
