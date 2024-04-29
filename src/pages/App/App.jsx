@@ -1,4 +1,5 @@
 import NavBar from '../../components/NavBar/NavBar';
+import HomePage from '../HomePage/HomePage';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
@@ -20,10 +21,11 @@ export default function App() {
       {user ? 
       <>
       <NavBar user={user} setUser={setUser} /> 
+      <HomePage user={user} /> 
       <Routes>
         {/* <Route path="/orders/new" element={<NewOrderPage />} /> */}
         {/* <Route path="/" element={<OrderHistoryPage />} /> */}
-        <Route path="/foursquare" element={<FourSquareData />} />
+        <Route path="/events/restaurants" element={<FourSquareData />} />
       </Routes>
       </>     
       : <AuthPage setUser={setUser} />}

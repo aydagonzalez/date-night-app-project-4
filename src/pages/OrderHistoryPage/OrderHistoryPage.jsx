@@ -32,8 +32,6 @@ export default function OrderHistoryPage() {
     }, []);
 
 
-
-
     async function handleSearch(evt) {
         evt.preventDefault();
         try {
