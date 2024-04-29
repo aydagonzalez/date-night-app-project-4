@@ -32,9 +32,9 @@ export default function ConcertPage() {
 
     return (
         <>
-            <main>
+            <main className="concert-page-main">
                 <h1> Concert PAge</h1>
-                <form className="ConcertApiCallForm" onSubmit={handleSubmit}>
+                <form className="ConcertPageBtnForm" onSubmit={handleSubmit}>
                     <button>RELOAD API</button>
                 </form>
                 <h1> {concertData ? JSON.stringify(concertData._embedded.events.map((event, idx) =>

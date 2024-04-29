@@ -1,7 +1,7 @@
 
 export default function ConcertEventCard({ event }){
     return (
-        <div>
+        <div className="ConcertEventCard">
         <div>Name: {event.name}</div>
         <div>Type: {event.type}</div>
         <div>ID: {event.id}</div>
