@@ -1,15 +1,26 @@
 // const token = process.env.TickectMasterConsumerKey
 const token = "XsWG97LtQb51oboT24fytzT0HnumG7Zi"
-const TickectMasterConsumerKey = process.env.TickectMasterConsumerKey
-const url= 'https://www.eventbriteapi.com/v3/users/me/?token=';
-const url2 = "https://www.eventbriteapi.com/v3/organizations/" 
-const urlTicketMAster= "https://app.ticketmaster.com/discovery/v2/"
-const organization_id = "something"
+// const TickectMasterConsumerKey = process.env.TickectMasterConsumerKey
+// const url= 'https://www.eventbriteapi.com/v3/users/me/?token=';
+// const url2 = "https://www.eventbriteapi.com/v3/organizations/" 
+// const urlTicketMAster= "https://app.ticketmaster.com/discovery/v2/"
+// const organization_id = "something"
 
 
 // Search for music events in the Los Angeles area
 // const musiceventsURL= "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey="
 
+export function getToken() {
+  // getItem returns null if there's no string
+  const token = "XsWG97LtQb51oboT24fytzT0HnumG7Zi"
+  return token;
+}
+
+
+export function getURLTM() {
+  const url = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey="
+  return url;
+}
 
 export default async function sendRequest(url, method = 'GET', payload = null) {
   console.log("token:", token);
@@ -20,14 +31,15 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
       if (!response.ok) {
           throw new Error('Bad request fetching');
       }
-      const userData = await response.json();
-      console.log("RES", userData);
-      return userData; // Assuming you want to return the userData instead of rendering it
+      const tikecktMasterData = await response.json();
+      console.log("RES", tikecktMasterData);
+      return tikecktMasterData; // Assuming you want to return the userData instead of rendering it
   } catch (error) {
-      console.error('Request failed:', error);
+      console.error('Request to Ticket Master failed:', error);
       throw error;
   }
 }
+
 
 
 // export default async function sendRequest(url, method = 'GET', payload = null) {
