@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
+import * as eventsAPI from '../../utilities/events-api';
 import './HomePage.css'
 // import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
 
-export default function HomePage() {
+export default function HomePage({ getEvents }) {
     const [error, setError] = useState('');
-    const [eventsFromTM, setEventsFromTM] = useState('');
+    // const [events, setEvents] = useState([]);
+
+    // async function getEvents() {
+    //     const allEventsIndex = await eventsAPI.indexEvents()
+    //     console.log("ALL Events:", allEventsIndex)
+    //     // notesRef.current = [(newNote.map(note => note.text))];
+    //     setEvents(allEventsIndex)
+    // }
+
+
 
     return (
         <main className="MainHomePage" >

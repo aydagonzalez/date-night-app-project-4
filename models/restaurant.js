@@ -20,6 +20,8 @@ const restaurantSchema = new Schema({
     maxTicketPrice: Number,
     minTicketPrice: Number,
     accessibility: Number,
+}, {
+    timestamps: true
 })
 
 

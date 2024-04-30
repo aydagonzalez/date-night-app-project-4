@@ -25,6 +25,8 @@ const concertSchema = new Schema({
     region: String,
     accesibility: Number,
     
+}, {
+    timestamps: true
 })
 
 

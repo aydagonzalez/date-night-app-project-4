@@ -3,7 +3,7 @@ import { useState } from "react";
 import './ConcertEventCard.css'
 import * as eventsAPI from '../../utilities/events-api';
 
-export default function ConcertEventCard({ event, idx}) {
+export default function ConcertEventCard({ event, idx, getEvents}) {
     const [error, setError] = useState('');
 
     // function handleClick() {
@@ -11,7 +11,7 @@ export default function ConcertEventCard({ event, idx}) {
     // }
     async function handleEventSave(evt) {
         evt.preventDefault();
-        console.log("SEEME?>")
+        console.log("SEE ME?")
         const concertData = {
             // user: req.body.user,
             name: event.name,
@@ -26,6 +26,7 @@ export default function ConcertEventCard({ event, idx}) {
         try {
             const concert = await eventsAPI.createConcertEvent(concertData)
             console.log("concert:", concert)
+            getEvents()
         } catch (error) {
             console.log("error:", error)
             setError('Save Concert Failed - Try Again Ayda');

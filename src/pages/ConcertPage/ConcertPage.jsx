@@ -3,7 +3,7 @@ import * as eventsService from '../../utilities/events-service';
 import ConcertEventCard from '../../components/ConcertEventCard/ConcertEventCard'
 import './ConcertPage.css'
 
-export default function ConcertPage() {
+export default function ConcertPage({ getEvents }) {
     const [concertData, setConcertData] = useState('');
     const [error, setError] = useState('');
 
@@ -39,12 +39,12 @@ export default function ConcertPage() {
                     <button>RELOAD API</button>
                 </form>
                 <div className="ConcertEventCardContainer">
-                {concertData ? (concertData._embedded.events.map((event, idx) =>
+                    {concertData ? (concertData._embedded.events.map((event, idx) =>
 
-                        <ConcertEventCard key={idx}  idx={idx} event={event} />
+                        <ConcertEventCard getEvents={getEvents} key={idx} idx={idx} event={event} />
                     ))
-                    : "No data available Ayda, need to press btn"}
-                    </div>
+                        : "No data available Ayda, need to press btn"}
+                </div>
                 <p className="error-message">&nbsp;{error}</p>
             </main >
         </>

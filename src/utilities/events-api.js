@@ -7,3 +7,13 @@ export async function createConcertEvent(concertData) {
   console.log("creating")
   return sendRequest(BASE_URL, 'POST', concertData)
 }
+
+export async function indexEvents() {
+  console.log("getting")
+  return sendRequest(BASE_URL, 'GET')
+}
+
+export async function deleteEvent(id) {
+  console.log("deleting")
+  return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
