@@ -41,7 +41,7 @@ export default function ConcertPage() {
                 <div className="ConcertEventCardContainer">
                 {concertData ? (concertData._embedded.events.map((event, idx) =>
 
-                        <ConcertEventCard key={idx} event={event} />
+                        <ConcertEventCard key={idx}  idx={idx} event={event} />
                     ))
                     : "No data available Ayda, need to press btn"}
                     </div>

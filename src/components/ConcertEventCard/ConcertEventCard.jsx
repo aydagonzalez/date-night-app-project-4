@@ -1,12 +1,35 @@
 import { Link } from "react-router-dom"
+import { useState } from "react";
 import './ConcertEventCard.css'
-export default function ConcertEventCard({ event }) {
+import * as eventsAPI from '../../utilities/events-api';
+
+export default function ConcertEventCard({ event, idx}) {
+    const [error, setError] = useState('');
 
     // function handleClick() {
 
     // }
-    function handleEventSave(evt) {
-        evt.preventDefault()
+    async function handleEventSave(evt) {
+        evt.preventDefault();
+        console.log("SEEME?>")
+        const concertData = {
+            // user: req.body.user,
+            name: event.name,
+            imageUrl: event.images[0].url,
+            venue: event._embedded.venues[0].name,
+            venueLocation: `${event._embedded.venues[0].city.name}, ${event._embedded.venues[0].state.name}`,
+            eventDate: `${event.dates.start.localDate} ${event.dates.start.localTime}`,
+            timezone: event.dates.timezone,
+            accessibility:  event.accessibility.ticketLimit,
+        }
+        console.log(concertData)
+        try {
+            const concert = await eventsAPI.createConcertEvent(concertData)
+            console.log("concert:", concert)
+        } catch (error) {
+            console.log("error:", error)
+            setError('Save Concert Failed - Try Again Ayda');
+        }
     }
 
 
@@ -64,15 +87,13 @@ export default function ConcertEventCard({ event }) {
                             </p>
                         </div>
                         <div class="card-action">
-                      
-                                <button type="submit" onSubmit={handleEventSave} >Save</button>
 
-                      
+                            <button type="Submit" idx={idx} onClick={handleEventSave} >Save</button>
 
 
-                                {/* <a href="#">Save</a>| */}
+                            {/* <a href="#">Save</a>| */}
                             {/* {event.url} */}
-                            <a> WEB Link</a>
+                            {/* <a> WEB Link</a> */}
                         </div>
                     </div>
                 </div>
