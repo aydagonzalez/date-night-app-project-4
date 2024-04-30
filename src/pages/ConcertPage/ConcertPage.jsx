@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as eventsService from '../../utilities/events-service';
 import ConcertEventCard from '../../components/ConcertEventCard/ConcertEventCard'
+import './ConcertPage.css'
 
 export default function ConcertPage() {
     const [concertData, setConcertData] = useState('');
@@ -37,9 +38,13 @@ export default function ConcertPage() {
                 <form className="ConcertPageBtnForm" onSubmit={handleSubmit}>
                     <button>RELOAD API</button>
                 </form>
-                <h1> {concertData ? JSON.stringify(concertData._embedded.events.map((event, idx) =>
-                <ConcertEventCard key={idx} event={event} />)) 
-            : "No data available Ayda, need to press btn"} </h1>
+                <div className="ConcertEventCardContainer">
+                {concertData ? (concertData._embedded.events.map((event, idx) =>
+
+                        <ConcertEventCard key={idx} event={event} />
+                    ))
+                    : "No data available Ayda, need to press btn"}
+                    </div>
                 <p className="error-message">&nbsp;{error}</p>
             </main >
         </>

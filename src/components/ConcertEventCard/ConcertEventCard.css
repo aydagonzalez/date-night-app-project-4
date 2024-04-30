@@ -1,0 +1,15 @@
+.concert-page-main{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+}
+.ConcertEventCard{
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    width: 100rem;
+}
+
+/* .ConcertEventCardContainer{
+    display: flex;
+    background-color: black;
+
+} */
