@@ -13,10 +13,10 @@ export default function RestaurantPage() {
 
     async function fetchRestaurantData() {
         const key = eventsService.getRestaurantsKeyCredentials();
-        const lat = 40.785091; // Central Park latitude
-        const lon = -73.968285;
-        const version = '20230401'; 
-        const query = 'fastfood'
+        // const lat = 40.785091; // Central Park latitude
+        // const lon = -73.968285;
+        // const version = '20230401'; 
+        const query = 'mexican'
         // const url = eventsService.getRestaurantsURLCredentials();
         // const url = `https://api.foursquare.com/v3/places/search?ll=${lat},${lon}&categories=13065&v=${version}`
         const url = `https://api.foursquare.com/v3/places/search?query=${query}`
@@ -46,7 +46,7 @@ export default function RestaurantPage() {
         <main className="restaurant-page-main">
 
             <h1>Restaurant PAGE</h1>
-            <form className="ConcertPageBtnForm" onSubmit={handleSubmit}>
+            <form className="ConcertPageBtn" onSubmit={handleSubmit}>
                 <button>RELOAD API</button>
             </form>
             <h1> {restaurantData ? (restaurantData.results.map((restaurant,idx) =>

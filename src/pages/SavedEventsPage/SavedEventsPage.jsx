@@ -1,5 +1,6 @@
 import * as eventsAPI from '../../utilities/events-api';
 import DeleteEventForm from "../../pages/Forms/DeleteEventForm";
+import UpdateEventForm from "../../pages/Forms/UpdateEventForm";
 import { useState, useEffect } from "react";
 
 export default function SavedEvents({ getEvents, events, setEvents }) {
@@ -12,13 +13,14 @@ export default function SavedEvents({ getEvents, events, setEvents }) {
                 {e.venueLocation}
                 {new Date(e.eventDate).toLocaleDateString()}&nbsp;
                 {new Date(e.eventDate).toLocaleTimeString()} <br />
-                {e.timezone}
-                {e.accessibility}
+                {e.timezone} <br />
+                {e.accessibility} <br />
+                {e.status}
             </h3>
 
             <div className="Update-DeleteNoteForms">
                 <DeleteEventForm id={e._id} key={idx+11} getEvents={getEvents}  />
-                {/* <UpdateNoteForm note={note} key={idx+12} id={note._id} addNote={addNote} setNotes={setNotes} getNotes={getNotes} /> */}
+                <UpdateEventForm id={e._id} key={idx+12}  getEvents={getEvents} setEvents={setEvents} event={e} />
             </div>
 
         </div>

@@ -18,5 +18,7 @@ router.get('/', eventsCtrl.index);
 // DELETE	/posts/:id
 router.delete('/:id', eventsCtrl.delete);
 
+// PUT	/posts/:id
+router.put('/:id', eventsCtrl.update);
 
 module.exports = router;

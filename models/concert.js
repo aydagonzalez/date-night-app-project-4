@@ -24,6 +24,10 @@ const concertSchema = new Schema({
     postalCode: Number,
     region: String,
     accesibility: Number,
+    status: {
+        type: String, 
+        default: 'Not Visited Yet'
+    },
     
 }, {
     timestamps: true

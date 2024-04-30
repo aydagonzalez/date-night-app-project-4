@@ -14,6 +14,8 @@ export default function RestaurantEventCard({ restaurant, idx }) {
             restaurant.categories.icon: {(restaurant.categories[0].icon) ? restaurant.categories[0].icon.suffix : "No  icon available"} <br />
             restaurant.categories.name: {(restaurant.categories[0].name) ? restaurant.categories[0].name : "No  name available"} <br />
    */}
+
+   
             <div class="row">
                 <div class="col s12 m7">
                     <div class="card">

@@ -6,15 +6,16 @@ const Concert = require('../../models/concert')
 module.exports = {
   index,
   create,
-  delete: deleteEvent
+  delete: deleteEvent,
+  update
 };
 
 
 async function index(req, res) {
   const user = await User.findById(req.user)
 
-  console.log("USE", user)
-  console.log("DID YOU REACH INDEX FXN?")
+  // console.log("USE", user)
+  // console.log("DID YOU REACH INDEX FXN?")
   const concerts = await Concert.find({})
   console.log("concerts:", concerts)
   res.json(concerts)
@@ -31,10 +32,6 @@ async function create(req, res) {
     // const user = await User.findOne({ email: req.body.email });
     const concert = await Concert.create(req.body)
     console.log(req.body)
-    // note.text = req.body.text
-    // await note.save()
-    // user.notes.push(note)
-    // await user.save()
     res.status(200).json(concert)
   } catch (err) {
     res.status(400).json(err);
@@ -46,11 +43,32 @@ async function deleteEvent(req, res) {
     const concert = await Concert.findByIdAndDelete(req.params.id)
     console.log("DELETE-EVENT:", concert)
     if (!concert) {
-      return res.status(404).json({ err: "Note not found" });
+      return res.status(404).json({ err: "Event not found" });
     }
     res.status(200).json(concert)
   } catch (eror) {
     res.status(400).json(eror);
+  }
+}
+
+
+
+async function update(req, res) {
+  console.log("ID:", req.params.id, "Body:", req.body);
+  console.log("ID:", req.params.id, "Body:", req.body.status);
+  try {
+    const concert = await Concert.findOne({ '_id': req.params.id })
+    console.log("FOUND CONCERT-EVENT:", concert)
+    if (!concert) {
+      return res.status(404).json({ err: "Event not found" });
+    }
+      console.log("FOUND concert status LOG:", concert.status);
+      concert.status = req.body.status;
+      await concert.save();
+      res.json(concert)
+  } catch (err) {
+      console.error(err);
+      res.status(500).send("An error occurred.");
   }
 }
 

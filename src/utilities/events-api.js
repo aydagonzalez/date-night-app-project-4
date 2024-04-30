@@ -1,6 +1,5 @@
 // This is the base path of the Express route we'll define
 import sendRequest from "./send-request";
-// const LOGIN_URL = '/api/users/login';
 const BASE_URL = '/api/events';
 
 export async function createConcertEvent(concertData) {
@@ -16,4 +15,10 @@ export async function indexEvents() {
 export async function deleteEvent(id) {
   console.log("deleting")
   return sendRequest(`${BASE_URL}/${id}`, 'DELETE')
+}
+
+
+export async function updateEvent({id, statusUpdate} ) {
+  console.log("id, edit:", id, statusUpdate)
+  return sendRequest(`${BASE_URL}/${id}`, 'PUT', statusUpdate)
 }

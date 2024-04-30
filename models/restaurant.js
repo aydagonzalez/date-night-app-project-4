@@ -20,6 +20,11 @@ const restaurantSchema = new Schema({
     maxTicketPrice: Number,
     minTicketPrice: Number,
     accessibility: Number,
+    status: {
+        type: String, 
+        default: 'Not Visited Yet'
+    },
+    
 }, {
     timestamps: true
 })
