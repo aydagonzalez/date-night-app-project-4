@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import SavedEventsPage from '../SavedEventsPage/SavedEventsPage'
 import * as eventsAPI from '../../utilities/events-api';
+import YelpPage from '../YelpPage/YelpPage'
 import './App.css';
 
 export default function App() {
@@ -40,6 +41,7 @@ useEffect(function(){
         <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
         <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
         <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
+        <Route path="/events/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
       </>     

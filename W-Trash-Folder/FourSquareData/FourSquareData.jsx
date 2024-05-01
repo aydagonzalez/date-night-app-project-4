@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import * as eventsService from '../../utilities/events-service';
+import * as eventsService from '../../src/utilities/events-service';
 // import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
 
 export default function FourSquareData() {

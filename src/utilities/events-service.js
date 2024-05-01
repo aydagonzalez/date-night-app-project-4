@@ -20,3 +20,20 @@ export function getRestaurantsURLCredentials() {
   const url="https://api.foursquare.com/v2/venues/search"
   return (url)
   }
+
+export function getYelpApiKeyCredentials() {
+  const key= process.env.REACT_APP_YELPKEY
+  console.log("YELPKEY", key)
+  return (key)
+  }
+
+  export function getYelpApiClientIdCredentials() {
+    const clientId= process.env.REACT_APP_YELPCLIENTID
+    console.log("clientId", clientId)
+    return (clientId)
+    }
+
+export function getYelpUrlCredentials() {
+  const url= ""
+  return (url)
+  }
