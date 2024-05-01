@@ -1,5 +1,12 @@
+const User = require('../../models/user')
+const Restaurant = require('../../models/restaurant')
+
+
+
 module.exports = {
-    search
+    search,
+    create,
+    index
 }
 
 async function search(req, res) {
@@ -18,17 +25,41 @@ async function search(req, res) {
         });
         console.log("fetch(url, key):", url, key);
         if (!yelpApiDataRequest.ok) {
-            throw new Error('Bad request fetching yelpApi data, AG look at RestPg:');
+            throw new Error('Bad request fetching yelpApi data, AG look at Controller Pg:');
         }
         const yelpApiDataResponse = await yelpApiDataRequest.json();
-        console.log("yelpApiDataResponse", yelpApiDataResponse);
+        // console.log("yelpApiDataResponse", yelpApiDataResponse);
         res.status(200).json(yelpApiDataResponse)
-        // res.json(yelpApiDataResponse)
-        // res.status(200).json({})
-
     } catch (error) {
         console.log("ERROR:", error)
         res.status(400).json(error);
     }
+}
 
+async function create(req, res) {
+    try {
+        console.log("REQ_BODY FROM CREATE FXN", req.body)
+        const userID = await User.findById(req.user._id)
+        console.log("USER FROM CONTROLER:", req.user)
+        req.body.user = userID;
+        const yelpRestaurant = await Restaurant.create(req.body)
+        console.log("yelpRestaurant:", yelpRestaurant)
+        res.status(200).json(yelpRestaurant)
+        console.log("yelpRestaurant:", yelpRestaurant)
+    } catch (err) {
+        res.status(400).json(err);
+    }
+}
+
+
+async function index(req, res) {
+    const user = await User.findById(req.user)
+
+    // console.log("USE", user)
+    // console.log("DID YOU REACH INDEX FXN?")
+    // const concerts = await Concert.find({})
+    const restaurants = await Restaurant.find({})
+    // console.log("concerts:", concerts)
+    res.json( restaurants )
+    // res.json(restaurants )
 }

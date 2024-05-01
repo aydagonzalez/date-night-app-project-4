@@ -34,3 +34,15 @@ export async function fetchYelpData(yelpDataValue) {
   console.log("getting Yelp")
   return sendRequest(YELP_URL, 'POST', yelpDataValue)
 }
+
+
+export async function createYelpRestaurantEvent(yelpDataModel) {
+  console.log("creating yelpDataModel")
+  return sendRequest(`${YELP_URL}/create`, 'POST', yelpDataModel)
+}
+
+
+export async function indexYelpEvents() {
+  console.log("getting Concerts data")
+  return sendRequest(YELP_URL, 'GET')
+}

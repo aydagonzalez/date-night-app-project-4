@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import RestaurantEventCard from '../../components/RestaurantEventCard/RestaurantEventCard'
+import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
 
 
 
-export default function YelpPage() {
+export default function YelpPage({ getEvents }) {
     const [yelpData, setYelpData] = useState('');
     const [error, setError] = useState('');
     const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' });
@@ -47,7 +48,14 @@ export default function YelpPage() {
     return (
         <main className="restaurant-page-main">
             <h1>Yelp PAGE</h1>
-            {/* <h1> {yelpData} </h1> */}
+
+            {(yelpData) ? (yelpData.businesses.map((b,idx) => 
+            <YelpEventCard business={b} idx={idx} getEvents={getEvents} />
+            ))
+            : "No data available Ayda, need to press btn"}
+        
+
+
             <h1> {(JSON.stringify(yelpData))} </h1>
             <form className="ConcertPageBtn" onSubmit={handleSubmit}>
                 <label >Search:</label>

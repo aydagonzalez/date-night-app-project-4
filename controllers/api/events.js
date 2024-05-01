@@ -1,6 +1,7 @@
 // const jwt = require('jsonwebtoken')
 const User = require('../../models/user')
 const Concert = require('../../models/concert')
+const Restaurant = require('../../models/restaurant')
 
 
 module.exports = {
@@ -16,8 +17,11 @@ async function index(req, res) {
   // console.log("USE", user)
   // console.log("DID YOU REACH INDEX FXN?")
   const concerts = await Concert.find({})
+  // const restaurants= await Restaurant.find({})
   // console.log("concerts:", concerts)
   res.json(concerts)
+  // res.json({concerts, restaurants} )
+  // res.json(restaurants )
 }
 
 async function create(req, res) {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import * as eventsService from '../../utilities/events-service';
 import RestaurantEventCard from '../../components/RestaurantEventCard/RestaurantEventCard'
 
-export default function RestaurantPage() {
+export default function RestaurantPage({  }) {
     const [restaurantData, setRestaurantData] = useState('');
     const [error, setError] = useState('');
 
