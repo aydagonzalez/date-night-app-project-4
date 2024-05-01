@@ -41,7 +41,7 @@ useEffect(function(){
         <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
         <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
         <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
-        <Route path="/events/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
+        <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
       </>     

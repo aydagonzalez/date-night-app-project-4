@@ -14,7 +14,7 @@ export default function NavBar({ user, setUser }) {
       <p>Welcome, {user.name}</p>
       <Link to="/">Home</Link>
       &nbsp; | &nbsp;
-      <Link to="/events/yelp">Yelp</Link>
+      <Link to="/yelp">Yelp</Link>
       &nbsp; | &nbsp;
       <Link to="/events/saved">Saved</Link>
       &nbsp; | &nbsp;

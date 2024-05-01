@@ -32,12 +32,13 @@ export default function YelpPage() {
         console.log("yelpDataNewValue", yelpDataNewValue)
         try {
             const yelpDataReq = await eventsAPI.fetchYelpData(yelpDataNewValue)
-            if (!yelpDataReq.ok) throw new Error('Ayda, Failed to fetch data from Yelp API');
-            const yelpDataRes = await yelpDataReq.json();
-            console.log("yelpDataResponse", yelpDataRes)
-            setYelpData(yelpDataRes);
-            setYelpDataValue({ search: '', location: '' });
-            setError(''); // Clear any previous errors
+            try {if (!yelpDataReq.ok) throw new Error('Ayda, Failed to fetch data from Yelp API Controller');}
+            catch (error) {console.log(error)}
+            // const yelpDataRes = await yelpDataReq.json()
+            console.log("yelpDataReq", yelpDataReq)
+            setYelpData(yelpDataReq)
+            setYelpDataValue({ search: '', location: '' })
+            setError('')
         } catch (err) {
             console.log(err)
         }
@@ -45,7 +46,9 @@ export default function YelpPage() {
     // console.log("yelpData:", yelpData)
     return (
         <main className="restaurant-page-main">
-            <h1>YElp PAGE</h1>
+            <h1>Yelp PAGE</h1>
+            {/* <h1> {yelpData} </h1> */}
+            <h1> {(JSON.stringify(yelpData))} </h1>
             <form className="ConcertPageBtn" onSubmit={handleSubmit}>
                 <label >Search:</label>
                 <input name='search' value={yelpDataValue.search} type="text" onChange={handleChange} />
