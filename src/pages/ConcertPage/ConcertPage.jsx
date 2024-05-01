@@ -25,7 +25,7 @@ export default function ConcertPage({ getEvents }) {
             console.log("concertDataResponse", concertDataResponse);
             setConcertData(concertDataResponse)
         } catch (error) {
-            console.error('Request to Concert Data failed:', error);
+            console.error('Ayda the Request to Concert Data failed:', error);
             throw error;
         }
     }

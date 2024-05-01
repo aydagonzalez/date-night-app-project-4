@@ -5,7 +5,10 @@ const yelpCtrl = require('../../controllers/api/yelp');
 const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // Insert ensureLoggedIn on all routes that need protecting
-router.post('/', ensureLoggedIn, yelpCtrl.search);
+router.post('/', yelpCtrl.search);
+
+// router.get('/', yelpCtrl.search);
+
 
 // All routes here will start with /api/yelp
 

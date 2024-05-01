@@ -9,6 +9,8 @@ require('./config/database');
 
 const app = express();
 
+const axios = require('axios');
+
 app.use(logger('dev'));
 app.use(express.json());
 

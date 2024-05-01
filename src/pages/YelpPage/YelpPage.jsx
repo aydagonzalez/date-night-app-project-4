@@ -1,61 +1,62 @@
 import { useState, useEffect } from "react";
-import * as eventsService from '../../utilities/events-service';
+import * as eventsAPI from '../../utilities/events-api';
 import RestaurantEventCard from '../../components/RestaurantEventCard/RestaurantEventCard'
-import sendRequest from "../../utilities/send-request"
+
+
 
 export default function YelpPage() {
-    const [restaurantData, setRestaurantData] = useState('');
+    const [yelpData, setYelpData] = useState('');
     const [error, setError] = useState('');
+    const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' });
+
+    function handleChange(evt) {
+        const { name, value } = evt.target;
+        setYelpDataValue({ ...yelpDataValue, [name]: value });
+        setError('');
+    }
 
     function handleSubmit(evt) {
         evt.preventDefault()
         fetchRestaurantData()
     }
+    //TOOK IT OFF SO THAT IT DOESNT AUTOMATICALLY RELOAD PAGE ONCE I START TO TYPE SOMETHING
+    // useEffect(() => {
+    //     fetchRestaurantData();
+    // }, []);
 
     async function fetchRestaurantData() {
-        // const key = eventsService.getYelpApiKeyCredentials();
-        // const clientId = eventsService.getYelpApiClientIdCredentials(); 
-        const query = { query : 'mexican' }
-        const BASE_URL = '/api/yelp'
-        const response = await sendRequest(BASE_URL, 'POST', query)
-
-
-
-        // const url = 'https://api.yelp.com/v3/businesses/search?location=New%20York%20City&sort_by=best_match&limit=20'
-        // const url = `https://api.yelp.com/v3/businesses/search?query=${query}`
-        // console.log("key:", key, "url:", url);
-        // try {
-        //     const restaurantDataRequest = await fetch(url, {
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Authorization': `Bearer ${key}`
-        //         }
-        //     });
-        //     console.log("fetch(url, key):", url, key);
-        //     if (!restaurantDataRequest.ok) {
-        //         throw new Error('Bad request fetching Restaurant data, AG look at RestPg:');
-        //     }
-        //     const restaurantDataResponse = await restaurantDataRequest.json();
-        //     console.log("restaurantDataResponse", restaurantDataResponse);
-        //     setRestaurantData(restaurantDataResponse)
-        // } catch (error) {
-        //     console.error(error);
-        //     throw error;
-        // }
+        const yelpDataNewValue = {
+            location: yelpDataValue.location.replace(/\s/g, "%20"),
+            search: yelpDataValue.search.replace(/\s/g, "%20")
+        }
+        console.log("yelpDataNewValue", yelpDataNewValue)
+        try {
+            const yelpDataReq = await eventsAPI.fetchYelpData(yelpDataNewValue)
+            if (!yelpDataReq.ok) throw new Error('Ayda, Failed to fetch data from Yelp API');
+            const yelpDataRes = await yelpDataReq.json();
+            console.log("yelpDataResponse", yelpDataRes)
+            setYelpData(yelpDataRes);
+            setYelpDataValue({ search: '', location: '' });
+            setError(''); // Clear any previous errors
+        } catch (err) {
+            console.log(err)
+        }
     }
-
+    // console.log("yelpData:", yelpData)
     return (
-
         <main className="restaurant-page-main">
-
             <h1>YElp PAGE</h1>
             <form className="ConcertPageBtn" onSubmit={handleSubmit}>
+                <label >Search:</label>
+                <input name='search' value={yelpDataValue.search} type="text" onChange={handleChange} />
+                <label >location:</label>
+                <input name='location' value={yelpDataValue.location} type="text" onChange={handleChange} />
+                {/* //value will be use state insteads of astring */}
                 <button>RELOAD API</button>
             </form>
-            <h1> {restaurantData ? (JSON.strigify(restaurantData) )
-    
-            
-            : "No data available Ayda, need to press btn"} </h1>
+            <h1> {yelpData ? (JSON.stringify(yelpData))
+
+                : "No data available Ayda, need to press btn"} </h1>
 
             <p className="error-message">&nbsp;{error}</p>
         </main>

@@ -13,7 +13,6 @@ export default function ConcertEventCard({ event, idx, getEvents}) {
         evt.preventDefault();
         console.log("SEE ME?")
         const concertData = {
-            // user: req.body.user,
             name: event.name,
             imageUrl: event.images[0].url,
             venue: event._embedded.venues[0].name,
