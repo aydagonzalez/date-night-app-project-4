@@ -11,8 +11,11 @@ router.post('/', yelpCtrl.search);
 
 router.get('/', yelpCtrl.index);
 
-// POST /api/yelp 
+// DELETE	/posts/:id
+router.delete('/:id', yelpCtrl.delete);
 
+// PUT	/posts/:id
+router.put('/:id', yelpCtrl.update);
 
 // All routes here will start with /api/yelp
 

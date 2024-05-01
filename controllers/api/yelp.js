@@ -6,7 +6,9 @@ const Restaurant = require('../../models/restaurant')
 module.exports = {
     search,
     create,
-    index
+    index,
+    delete: deleteYelpEvent,
+    update
 }
 
 async function search(req, res) {
@@ -60,6 +62,40 @@ async function index(req, res) {
     // const concerts = await Concert.find({})
     const restaurants = await Restaurant.find({})
     // console.log("concerts:", concerts)
-    res.json( restaurants )
+    res.json(restaurants)
     // res.json(restaurants )
 }
+
+async function deleteYelpEvent(req, res) {
+    try {
+        const restaurant = await Restaurant.findByIdAndDelete(req.params.id)
+        // console.log("DELETE-EVENT:", restaurant)
+        if (!restaurant) {
+            return res.status(404).json({ err: "Event not found" });
+        }
+        res.status(200).json(restaurant)
+    } catch (eror) {
+        res.status(400).json(eror);
+    }
+}
+
+async function update(req, res) {
+    // console.log("ID:", req.params.id, "Body:", req.body);
+    // console.log("ID:", req.params.id, "Body:", req.body.status);
+    try {
+        const restaurant = await Restaurant.findOne({ '_id': req.params.id })
+        // console.log("FOUND restaurant-EVENT:", restaurant)
+        if (!restaurant) {
+            return res.status(404).json({ err: "Event not found" });
+        }
+        // console.log("FOUND restaurant status LOG:", restaurant.status);
+        restaurant.status = req.body.status;
+        await restaurant.save();
+        res.json(restaurant)
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("An error occurred.");
+    }
+}
+
+

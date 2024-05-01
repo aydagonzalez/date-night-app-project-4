@@ -1,6 +1,6 @@
 import * as eventsAPI from '../../utilities/events-api';
-import DeleteEventForm from "../../pages/Forms/DeleteEventForm";
-import UpdateEventForm from "../../pages/Forms/UpdateEventForm";
+import DeleteEventForm from "../Forms/ConcertsForms/DeleteEventForm";
+import UpdateEventForm from "../Forms/ConcertsForms/UpdateEventForm";
 import { useState, useEffect } from "react";
 
 export default function SavedEvents({ getEvents, events, setEvents, savedYelpData }) {
@@ -41,6 +41,7 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
             {y.reviewCount}
             {y.rating}
             {y.menuUrl}
+            {y.status}
         </h3>
         <div className="Update-DeleteNoteForms">
                 <DeleteEventForm id={y._id} key={idx + 11} getEvents={getEvents} />
