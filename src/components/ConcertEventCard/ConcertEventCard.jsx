@@ -11,10 +11,11 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
     
     async function handleEventSave(evt) {
         evt.preventDefault();
-        console.log("SEE ME?")
+        // console.log("SEE ME?")
         const concertData = {
             name: event.name,
             imageUrl: ((imgUrl) ? imgUrl : (event.images[0].url)) ,
+            websiteUrl: (event.url) ? event.url : "" ,
             venue: event._embedded.venues[0].name,
             venueLocation: `${event._embedded.venues[0].city.name}, ${event._embedded.venues[0].state.name}`,
             eventDate: `${event.dates.start.localDate} ${event.dates.start.localTime}`,
@@ -55,6 +56,7 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
 
 
                                 <div>SAles: {new Date(event.sales.public.startDateTime).toLocaleDateString()}</div>
+                                <div>WebsiteUR l: {event.url}</div>
 
                                 <div>Dates-start: {event.dates.start.localDate}</div>
                                 <div>Dates-start: {event.dates.start.localTime}

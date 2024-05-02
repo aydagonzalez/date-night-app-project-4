@@ -69,10 +69,6 @@ export default function UpdateEventForm({ idx, id, getEvents, event }) {
                     onClick={handleCancelEdit} > Cancel</button>
                 <p className="error-message">&nbsp;{error}</p>
             </div>
-
-
-
-
         </div>
 
     )

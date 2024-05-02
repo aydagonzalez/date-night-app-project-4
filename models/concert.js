@@ -9,6 +9,7 @@ const concertSchema = new Schema({
     }],
     name: { type: String, required: true },
     imageUrl: String,
+    websiteUrl: String,
     venue: String,
     venueLocation: String,
     eventDate: Date,
