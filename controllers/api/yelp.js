@@ -58,14 +58,16 @@ async function create(req, res) {
 
 
 async function index(req, res) {
-    const user = await User.findById(req.user)
-    const userID = user._id
-    // console.log("DID YOU REACH INDEX FXN?")
-    // const concerts = await Concert.find({})
-    const restaurants = await Restaurant.find({user : userID})
-    // console.log("concerts:", concerts)
-    res.json(restaurants)
-    // res.json(restaurants )
+    if (req.user) {
+
+        const user = await User.findById(req.user)
+        const userID = user._id
+        // console.log("DID YOU REACH INDEX FXN?")
+        // const concerts = await Concert.find({})
+        const restaurants = await Restaurant.find({user : userID})
+        // console.log("concerts:", concerts)
+        res.json(restaurants)
+    }
 }
 
 async function deleteYelpEvent(req, res) {

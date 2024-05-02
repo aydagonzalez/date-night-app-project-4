@@ -1,7 +1,6 @@
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
-// import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import ConcertPage from '../ConcertPage/ConcertPage';
 import RestaurantPage from '../RestaurantPage/RestaurantPage';
 import { useState, useEffect } from 'react';
@@ -18,39 +17,39 @@ export default function App() {
   const [savedYelpData, setSavedYelpData] = useState([]);
 
   async function getEvents() {
-      const allEventsIndex = await eventsAPI.indexEvents()
-      console.log("ALL Events in App page:", allEventsIndex)
-      setEvents(allEventsIndex)
-
-      const allYelpRestaurantsIndex = await eventsAPI.indexYelpEvents()
-      console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
-      setSavedYelpData( allYelpRestaurantsIndex)
+    const allEventsIndex = await eventsAPI.indexEvents()
+    console.log("ALL Events in App page:", allEventsIndex)
+    setEvents(allEventsIndex)
+    const allYelpRestaurantsIndex = await eventsAPI.indexYelpEvents()
+    console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
+    setSavedYelpData(allYelpRestaurantsIndex)
   }
+
   useEffect(function () {
     getEvents()
-}, []);
-useEffect(function(){
-  console.log("refreshing2")
-}, [events])
+  }, []);
+  useEffect(function () {
+    console.log("refreshing2")
+  }, [events])
 
 
 
   return (
 
     <main className="App">
-      {user ? 
-      <>
-      <NavBar user={user} setUser={setUser} /> 
-      <HomePage user={user} /> 
-      <Routes>
-        <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
-        <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
-        <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData}  />} />
-        <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-      </>     
-      : <AuthPage setUser={setUser} />}
+      {user ?
+        <>
+          <NavBar user={user} setUser={setUser} />
+          <HomePage user={user} />
+          <Routes>
+            <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
+            <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
+            <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
+            <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </>
+        : <AuthPage setUser={setUser} />}
     </main>
   );
 }

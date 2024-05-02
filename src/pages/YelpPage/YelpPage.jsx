@@ -52,11 +52,9 @@ export default function YelpPage({ getEvents }) {
             {(yelpData) ? (yelpData.businesses.map((b,idx) => 
             <YelpEventCard business={b} idx={idx} getEvents={getEvents} />
             ))
-            : "No data available Ayda, need to press btn"}
+            : "Please weite types of cuisine and city location to get started:"}
         
 
-
-            <h1> {(JSON.stringify(yelpData))} </h1>
             <form className="ConcertPageBtn" onSubmit={handleSubmit}>
                 <label >Search:</label>
                 <input name='search' value={yelpDataValue.search} type="text" onChange={handleChange} />
@@ -65,9 +63,9 @@ export default function YelpPage({ getEvents }) {
                 {/* //value will be use state insteads of astring */}
                 <button>RELOAD API</button>
             </form>
-            <h1> {yelpData ? (JSON.stringify(yelpData))
+            {/* <h1> {yelpData ? (JSON.stringify(yelpData))
 
-                : "No data available Ayda, need to press btn"} </h1>
+                : "No data available Ayda, need to press btn"} </h1> */}
 
             <p className="error-message">&nbsp;{error}</p>
         </main>

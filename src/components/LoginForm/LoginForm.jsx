@@ -1,5 +1,18 @@
 // import { Component } from 'react';
-// import { signUp } from '../../utilities/users-service';
+// import { signUp } from '../../utilities/users-service';'import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 
@@ -32,17 +45,23 @@ export default function LoginForm({ setUser }) {
     }
 
     return (
-        <div>
-            <div className="form-container">
-                <form autoComplete="off" onSubmit={handleSubmit}>
-                    <label>Email</label>
-                    <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-                    <label>Password</label>
-                    <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-                    <button type="submit">LOG IN</button>
-                </form>
+        <main>
+
+
+            <div>
+                <div className="form-container">
+                    <form autoComplete="off" onSubmit={handleSubmit}>
+                        <label>Email</label>
+                        <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
+                        <label>Password</label>
+                        <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+                        <button type="submit">LOG IN</button>
+                    </form>
+                </div>
+                <p className="error-message">&nbsp;{error}</p>
             </div>
-            <p className="error-message">&nbsp;{error}</p>
-        </div>
+        </main>
+
     );
+
 }

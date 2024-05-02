@@ -26,21 +26,18 @@ export default function ConcertPage({ getEvents }) {
     async function fetchConcertData() {
         const token = eventsService.getConcertTokenCredentials();
         const keywordAnd = parameters.keyword ? "&keyword=" + parameters.keyword : ''
-        const stateAnd = (parameters.state) ? "&stateCode=" + parameters.state : ''
-        console.log("parameters", parameters)
-        // const stateCode = "&stateCode=ny"
-        // const url = eventsService.getConcertURLCredentials();
+        const stateAnd = (parameters.state) ? "&stateCode=" + parameters.state : ''   
         const url = `https://app.ticketmaster.com/discovery/v2/events.json?${keywordAnd}${stateAnd}&apikey=`
 
-        console.log("token:", token, "url:", url);
+        // console.log("token:", token, "url:", url);
         try {
             const concertDataRequest = await fetch(`${url}${token}`);
-            console.log("fetch(url, token):", url, token);
+            // console.log("fetch(url, token) in Concert Data Request:", url, token);
             if (!concertDataRequest.ok) {
                 throw new Error('Bad request fetching concert data');
             }
             const concertDataResponse = await concertDataRequest.json();
-            console.log("concertDataResponse", concertDataResponse);
+            // console.log("concertDataResponse", concertDataResponse);
             setConcertData(concertDataResponse)
             setParameters({ keyword: '', state: '' })
         } catch (error) {
