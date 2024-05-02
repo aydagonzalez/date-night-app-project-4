@@ -6,6 +6,7 @@ import { CardActionArea, Card, CardActions, CardContent, CardMedia, Button, Typo
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import UpdateIcon from '@mui/icons-material/Update'
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
@@ -24,7 +25,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
             // console.log('Delete response:', deleteEvent);
             getEvents()
         } catch {
-            setError('Delete Event Failed - Ayda Try Again');
+            setError('Delete Failed - Try Again');
         }
     }
 
@@ -38,7 +39,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
     function handleChange(evt) {
         const { name, value } = evt.target;
-        setStatusFormValues(prev => ({ ...prev, [name]: value }));
+        setStatusFormValues({ ...statusFormValues, [name]: value });
         setError('');
     }
 
@@ -53,7 +54,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
             setEdit(false);
         } catch (error) {
             // console.log(error)
-            setError('Update Note Failed - Try Again');
+            setError('Update Failed - Try Again');
         }
     }
 
@@ -66,13 +67,14 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                         <CardMedia
                             component="img"
                             height=""
-                            image={y.imageUrl}
+                            image={y.imageUrl }
                             alt={y.name}
+                            style= {{height: "230px"}}
                         />
                         <SpeedDial
                             ariaLabel="SpeedDial tooltip example"
                             sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                            icon={<SpeedDialIcon />}
+                            icon={<SpeedDialIcon openIcon={<EditIcon />} />}
                             onClose={() => setOpen(false)}
                             onOpen={() => setOpen(true)}
                             open={open}

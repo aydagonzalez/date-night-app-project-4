@@ -40,7 +40,7 @@ export default function App() {
       {user ?
         <>
           <NavBar user={user} setUser={setUser} />
-          <HomePage user={user} />
+          {/* <HomePage user={user} /> */}
           <Routes>
             <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
             <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />

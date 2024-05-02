@@ -8,6 +8,16 @@
     /* align-self: center; */
     /* text-align: center; */
     margin-top: 2rem;
-    
-    gap:20%;
+    border: dashed 1px black;
+    gap:3%;
+    justify-content: space-evenly;
+}
+
+.MainHomePage div {}
+
+.yelp-container-home-page, .concert-container-home-page {
+    background-color: azure;
+    width : 300rem;
+    justify-content: space-evenly;
+
 }

@@ -2,7 +2,9 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import './HomePage.css'
-// import EventTicketMasterCard from '../../components/EventTicketMasterCard/EventTicketMasterCard'
+import CarouselYelp from '../../components/CarouselYelp/CarouselYelp'
+
+
 
 export default function HomePage({ getEvents }) {
     const [error, setError] = useState('');
@@ -19,13 +21,14 @@ export default function HomePage({ getEvents }) {
 
     return (
         <main className="MainHomePage" >
-            <div className="">
-            <Link to="/yelp"><h1>REST</h1></Link>
+            <div className="yelp-container-home-page">
+            <Link to="/yelp"><h1>YELP</h1></Link>
+            {/* <CarouselYelp /> */}
             </div>
-            <div className="">
+            {/* <div className="">
                 <h1>Div 2</h1>
-            </div>
-            <div className="">
+            </div> */}
+            <div className="concert-container-home-page">
             <Link to="/events/concerts"><h1>CON</h1></Link>
             </div>
         </main>
