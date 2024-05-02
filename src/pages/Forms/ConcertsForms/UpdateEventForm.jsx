@@ -4,7 +4,7 @@ import * as eventsAPI from '../../../utilities/events-api';
 // import /"./Forms.css"
 
 
-export default function UpdateYelpEventForm({ idx, id, getEvents, event }) {
+export default function UpdateEventForm({ idx, id, getEvents, event }) {
     // console.log("ID:",id)
 
     const [edit, setEdit] = useState(false);
@@ -35,7 +35,7 @@ export default function UpdateYelpEventForm({ idx, id, getEvents, event }) {
         try {
             console.log(statusFormValues)
             const statusUpdate = statusFormValues
-            const updateEvent = await eventsAPI.updateYelpEvent({ id, statusUpdate })
+            const updateEvent = await eventsAPI.updateEvent({ id, statusUpdate })
             console.log("updateEvent", updateEvent)
             getEvents()
             setEdit(false);

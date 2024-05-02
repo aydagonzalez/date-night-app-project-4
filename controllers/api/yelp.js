@@ -11,6 +11,8 @@ module.exports = {
     update
 }
 
+
+
 async function search(req, res) {
     try {
         console.log("REQ-BODY:", req.body)
@@ -54,13 +56,13 @@ async function create(req, res) {
 }
 
 
+
 async function index(req, res) {
     const user = await User.findById(req.user)
-
-    // console.log("USE", user)
+    const userID = user._id
     // console.log("DID YOU REACH INDEX FXN?")
     // const concerts = await Concert.find({})
-    const restaurants = await Restaurant.find({})
+    const restaurants = await Restaurant.find({user : userID})
     // console.log("concerts:", concerts)
     res.json(restaurants)
     // res.json(restaurants )

@@ -10,7 +10,7 @@ export default function DeleteEventForm({ idx, id, getEvents }) {
     async function handleDeleteEvent(evt) {
         evt.preventDefault();
         try {
-            const deleteEvent = await eventsAPI.deleteYelpEvent(id)
+            const deleteEvent = await eventsAPI.deleteEvent(id)
             console.log('Delete response:', deleteEvent);
             getEvents()
         } catch {

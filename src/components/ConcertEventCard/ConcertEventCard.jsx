@@ -6,17 +6,20 @@ import * as eventsAPI from '../../utilities/events-api';
 export default function ConcertEventCard({ event, idx, getEvents }) {
     const [error, setError] = useState('');
 
+    const imgRatio3_2 =  event.images.find(img => img.ratio === '3_2')
+    const imgUrl = imgRatio3_2.url
+    
     async function handleEventSave(evt) {
         evt.preventDefault();
         console.log("SEE ME?")
         const concertData = {
             name: event.name,
-            imageUrl: event.images[0].url,
+            imageUrl: ((imgUrl) ? imgUrl : (event.images[0].url)) ,
             venue: event._embedded.venues[0].name,
             venueLocation: `${event._embedded.venues[0].city.name}, ${event._embedded.venues[0].state.name}`,
             eventDate: `${event.dates.start.localDate} ${event.dates.start.localTime}`,
             timezone: event.dates.timezone,
-            accessibility: event.accessibility.ticketLimit,
+            accessibility: (event.accessibility) ? event.accessibility.ticketLimit : ""
         }
         console.log(concertData)
         try {
@@ -38,8 +41,10 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                 <div class="col s12 m7">
                     <div class="card">
                         <div class="card-image">
+                        {/* {event.images.find((img) => (img.ratio = '16_9'))} */}
 
-                            <img src={event.images[0].url} alt={event.name} />
+                            {/* <img src={event.images[0].url} alt={event.name} /> */}
+                            <img src={(imgUrl) ? imgUrl : (event.images[0].url) } alt={event.name} />
                             <span class="card-title"> {event.name} </span>
                         </div>
                         <div class="card-content">

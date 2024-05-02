@@ -2,7 +2,7 @@
 import { useState } from "react";
 import * as eventsAPI from '../../../utilities/events-api';
 
-export default function DeleteEventForm({ idx, id, getEvents }) {
+export default function DeleteYelpEventForm({ idx, id, getEvents }) {
     // console.log("ID:",id)git remo
     const [deleteEvent, setDeleteEvent] = useState('');
     const [error, setError] = useState('');

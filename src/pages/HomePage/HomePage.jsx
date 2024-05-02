@@ -20,7 +20,7 @@ export default function HomePage({ getEvents }) {
     return (
         <main className="MainHomePage" >
             <div className="">
-            <Link to="/events/restaurants"><h1>REST</h1></Link>
+            <Link to="/yelp"><h1>REST</h1></Link>
             </div>
             <div className="">
                 <h1>Div 2</h1>

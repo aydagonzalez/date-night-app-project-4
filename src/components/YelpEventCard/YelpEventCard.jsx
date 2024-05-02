@@ -62,7 +62,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                                 <div>rating:{(business.rating) ? (business.rating) : " No data available"} </div>
                                 <div>transactions:{(business.transactions) ? (business.transactions) : " No data available"}</div>
                                 <div>price:{(business.price) ? (business.price) : " No data available"} </div>
-                                <div>location.display_address:{(business.location.display_address.replace(',', " ")) ? (business.location.display_address) : " No data available"} </div>
+                                <div>location.display_address:{(business.location.display_address) ? (business.location.display_address) : " No data available"} </div>
                                 <div>display_phone:{(business.display_phone) ? (business.display_phone) : " No data available"} </div>
                                 <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : " No data available"} </div>
                             </p>

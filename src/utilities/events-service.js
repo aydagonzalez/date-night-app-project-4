@@ -7,7 +7,8 @@ export function getConcertTokenCredentials() {
 }
 
 export function getConcertURLCredentials() {
-  const url = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey="
+  const url = "https://app.ticketmaster.com/discovery/v2/events.json?keyword=pink&apikey="
+  const uri = "https://app.ticketmaster.com/discovery/v2/events.json?"
   return (url)
 }
 
