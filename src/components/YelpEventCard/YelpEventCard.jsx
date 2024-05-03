@@ -19,7 +19,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
         transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
         marginLeft: "auto",
         transition: theme.transitions.create("transform", {
-            duration: theme.transitions.duration.shortest,
+        duration: theme.transitions.duration.shortest,
         }),
     }));
 
@@ -50,7 +50,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
         }
         console.log("yelpDataModel:", yelpDataModel)
         try {
-            const yelpDataCreate = await eventsAPI.createYelpRestaurantEvent(yelpDataModel)
+            const yelpDataCreate = await eventsAPI.createYelpEvent(yelpDataModel)
             console.log("yelpDataCreate:", yelpDataCreate)
             getEvents()
         } catch (error) {

@@ -20,10 +20,6 @@ export default function YelpPage({ getEvents }) {
         evt.preventDefault()
         fetchRestaurantData()
     }
-    //TOOK IT OFF SO THAT IT DOESNT AUTOMATICALLY RELOAD PAGE ONCE I START TO TYPE SOMETHING
-    // useEffect(() => {
-    //     fetchRestaurantData();
-    // }, []);
 
     async function fetchRestaurantData() {
         const yelpDataNewValue = {
@@ -46,23 +42,22 @@ export default function YelpPage({ getEvents }) {
     }
     // console.log("yelpData:", yelpData)
     return (
+        <>
+
         <main className="event-page-main">
             <h1>Yelp PAGE</h1>
-
             <form className="search-forms" onSubmit={handleSubmit}>
                 {/* <label > Search: </label> */}
                 <input name='search' placeholder="Search a place or type of food" className="search-input-form"  value={yelpDataValue.search} type="text" onChange={handleChange} />
-                <label > | </label>
-                <input name='location' placeholder="City.."  className="search-input-form"  value={yelpDataValue.location} type="text" onChange={handleChange} />
-                {/* //value will be use state insteads of astring */}
-                <button className="search-form-btn"><SearchIcon /></button>
+                <input name='location' placeholder="City"  className="search-input-form city-input-yelp"  value={yelpDataValue.location} type="text" onChange={handleChange} />
+                <button className="search-form-btn">Search</button>
             </form>
 
             <div className="EventCardContainer"> 
             {(yelpData) ? (yelpData.businesses.map((b,idx) => 
             <YelpEventCard business={b} idx={idx} getEvents={getEvents} />
             ))
-            : "Please weite types of cuisine and city location to get started:"}
+            : "Please write types of cuisine and city location to get started:"}
         
 
             {/* <h1> {yelpData ? (JSON.stringify(yelpData))
@@ -71,7 +66,7 @@ export default function YelpPage({ getEvents }) {
 </div>
             <p className="error-message">&nbsp;{error}</p>
         </main>
-
+        </>
 
     )
 }

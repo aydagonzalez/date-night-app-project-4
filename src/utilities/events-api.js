@@ -36,7 +36,7 @@ export async function fetchYelpData(yelpDataValue) {
 }
 
 
-export async function createYelpRestaurantEvent(yelpDataModel) {
+export async function createYelpEvent(yelpDataModel) {
   console.log("creating yelpDataModel")
   return sendRequest(`${YELP_URL}/create`, 'POST', yelpDataModel)
 }

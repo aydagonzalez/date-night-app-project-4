@@ -41,6 +41,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
     function handleChange(evt) {
         const { name, value } = evt.target;
+        console.log("statusFormValues",statusFormValues)
         setStatusFormValues({ ...statusFormValues, [name]: value });
         setError('');
     }
@@ -62,7 +63,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
     return (
         <main>
-            <Card sx={{ maxWidth: 345 }}>
+            <Card sx={{ width: 345 }}>
                 <CardActionArea>
                     <Box sx={{ height: 280, transform: 'translateZ(0px)', flexGrow: 1 }}>
                         <Backdrop open={open} />
@@ -123,23 +124,22 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
                                 {!edit ? y.status :
                                     <div>
-                                        <form onSubmit="{handleUpdateNote}" >
-                                            <select name="status" value={statusFormValues} onChange={handleChange}>
+                                        <form  >
+                                            <select name="status" value={statusFormValues.status} onChange={handleChange}>
                                                 <option value="Not Yet Visited">Not Yet Visited</option>
                                                 <option value="Visited- Loved It">Visited- Loved It</option>
                                                 <option value="Visited- Never want to go again">Visited- Never want to go again</option>
                                             </select>
-                                            <button className="btn" type="submit" onClick={a => {
+                                            <button className="btn update-form-btns" type="submit" onClick={a => {
                                                 a.preventDefault();
                                                 handleEventStatusUpdateSubmit(y._id);
                                             }} >Update</button>
                                         </form>
-                                        <button
+                                        <button className="btn update-form-btns"
                                             style={{ visibility: edit ? 'visible' : 'hidden' }}
                                             onClick={handleCancelEdit} > Cancel</button>
                                     </div>
                                 }
-
                             </h3>
                         </Typography>
                     </CardContent>

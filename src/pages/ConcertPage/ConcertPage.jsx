@@ -62,7 +62,6 @@ export default function ConcertPage({ getEvents }) {
             <main className="event-page-main">
                 <h1> Concert PAge</h1>
                 <form className="search-forms" onSubmit={handleSubmit}  >
-                        {/* <Input require name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..." variant="outlined" /> */}
                         <input require className="search-input-form" name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..."  />
                         <select name="state" className="stateDropdown" onChange={handleChange} >
                             <option key="none" value="" >State</option>
@@ -70,7 +69,7 @@ export default function ConcertPage({ getEvents }) {
                                 <option key={state.code} value={state.code}>{state.name}</option>
                             )}
                         </select>
-                    <button className="search-form-btn" type="submit"><SearchIcon /></button>
+                    <button className="search-form-btn" type="submit">Search</button>
                 </form>
 
                 <div className="EventCardContainer">
@@ -78,41 +77,10 @@ export default function ConcertPage({ getEvents }) {
 
                         <ConcertEventCard getEvents={getEvents} key={idx} idx={idx} event={event} />
                     ))
-                        : "No data available Ayda, need to press btn"}
+                        : "What are you interested in viewing today?"}
                 </div>
                 <p className="error-message">&nbsp;{error}</p>
             </main >
         </>
     )
 }
-
-
-
-
-
-{/* <Box
-                    sx={{
-                        py: 2,
-                        display: 'flex',
-                        gap: 2,
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                        width: "25rem"
-                    }}
-                >
-                    <Input name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..." variant="outlined" />
-                    
-                    <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={parameters.state}
-          label="Age"
-          onChange={handleInputChange}
-        >
-                        {states.map((state) =>
-                            <MenuItem key={state.code} value={state.code} >{state.name}</MenuItem>
-                        )}
-                    </Select>
-
-                </Box> */}
-

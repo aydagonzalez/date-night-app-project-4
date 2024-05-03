@@ -39,10 +39,6 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/events', require('./routes/api/events'));
 app.use('/api/yelp', require('./routes/api/yelp'));
 
-// app.use('/api/concerts', require('./routes/api/concerts'));
-// app.use('/api/restaurants', require('./routes/api/restaurants'));
-
-
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

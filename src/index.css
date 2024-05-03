@@ -159,50 +159,6 @@ button[type="submit"] {
 
 
 
-.search-forms {
-  background-color: grey;
-  display: flex;
-  width:80%;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-input-form {
-  width: 20 rem;
-  width: 30%;
-  height: 2rem;
-  /* Adjust as needed */
-  padding: 0 1rem;
-  border: 1px solid #ddd; 
-  border-radius: 6px;
-  font-size: 1.5rem;
-}
-
-.stateDropdown {
-  width: 10 rem;
-  height: 2rem;
-  padding: 0 1rem;
-  /* border: 1px solid #ddd; */
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  display: inline-block;
-  /* margin-bottom: 1rem; */
-}
-
-
-.search-form-btn {
-  background-color: var(--tan-4);
-  border-radius: 6px;
-  height: 2rem;
-  text-align: center;
-  font-size: 1rem;
-  padding: 0vmin;
-  padding-top: 0.1vmin;
-  padding-left: 1vmin;
-  padding-right: 1vmin;
-}
-
 .EventCardContainer {
   background-color: #b786df;
   width: 90%;
@@ -223,3 +179,83 @@ button[type="submit"] {
   align-items: center;
 }
 
+.search-forms {
+  background-color: #ccc; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: auto; 
+  padding: 1rem 0;
+  border-radius: 8px; 
+}
+
+
+.search-input-form {
+  flex-grow: 2; 
+  height: 2rem;
+  padding: 0 1rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 1.2rem; 
+  margin-right: .1rem; 
+}
+
+.stateDropdown {
+  width: 20%; 
+  height: 2rem;
+  padding: 0 1rem;
+  border: 1px solid #bbb; 
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.search-form-btn {
+  background-color: #999;
+  color: white; 
+  border: none;
+  border-radius: 6px;
+  height: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0 1rem; 
+  padding-top: 1px;
+  cursor: pointer; 
+}
+
+.city-input-yelp{
+  background-color: #b786df;
+  width: 10%; 
+  height: 2rem;
+  padding: 0 1rem;
+  border: 1px solid #bbb; 
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+  /* display: none; */
+}
+
+.saved-events-page{
+  background-color: #b786df;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+/* * {
+  border: dashed black 1px;
+} */
+
+.saved-page-cards{
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50%;
+
+}
+
+/* .update-form-btns {
+  background-color: #b786df;
+  font-size: 10rem;
+
+} */

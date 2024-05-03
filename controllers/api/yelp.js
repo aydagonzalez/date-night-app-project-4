@@ -1,5 +1,5 @@
 const User = require('../../models/user')
-const Restaurant = require('../../models/restaurant')
+const Yelp = require('../../models/yelp')
 
 
 
@@ -46,11 +46,11 @@ async function create(req, res) {
         const userID = await User.findById(req.user._id)
         console.log("USER FROM CONTROLER:", req.user)
         req.body.user = userID;
-        const yelpRestaurant = await Restaurant.create(req.body)
-        console.log("yelpRestaurant:", yelpRestaurant)
-        res.status(200).json(yelpRestaurant)
-        console.log("yelpRestaurant:", yelpRestaurant)
-    } catch (err) {
+        const yelpCreateEvent = await Yelp.create(req.body)
+        console.log("yelpCreateEvent:", yelpCreateEvent)
+        res.status(200).json(yelpCreateEvent)
+        console.log("yelpCreateEvent:", yelpCreateEvent)
+    } catch (err) { console.log(err)
         res.status(400).json(err);
     }
 }
@@ -64,7 +64,7 @@ async function index(req, res) {
         const userID = user._id
         // console.log("DID YOU REACH INDEX FXN?")
         // const concerts = await Concert.find({})
-        const restaurants = await Restaurant.find({user : userID})
+        const restaurants = await Yelp.find({user : userID})
         // console.log("concerts:", concerts)
         res.json(restaurants)
     }
@@ -72,12 +72,12 @@ async function index(req, res) {
 
 async function deleteYelpEvent(req, res) {
     try {
-        const restaurant = await Restaurant.findByIdAndDelete(req.params.id)
-        // console.log("DELETE-EVENT:", restaurant)
-        if (!restaurant) {
+        const yelpEventDlt = await Yelp.findByIdAndDelete(req.params.id)
+        // console.log("DELETE-EVENT:", yelpEventDlt)
+        if (!yelpEventDlt) {
             return res.status(404).json({ err: "Event not found" });
         }
-        res.status(200).json(restaurant)
+        res.status(200).json(yelpEventDlt)
     } catch (eror) {
         res.status(400).json(eror);
     }
@@ -87,15 +87,15 @@ async function update(req, res) {
     // console.log("ID:", req.params.id, "Body:", req.body);
     // console.log("ID:", req.params.id, "Body:", req.body.status);
     try {
-        const restaurant = await Restaurant.findOne({ '_id': req.params.id })
-        // console.log("FOUND restaurant-EVENT:", restaurant)
-        if (!restaurant) {
+        const yelpEvent = await Yelp.findOne({ '_id': req.params.id })
+        // console.log("FOUND yelpEvent-EVENT:", yelpEvent)
+        if (!yelpEvent) {
             return res.status(404).json({ err: "Event not found" });
         }
-        // console.log("FOUND restaurant status LOG:", restaurant.status);
-        restaurant.status = req.body.status;
-        await restaurant.save();
-        res.json(restaurant)
+        // console.log("FOUND yelpEvent status LOG:", yelpEvent.status);
+        yelpEvent.status = req.body.status;
+        await yelpEvent.save();
+        res.json(yelpEvent)
     } catch (err) {
         console.error(err);
         res.status(500).send("An error occurred.");

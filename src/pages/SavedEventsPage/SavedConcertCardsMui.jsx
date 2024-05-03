@@ -110,8 +110,8 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                                 {e.accessibility ? e.accessibility : null} <br />
                                 {!edit ? e.status :
                                     <div>
-                                        <form onSubmit="{handleUpdateNote}" >
-                                            <select name="status" value={statusFormValues} onChange={handleChange}>
+                                        <form onSubmit={handleUpdateClick} >
+                                            <select name="status" value={statusFormValues.status} onChange={handleChange}>
                                                 <option value="Not Yet Visited">Not Yet Visited</option>
                                                 <option value="Visited- Loved It">Visited- Loved It</option>
                                                 <option value="Visited- Never want to go again">Visited- Never want to go again</option>

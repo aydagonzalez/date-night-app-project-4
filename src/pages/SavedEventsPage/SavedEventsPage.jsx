@@ -9,18 +9,28 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
     const [edit, setEdit] = useState(false);
     const savedEventCount = events.length + savedYelpData.length
     return (
-        <div key={100}>
+        <>
+   {/* <Badge badgeContent={4} color="primary">
+  <MailIcon color="action" />
+</Badge> */}
             <h1>Saved Page</h1>
-
             {savedEventCount}
+        <div key={100} className="saved-events-page">
 
-            {events.map((e, idx) =>
-                <SavedConcertCardsMui e={e} key={idx+5} idx={idx} getEvents={getEvents} events={events} />
-            )}
+            <div className="saved-page-cards">
 
-            {savedYelpData.map((y, idx) =>
-                <SavedYelpCardsMui y={y} key={idx+12} idx={idx} getEvents={getEvents} events={events} />
-            )}
+
+                {events.map((e, idx) =>
+                    <SavedConcertCardsMui e={e} key={idx + 5} idx={idx} getEvents={getEvents} events={events} />
+                )}
+            </div>
+            <div className="saved-page-cards">
+
+                {savedYelpData.map((y, idx) =>
+                    <SavedYelpCardsMui y={y} key={idx + 12} idx={idx} getEvents={getEvents} events={events} />
+                )}
+            </div>
         </div>
+        </>
     )
 }

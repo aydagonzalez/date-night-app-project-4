@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const restaurantSchema = new Schema({
+const yelpSchema = new Schema({
     user: [{
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -12,6 +12,7 @@ const restaurantSchema = new Schema({
     isClosed:{ type: String},
     openHours:{ type: String},
     displayAddress: String,
+    displayAddress1: String,
     displayCity: String,
     displayCountry: String,
     displayPhone: String,
@@ -32,5 +33,5 @@ const restaurantSchema = new Schema({
 
 
 
-module.exports = mongoose.model('Restaurant', restaurantSchema);
+module.exports = mongoose.model('Yelp', yelpSchema);
 

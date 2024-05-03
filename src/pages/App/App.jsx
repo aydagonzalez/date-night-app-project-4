@@ -42,7 +42,6 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           {/* <HomePage user={user} /> */}
           <Routes>
-            {/* <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} /> */}
             <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
             <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
             <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />

@@ -152,8 +152,6 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                         </Link>
                                     </Grid> */}
                                     <Grid item>
-                                        {/* <Link variant="body2"> */}
-                                        {/* <button onClick={handleSetUserLoginClick} > */}
                                         <button
                                             style={{
                                                 border: 'none',
@@ -169,8 +167,6 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                         >
                                             {"Don't have an account? Sign Up"}
                                         </button>
-                                        {/* </button> */}
-                                        {/* </Link> */}
                                     </Grid>
                                 </Grid>
                                 <Copyright sx={{ mt: 5 }} />
