@@ -7,6 +7,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import UpdateIcon from '@mui/icons-material/Update'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 
 export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
@@ -67,9 +69,9 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                         <CardMedia
                             component="img"
                             height=""
-                            image={y.imageUrl }
+                            image={y.imageUrl}
                             alt={y.name}
-                            style= {{height: "230px"}}
+                            style={{ height: "230px" }}
                         />
                         <SpeedDial
                             ariaLabel="SpeedDial tooltip example"
@@ -99,7 +101,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                     </Box>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                                {y.name}
+                            {y.name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             <h3>
@@ -108,12 +110,18 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                                 {y.displayAddress} <br />
                                 {y.displayCity}, {y.displayCountry} <br />
                                 Phone: {y.displayPhone} <br />
-                                {y.transaction} 
-                                {y.transactions2} <br />
-                                Price: {y.price} <br />
+                                <div style={{ textAlign: 'center' }}>
+                                    <Stack spacing={1} style={{ display: 'inline-block' }}>
+
+                                        <Rating name="half-rating-read" defaultValue={y.rating} precision={0.5} readOnly />
+                                    </Stack>
+                                </div>
                                 Reviews:{y.reviewCount} <br />
-                                Rating: {y.rating} <br />
-                                {/* {y.menuUrl} <br /> */}
+                                Price: {y.price} <br />
+                                {y.transaction}
+                                {y.transactions2} <br />
+
+
 
 
                                 {!edit ? y.status :

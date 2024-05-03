@@ -4,6 +4,9 @@ import * as eventsAPI from '../../utilities/events-api';
 import { styled } from "@mui/material/styles";
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from "@mui/material";
 import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
+import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
+import Rating from '@mui/material/Rating';
+import Stack from '@mui/material/Stack';
 
 export default function YelpEventCard({ business, idx, getEvents }) {
     const [error, setError] = useState('');
@@ -16,10 +19,13 @@ export default function YelpEventCard({ business, idx, getEvents }) {
         transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
         marginLeft: "auto",
         transition: theme.transitions.create("transform", {
-            duration: theme.transitions.duration.shortest,
+        duration: theme.transitions.duration.shortest,
         }),
     }));
 
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
 
 
     async function handleEventSave(evt) {
@@ -32,17 +38,17 @@ export default function YelpEventCard({ business, idx, getEvents }) {
             openHours: business.open24_hours || "",
             displayAddress: business.location.display_address1 || "",
             displayCity: business.location.city || "",
-            displayCountry: business.location.country|| "",
+            displayCountry: business.location.country || "",
             displayPhone: business.display_phone || "",
             transactions: business.transactions[0] || "",
             transactions2: business.transactions[1] || "",
             price: business.price || "",
             reviewCount: business.review_count || "",
-            rating: business.rating|| "",
+            rating: business.rating || "",
             menuUrl: business.attributes.menu_url || "",
 
         }
-        console.log("yelpDataModel:",yelpDataModel)
+        console.log("yelpDataModel:", yelpDataModel)
         try {
             const yelpDataCreate = await eventsAPI.createYelpRestaurantEvent(yelpDataModel)
             console.log("yelpDataCreate:", yelpDataCreate)
@@ -55,61 +61,70 @@ export default function YelpEventCard({ business, idx, getEvents }) {
 
     return (
         <main>
+            <Card sx={{ maxWidth: 500 }}>
+                <CardHeader
+                    action={
+                        <IconButton aria-label="settings">
+                            <MoreVertIcon />
+                        </IconButton>}
 
-            <h1>DAta</h1>
-            <div>
-            </div>
-            <div class="row">
-                <div class="col s12 m7">
-                    <div class="card">
-                        <div class="card-image">
+                    title={business.name}
+                />
+                <CardMedia
+                    component="img"
+                    height=""
+                    image={business.image_url}
+                    alt={business.name}
 
-                            <img src={business.image_url} alt={business.name} />
-                            <span class="card-title"> {business.name} </span>
-                        </div>
-                        <div class="card-content">
+                />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        <div>{(business.location.display_address) ? (business.location.display_address) : " No data available"} </div>
+                        {(business.display_phone) ? (business.display_phone) : " No data available"}
 
-                            <p>
-                                <div>is_closed:{(business.is_closed) ? (business.is_closed) : " No data available"}</div>
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                    <IconButton aria-label="add to favorites">
+                        <FavoriteIcon onClick={handleEventSave} />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                        <a href={(business.attributes.menu_url) ? (business.attributes.menu_url) : " No data available"}  > <RestaurantMenuIcon /></a>
+                    </IconButton>
+                    <ExpandMore
+                        expand={expanded}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                    >
+                        <ExpandMoreIcon />
+                    </ExpandMore>
+                </CardActions>
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                    <CardContent>
+                        <Typography paragraph>
+                            <div style={{ textAlign: 'center' }}>
+                                <Stack spacing={1} style={{ display: 'inline-block' }}>
 
-                                <div>open24_hours:{(business.open24_hours) ? (business.open24_hours) : " No data available"} </div>
-                                <div>review_count:{(business.review_count) ? (business.review_count) : " No data available"} </div>
-                                <div>rating:{(business.rating) ? (business.rating) : " No data available"} </div>
-                                <div>transactions:{(business.transactions) ? (business.transactions) : " No data available"}</div>
-                                <div>price:{(business.price) ? (business.price) : " No data available"} </div>
-                                <div>location.display_address:{(business.location.display_address) ? (business.location.display_address) : " No data available"} </div>
-                                <div>display_phone:{(business.display_phone) ? (business.display_phone) : " No data available"} </div>
-                                <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : " No data available"} </div>
-                            </p>
-                        </div>
-                        <div class="card-action">
+                                    <Rating name="half-rating-read" defaultValue={business.rating} precision={0.5} readOnly />
+                                </Stack>
+                            </div>
+                            <div>
+                                Rating: {(business.rating) ? (business.rating) : " N/A"} </div>
+                            <div>Reviews: {(business.review_count) ? (business.review_count) : " N/A"} </div>
+                            <div> {(business.location.display_address) ? (business.location.display_address) : " N/A"} </div>
+                            <div>Phone: {(business.display_phone) ? (business.display_phone) : " N/A"} </div>
+                            <div>Open 24 hours: {(business.open24_hours) ? (business.open24_hours) : "N/A"} </div>
+                            <div>Price: {(business.price) ? (business.price) : " N/A"} </div>
+                            {/* <div>{(business.transactions) ? (business.transactions) : " N/A"}</div> */}
+                            {/* <div>is_closed:{(business.is_closed) ? (business.is_closed) : "N/A"}</div> */}
+                            {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : " N/A"} </div> */}
 
-                            <button type="Submit" idx={idx} onClick={handleEventSave}  >Save</button>
+                        </Typography>
+                    </CardContent>
+                </Collapse>
+            </Card>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {/* ID: {business.id} <br /> */}
-            {/* ID:{(business.id) ? (business.id) : " No data available"} <br /> */}
-            {/* ALIAS:{(business.alias) ? (business.alias) : " No data available"} <br /> */}
-            {/* name:{(business.name) ? (business.name) : " No data available"} <br /> */}
-            {/* image_url:{(business.image_url) ? (business.image_url) : " No data available"} <br /> */}
-            {/* is_closed:{(business.is_closed) ? (business.is_closed) : " No data available"} <br /> */}
-            {/* open24_hours:{(business.open24_hours) ? (business.open24_hours) : " No data available"} <br /> */}
-            {/* url:{(business.url) ? (business.url) : " No data available"} <br /> */}
-            {/* review_count:{(business.review_count) ? (business.review_count) : " No data available"} <br /> */}
-            {/* categories[0]:{(business.categories[0].alias) ? (business.categories[0].alias) : " No data available"} <br /> */}
-            {/* rating:{(business.rating) ? (business.rating) : " No data available"} <br /> */}
-            {/* transactions:{(business.transactions) ? (business.transactions) : " No data available"} <br /> */}
-            {/* price:{(business.price) ? (business.price) : " No data available"} <br /> */}
-            {/* location.display_address:{(business.location.display_address) ? (business.location.display_address) : " No data available"} <br /> */}
-            {/* display_phone:{(business.display_phone) ? (business.display_phone) : " No data available"} <br /> */}
-            {/* attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : " No data available"} <br /> */}
-
-,
         </main>
     )
 }
