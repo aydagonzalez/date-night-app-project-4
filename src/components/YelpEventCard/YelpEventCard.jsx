@@ -1,10 +1,25 @@
-import { Link } from "react-router-dom"
+import * as React from "react";
 import { useState } from "react";
-// import './ConcertEventCard.css'
 import * as eventsAPI from '../../utilities/events-api';
+import { styled } from "@mui/material/styles";
+import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from "@mui/material";
+import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
 
 export default function YelpEventCard({ business, idx, getEvents }) {
     const [error, setError] = useState('');
+    const [expanded, setExpanded] = React.useState(false);
+
+    const ExpandMore = styled((props) => {
+        const { expand, ...other } = props;
+        return <IconButton {...other} />;
+    })(({ theme, expand }) => ({
+        transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+        marginLeft: "auto",
+        transition: theme.transitions.create("transform", {
+            duration: theme.transitions.duration.shortest,
+        }),
+    }));
+
 
 
     async function handleEventSave(evt) {

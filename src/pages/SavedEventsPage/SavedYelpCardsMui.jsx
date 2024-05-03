@@ -99,24 +99,21 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                     </Box>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            <div className="concert-Event-item" key={idx * 5} >
                                 {y.name}
-                            </div>
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             <h3>
-                                {y.isClosed}
-                                {y.openHours}
-                                {y.displayAddress}
-                                {y.displayCity}
-                                {y.displayCountry}
-                                {y.displayPhone}
-                                {y.transaction}
-                                {y.transactions2}
-                                {y.price}
-                                {y.reviewCount}
-                                {y.rating}
-                                {y.menuUrl}
+                                {/* {y.isClosed} <br />
+                                {y.openHours} <br /> */}
+                                {y.displayAddress} <br />
+                                {y.displayCity}, {y.displayCountry} <br />
+                                Phone: {y.displayPhone} <br />
+                                {y.transaction} 
+                                {y.transactions2} <br />
+                                Price: {y.price} <br />
+                                Reviews:{y.reviewCount} <br />
+                                Rating: {y.rating} <br />
+                                {/* {y.menuUrl} <br /> */}
 
 
                                 {!edit ? y.status :
