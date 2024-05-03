@@ -54,8 +54,8 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
         }
     }
     return (
-        <div className="ConcertEventCard">
-            <div>
+        <div className="EventCard">
+            {/* <div> */}
                 <Card sx={{ maxWidth: 500 }}>
                     <CardHeader
                         action={
@@ -110,7 +110,7 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                     </Collapse>
                 </Card>
 
-            </div>
+            {/* </div> */}
         </div>
     )
 

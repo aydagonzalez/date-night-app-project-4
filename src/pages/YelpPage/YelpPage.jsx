@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
+import SearchIcon from '@mui/icons-material/Search';
 
 
 
@@ -45,27 +46,29 @@ export default function YelpPage({ getEvents }) {
     }
     // console.log("yelpData:", yelpData)
     return (
-        <main className="restaurant-page-main">
+        <main className="event-page-main">
             <h1>Yelp PAGE</h1>
 
+            <form className="search-forms" onSubmit={handleSubmit}>
+                {/* <label > Search: </label> */}
+                <input name='search' placeholder="Search a place or type of food" className="search-input-form"  value={yelpDataValue.search} type="text" onChange={handleChange} />
+                <label > | </label>
+                <input name='location' placeholder="City.."  className="search-input-form"  value={yelpDataValue.location} type="text" onChange={handleChange} />
+                {/* //value will be use state insteads of astring */}
+                <button className="search-form-btn"><SearchIcon /></button>
+            </form>
+
+            <div className="EventCardContainer"> 
             {(yelpData) ? (yelpData.businesses.map((b,idx) => 
             <YelpEventCard business={b} idx={idx} getEvents={getEvents} />
             ))
             : "Please weite types of cuisine and city location to get started:"}
         
 
-            <form className="ConcertPageBtn" onSubmit={handleSubmit}>
-                <label >Search:</label>
-                <input name='search' value={yelpDataValue.search} type="text" onChange={handleChange} />
-                <label >location:</label>
-                <input name='location' value={yelpDataValue.location} type="text" onChange={handleChange} />
-                {/* //value will be use state insteads of astring */}
-                <button>RELOAD API</button>
-            </form>
             {/* <h1> {yelpData ? (JSON.stringify(yelpData))
 
                 : "No data available Ayda, need to press btn"} </h1> */}
-
+</div>
             <p className="error-message">&nbsp;{error}</p>
         </main>
 

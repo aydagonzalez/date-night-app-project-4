@@ -42,22 +42,15 @@ export default function RestaurantPage({  }) {
     }
 
     return (
-
         <main className="restaurant-page-main">
-
             <h1>Restaurant PAGE</h1>
             <form className="ConcertPageBtn" onSubmit={handleSubmit}>
                 <button>RELOAD API</button>
             </form>
             <h1> {restaurantData ? (restaurantData.results.map((restaurant,idx) =>
                     <RestaurantEventCard key={idx} restaurant={restaurant} />)) 
-    
-            
             : "No data available Ayda, need to press btn"} </h1>
-
             <p className="error-message">&nbsp;{error}</p>
         </main>
-
-
     )
 }

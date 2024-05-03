@@ -6,3 +6,58 @@
     /* background-color: black; */
 
 }
+
+.concert-page-main > form {
+
+
+}
+
+/* .search-input-form {
+    background-color: aquamarine;
+    width: 20 rem;
+    width: 40%;
+    height: 2rem; 
+    padding: 0 1rem;
+    border: 1px solid #ddd; 
+}
+
+#stateDropdown {
+    background-color: aquamarine;
+    width: 20 rem;
+    width: 10%;
+    height: 2rem;
+    padding: 0 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}  */
+
+
+/* #stateDropdown {
+    background-color: aquamarine;
+    width: 20 rem;
+    width: 10%;
+    height: 2rem;
+    padding: 0 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+} */
+
+
+/* .search-forms {
+    background-color: bisque;
+    font-display: flex;
+    flex-direction: row;
+
+} */
+
+.search-form-btn {
+    
+}

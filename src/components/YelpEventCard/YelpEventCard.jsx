@@ -19,7 +19,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
         transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
         marginLeft: "auto",
         transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
+            duration: theme.transitions.duration.shortest,
         }),
     }));
 
@@ -72,7 +72,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                 />
                 <CardMedia
                     component="img"
-                    height=""
+                    height="500"
                     image={business.image_url}
                     alt={business.name}
 

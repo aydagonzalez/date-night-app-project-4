@@ -25,9 +25,9 @@ export default function RestaurantEventCard({ restaurant, idx }) {
                         </div>
                         <div class="card-content">
                             
-                            <p>
+                          
                             {restaurant.location.formatted_address}
-                                </p>
+                             
                         </div>
                         <div class="card-action">
                             <a href="#">Save</a>|
