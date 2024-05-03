@@ -2,7 +2,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import HomePage from '../HomePage/HomePage';
 import ConcertPage from '../ConcertPage/ConcertPage';
-import RestaurantPage from '../RestaurantPage/RestaurantPage';
+// import RestaurantPage from '../RestaurantPage/RestaurantPage';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
@@ -42,7 +42,7 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           {/* <HomePage user={user} /> */}
           <Routes>
-            <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} />
+            {/* <Route path="/events/restaurants" element={<RestaurantPage getEvents={getEvents} />} /> */}
             <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
             <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
             <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />

@@ -7,9 +7,13 @@ import SavedYelpCardsMui from './SavedYelpCardsMui';
 export default function SavedEvents({ getEvents, events, setEvents, savedYelpData }) {
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(false);
+    const savedEventCount = events.length + savedYelpData.length
     return (
         <div>
             <h1>Saved Page</h1>
+
+            {savedEventCount}
+
             {events.map((e, idx) =>
                 <SavedConcertCardsMui e={e} idx={idx} getEvents={getEvents} events={events} />
             )}

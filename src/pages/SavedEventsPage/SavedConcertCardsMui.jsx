@@ -109,20 +109,21 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                                 {new Date(e.eventDate).toLocaleTimeString()} <br />
                                 {e.accessibility ? e.accessibility : null} <br />
                                 {!edit ? e.status :
-                                <div>
-                                    <form onSubmit="{handleUpdateNote}" >
-                                        <select name="status" value={statusFormValues} onChange={handleChange}>
-                                            <option value="Not Yet Visited">Not Yet Visited</option>
-                                            <option value="Visited- Loved It">Visited- Loved It</option>
-                                            <option value="Visited- Never want to go again">Visited- Never want to go again</option>
-                                        </select>
-                                        <button className="btn" type="submit" onClick={a => {
-                                            a.preventDefault(); 
-                                            handleEventStatusUpdateSubmit(e._id); }} >Update</button>
-                                    </form>
-                                    <button
-                                    style={{ visibility: edit ? 'visible' : 'hidden' }}
-                                    onClick={handleCancelEdit} > Cancel</button>
+                                    <div>
+                                        <form onSubmit="{handleUpdateNote}" >
+                                            <select name="status" value={statusFormValues} onChange={handleChange}>
+                                                <option value="Not Yet Visited">Not Yet Visited</option>
+                                                <option value="Visited- Loved It">Visited- Loved It</option>
+                                                <option value="Visited- Never want to go again">Visited- Never want to go again</option>
+                                            </select>
+                                            <button className="xs-btn" type="submit-btn" onClick={a => {
+                                                a.preventDefault();
+                                                handleEventStatusUpdateSubmit(e._id);
+                                            }} >Update</button>
+                                        </form>
+                                        <button className="xs-btn"
+                                            style={{ visibility: edit ? 'visible' : 'hidden' }}
+                                            onClick={handleCancelEdit} > Cancel</button>
                                     </div>
                                 }
 

@@ -116,13 +116,10 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                                         <Rating name="half-rating-read" defaultValue={y.rating} precision={0.5} readOnly />
                                     </Stack>
                                 </div>
-                                Reviews:{y.reviewCount} <br />
+                                Reviews: {y.reviewCount} <br />
                                 Price: {y.price} <br />
                                 {y.transaction}
                                 {y.transactions2} <br />
-
-
-
 
                                 {!edit ? y.status :
                                     <div>
@@ -148,7 +145,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <a href={y.menuUrl ? y.menuUrl : null}>
+                    <a href={y.menuUrl ? y.menuUrl : "www.yelp.com"}>
                         <Button size="small" color="primary"> Menu
                         </Button>
                     </a>

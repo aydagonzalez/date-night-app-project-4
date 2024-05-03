@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
-import RestaurantEventCard from '../../components/RestaurantEventCard/RestaurantEventCard'
 import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
 
 
