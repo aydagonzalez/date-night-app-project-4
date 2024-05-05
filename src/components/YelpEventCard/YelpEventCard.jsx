@@ -19,7 +19,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
         transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
         marginLeft: "auto",
         transition: theme.transitions.create("transform", {
-        duration: theme.transitions.duration.shortest,
+            duration: theme.transitions.duration.shortest,
         }),
     }));
 
@@ -36,7 +36,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
             imageUrl: business.image_url,
             isClosed: business.is_closed || "",
             openHours: business.open24_hours || "",
-            displayAddress: business.location.display_address1 || "",
+            displayAddress: business.location.display_address[0] || "",
             displayCity: business.location.city || "",
             displayCountry: business.location.country || "",
             displayPhone: business.display_phone || "",
@@ -45,7 +45,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
             price: business.price || "",
             reviewCount: business.review_count || "",
             rating: business.rating || "",
-            menuUrl: business.attributes.menu_url || "",
+            menuUrl: business.attributes.menu_url ||  (business.url) || "N/A",
 
         }
         console.log("yelpDataModel:", yelpDataModel)
@@ -55,7 +55,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
             getEvents()
         } catch (error) {
             console.log("error:", error)
-            setError('Save yelp Restaurant Failed - Try Again Ayda');
+            setError('Search Failed - Try Again');
         }
     }
 
@@ -70,7 +70,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
 
                     title={business.name}
                 />
-                <CardMedia
+                <CardMedia className="CardMediaContent"
                     component="img"
                     height="500"
                     image={business.image_url}
@@ -79,17 +79,17 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                        <div>{(business.location.display_address) ? (business.location.display_address) : " No data available"} </div>
-                        {(business.display_phone) ? (business.display_phone) : " No data available"}
+                        <div>{(business.location.display_address) ? (business.location.display_address.join(', ')) : " No data available"} </div>
+                        {(business.display_phone) ? (business.display_phone) : "Phone: N/A"}
 
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
-                        <FavoriteIcon onClick={handleEventSave} />
+                        <FavoriteIcon className="favorite-icon" onClick={handleEventSave} />
                     </IconButton>
                     <IconButton aria-label="share">
-                        <a href={(business.attributes.menu_url) ? (business.attributes.menu_url) : " No data available"}  > <RestaurantMenuIcon /></a>
+                        <a href={(business.attributes.menu_url) ? (business.attributes.menu_url) : (business.url)}  > <RestaurantMenuIcon className="menu-icon" /></a>
                     </IconButton>
                     <ExpandMore
                         expand={expanded}
@@ -103,25 +103,29 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>
+
                             <div style={{ textAlign: 'center' }}>
                                 <Stack spacing={1} style={{ display: 'inline-block' }}>
 
                                     <Rating name="half-rating-read" defaultValue={business.rating} precision={0.5} readOnly />
                                 </Stack>
                             </div>
+                            Rating: {(business.rating) ? (business.rating) : " N/A"}
                             <div>
-                                Rating: {(business.rating) ? (business.rating) : " N/A"} </div>
+                            </div>
                             <div>Reviews: {(business.review_count) ? (business.review_count) : " N/A"} </div>
-                            <div> {(business.location.display_address) ? (business.location.display_address) : " N/A"} </div>
+                            <div> {(business.location.display_address) ? (business.location.display_address.join(', ')) : " N/A"} </div>
                             <div>Phone: {(business.display_phone) ? (business.display_phone) : " N/A"} </div>
                             <div>Open 24 hours: {(business.open24_hours) ? (business.open24_hours) : "N/A"} </div>
                             <div>Price: {(business.price) ? (business.price) : " N/A"} </div>
-                            {/* <div>{(business.transactions) ? (business.transactions) : " N/A"}</div> */}
+                            <div>{(business.transactions) ? (business.transactions[0]) : ""} {(business.transactions) ? (business.transactions[1]) : ""}</div>
                             {/* <div>is_closed:{(business.is_closed) ? (business.is_closed) : "N/A"}</div> */}
-                            {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : " N/A"} </div> */}
+                            {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.url) : " N/A"} </div> */}
+                            {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : (business.url)} </div> */}
 
                         </Typography>
                     </CardContent>
+
                 </Collapse>
             </Card>
 

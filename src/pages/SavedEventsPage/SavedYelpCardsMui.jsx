@@ -11,6 +11,7 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
 export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
+    const [yelp, setYelp] =useState(true)
 
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(false);
@@ -146,7 +147,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                 </CardActionArea>
                 <CardActions>
                     <a href={y.menuUrl ? y.menuUrl : "www.yelp.com"}>
-                        <Button size="small" color="primary"> Menu
+                        <Button size="small" color="primary"> more info
                         </Button>
                     </a>
                 </CardActions>

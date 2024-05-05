@@ -39,7 +39,7 @@ export default function App() {
     <main className="App">
       {user ?
         <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} events={events} savedYelpData={savedYelpData}   />
           {/* <HomePage user={user} /> */}
           <Routes>
             <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />

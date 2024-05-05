@@ -23,6 +23,12 @@ export default function HomePage({ getEvents }) {
         <main className="MainHomePage" >
             <div className="yelp-container-home-page">
             <Link to="/yelp"><h1>YELP</h1></Link>
+
+            <div>
+                Moving imgS?
+            </div>
+
+
             {/* <CarouselYelp /> */}
             </div>
             {/* <div className="">

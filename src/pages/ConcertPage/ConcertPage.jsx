@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import * as eventsService from '../../utilities/events-service';
 import ConcertEventCard from '../../components/ConcertEventCard/ConcertEventCard'
 import { states } from '../../data.js'
-import Box from '@mui/joy/Box';
-import FormControl from '@mui/material/FormControl';
-import Input from '@mui/joy/Input';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
-import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel'
-import SearchIcon from '@mui/icons-material/Search';
+// import Box from '@mui/joy/Box';
+// import FormControl from '@mui/material/FormControl';
+// import Input from '@mui/joy/Input';
+// import Select from '@mui/joy/Select';
+// import Option from '@mui/joy/Option';
+// import MenuItem from '@mui/material/MenuItem';
+// import InputLabel from '@mui/material/InputLabel'
+// import SearchIcon from '@mui/icons-material/Search';
 import './ConcertPage.css'
 
 
@@ -61,16 +61,19 @@ export default function ConcertPage({ getEvents }) {
         <>
             <main className="event-page-main">
                 <h1> Concert PAge</h1>
-                <form className="search-forms" onSubmit={handleSubmit}  >
-                        <input require className="search-input-form" name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..."  />
+                <div className="search-btn-form-container">
+
+                    <form className="search-forms" onSubmit={handleSubmit}  >
+                        <input require className="search-input-form" name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..." />
                         <select name="state" className="stateDropdown" onChange={handleChange} >
                             <option key="none" value="" >State</option>
                             {states.map((state) =>
                                 <option key={state.code} value={state.code}>{state.name}</option>
                             )}
                         </select>
-                    <button className="search-form-btn" type="submit">Search</button>
-                </form>
+                        <button className="search-form-btn" type="submit">Search</button>
+                    </form>
+                </div>
 
                 <div className="EventCardContainer">
                     {concertData && concertData._embedded ? (concertData._embedded.events.map((event, idx) =>

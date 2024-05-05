@@ -5,8 +5,8 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -133,10 +133,10 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                     id="password"
                                 // autoComplete="current-password"
                                 />
-                                <FormControlLabel
+                                {/* <FormControlLabel
                                     control={<Checkbox value="remember" color="primary" />}
-                                    label="Remember me"
-                                />
+                                    label=""
+                                /> */}
                                 <Button
                                     type="submit"
                                     fullWidth
@@ -168,11 +168,17 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                             {"Don't have an account? Sign Up"}
                                         </button>
                                     </Grid>
+                                    <div>
+                                        <p className="error-message">&nbsp;{error}</p>
+
+                                    </div>
                                 </Grid>
                                 <Copyright sx={{ mt: 5 }} />
                             </Box>
                         </Box>
+
                     </Grid>
+
                 </Grid>
             </ThemeProvider>
 

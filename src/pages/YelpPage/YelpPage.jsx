@@ -46,16 +46,19 @@ export default function YelpPage({ getEvents }) {
 
         <main className="event-page-main">
             <h1>Yelp PAGE</h1>
+            <div className="search-btn-form-container">
+
             <form className="search-forms" onSubmit={handleSubmit}>
                 {/* <label > Search: </label> */}
                 <input name='search' placeholder="Search a place or type of food" className="search-input-form"  value={yelpDataValue.search} type="text" onChange={handleChange} />
-                <input name='location' placeholder="City"  className="search-input-form city-input-yelp"  value={yelpDataValue.location} type="text" onChange={handleChange} />
-                <button className="search-form-btn">Search</button>
+                <input name='location' placeholder="City"  className=" city-input-yelp"  value={yelpDataValue.location} type="text" onChange={handleChange} />
+                <button className="search-form-btn yelp-page-search-btn">Search</button>
             </form>
+            </div>
 
             <div className="EventCardContainer"> 
             {(yelpData) ? (yelpData.businesses.map((b,idx) => 
-            <YelpEventCard business={b} idx={idx} getEvents={getEvents} />
+            <YelpEventCard business={b} idx={idx} key={idx+6} getEvents={getEvents} />
             ))
             : "Please write types of cuisine and city location to get started:"}
         

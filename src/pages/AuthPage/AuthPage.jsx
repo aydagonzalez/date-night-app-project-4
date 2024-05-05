@@ -4,17 +4,17 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
 
 export default function AuthPage({ setUser }) {
-  const [userLogin, setUserLogin] = useState(true)
+  // const [userLogin, setUserLogin] = useState(true)
   const [userHasAccount, setUseHasAccount] = useState(true)
 
 
   return (
     <main>
-      <h1>AuthPage</h1>
+      {/* <h1>AuthPage</h1> */}
       { (userHasAccount) ?
         <LoginForm setUser={setUser} setUseHasAccount={setUseHasAccount} />
         :
-      <SignUpForm setUser={setUser} />
+      <SignUpForm setUser={setUser} setUseHasAccount={setUseHasAccount} />
       
       }
     </main>

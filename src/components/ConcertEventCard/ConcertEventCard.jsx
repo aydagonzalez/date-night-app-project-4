@@ -5,7 +5,7 @@ import * as eventsAPI from '../../utilities/events-api';
 import { styled } from "@mui/material/styles";
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from "@mui/material";
 import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
-import './ConcertEventCard.css';
+// import './ConcertEventCard.css';
 
 export default function ConcertEventCard({ event, idx, getEvents }) {
     const [error, setError] = useState('');

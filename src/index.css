@@ -5,9 +5,10 @@
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
   --tan-4: #b786df;
-  --orange: #F67F00;
+  --orange: #f63500;
   --text-light: #968c84;
   --text-dark: #615954;
+  --purple-tint: #ccc1ce;
 }
 
 *,
@@ -23,7 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-3);
+  background-color: var(--purple-tint);
   padding: 2vmin;
   height: 100vh;
 }
@@ -110,7 +111,7 @@ input {
   padding: 1vmin;
   font-size: 2vmin;
   border: .1vmin solid var(--tan-3);
-  border-radius: .5vmin;
+  /* border-radius: .5vmin; */
   color: var(--text-dark);
   background-image: none !important;
   outline: none;
@@ -179,6 +180,8 @@ button[type="submit"] {
   align-items: center;
 }
 
+
+/* This is for search bar ourline */
 .search-forms {
   background-color: #ccc; 
   display: flex;
@@ -186,8 +189,10 @@ button[type="submit"] {
   align-items: center;
   width: 80%;
   margin: auto; 
-  padding: 1rem 0;
+  padding: 0.5vmin 0vmin ;
   border-radius: 8px; 
+  padding-left: .5vmin;
+  padding-right: .05vmin;
 }
 
 
@@ -195,8 +200,9 @@ button[type="submit"] {
   flex-grow: 2; 
   height: 2rem;
   padding: 0 1rem;
-  border: 1px solid #bbb;
-  border-radius: 6px;
+  /* border: 1px solid #bbb; */
+  border: none;
+  /* border-radius: 6px; */
   font-size: 1.2rem; 
   margin-right: .1rem; 
 }
@@ -205,35 +211,44 @@ button[type="submit"] {
   width: 20%; 
   height: 2rem;
   padding: 0 1rem;
-  border: 1px solid #bbb; 
-  border-radius: 6px;
+  /* border: 1px solid #bbb;  */
+  border: none; 
+  /* border-radius: 6px; */
   cursor: pointer;
   display: inline-block;
+  font-size: 1.2rem; 
 }
 
 .search-form-btn {
   background-color: #999;
   color: white; 
   border: none;
-  border-radius: 6px;
+  /* border-radius: 6px; */
   height: 2rem;
   text-align: center;
   font-size: 1rem;
+  border-radius: 0;
   padding: 0 1rem; 
   padding-top: 1px;
   cursor: pointer; 
 }
 
 .city-input-yelp{
-  background-color: #b786df;
-  width: 10%; 
+  /* background-color: #b786df; */
+  width: 20%; 
   height: 2rem;
   padding: 0 1rem;
   border: 1px solid #bbb; 
-  border-radius: 6px;
+  /* border-radius: 6px; */
   cursor: pointer;
   display: inline-block;
-  /* display: none; */
+  border: none;
+  font-size: 1.2rem; 
+
+  /* margin-right: .1rem;  */
+}
+.yelp-page-search-btn {
+  margin: 0vmin;
 }
 
 .saved-events-page{
@@ -253,9 +268,29 @@ button[type="submit"] {
   max-width: 50%;
 
 }
-
+.search-btn-form-container{
+width:100%;
+background-color: #b786df;
+}
 /* .update-form-btns {
   background-color: #b786df;
   font-size: 10rem;
 
 } */
+
+.favorite-icon:hover {
+  color: red; /* Changes the icon color to red on hover */
+}
+
+.menu-icon {
+  color: grey; /* Changes the icon color to red on hover */
+}
+.menu-icon:hover {
+  color: blue; /* Changes the icon color to red on hover */
+}
+
+.custom-link {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Inherits color from parent, removing the default blue */
+}
+
