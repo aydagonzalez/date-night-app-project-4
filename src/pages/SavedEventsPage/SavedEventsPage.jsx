@@ -9,14 +9,12 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
     // const [edit, setEdit] = useState(false);
 
 
-    const savedEventCount = events.length + savedYelpData.length
+    // const savedEventCount = events.length + savedYelpData.length
     return (
         <>
-            {/* <Badge badgeContent={4} color="primary">
-  <MailIcon color="action" />
-</Badge> */}
+ \
             <h1>Saved Page</h1>
-            {savedEventCount}
+\
 
             <div key={100} className="saved-events-page">
                 <div className="saved-page-cards">

@@ -1,104 +1,29 @@
 import { Link } from "react-router-dom"
 import * as userService from "../../utilities/users-service"
 import { useState } from "react";
-import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
-
-
-
-// export default function NavBar({ user, setUser }) {
-//   function handleLogOut() {
-//     // Delegate to the users-service
-//     userService.logOut();
-//     // Update state will also cause a re-render
-//     setUser(null);
-//   }
-
-//   return (
-//     <nav>
-//       <p>Welcome, {user.name}</p>
-//       <Link to="/">Home</Link>
-//       &nbsp; | &nbsp;
-//       <Link to="/events/saved">Saved</Link>
-//       &nbsp; | &nbsp;
-//       <Link to="/yelp">Yelp</Link>
-//       &nbsp; | &nbsp;
-//       <Link to="/events/concerts">Concerts</Link>
-//       &nbsp; | &nbsp;
-
-//       <Link to="" onClick={handleLogOut} >Log Out</Link>
-//     </nav>
-//   )
-// }
-
-
+import { Favorite as FavoriteIcon, Home as HomeIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
-    },
-  },
-}));
+// import logo from '../../../public/logo.png'
 
 export default function NavBar({ user, setUser, events, savedYelpData }) {
   const savedEventCount = events.length + savedYelpData.length
+  const userName = user.name.charAt(0).toUpperCase() + user.name.slice(1)
   function handleLogOut() {
-    // Delegate to the users-service
     userService.logOut();
-    // Update state will also cause a re-render
     setUser(null);
   }
 
-// function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
@@ -142,8 +67,8 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
       <MenuItem onClick={handleMenuClose}></MenuItem>
       {/* <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
       <MenuItem onClick={handleMenuClose}>
-      
-    <Link to="" onClick={handleLogOut} >Log Out</Link></MenuItem>
+
+        <Link to="" onClick={handleLogOut} >Log Out</Link></MenuItem>
     </Menu>
   );
 
@@ -165,25 +90,47 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
+        <IconButton size="medium" color="inherit">
+          <Badge badgeContent={savedEventCount} color="error" sx={{
+            '& .MuiBadge-badge': {
+              fontSize: '0.6rem',
+              padding: '0 3px'
+            }
+          }} >
+            <Link to="/events/saved" className="custom-link" >  <FavoriteIcon /> </Link>
+
           </Badge>
         </IconButton>
-        <p>Messages</p>
       </MenuItem>
       <MenuItem>
         <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
+          size="small"
+          aria-label="Home"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
+          <Link to="/" className="custom-link"><HomeIcon /> Home</Link>
         </IconButton>
-        <p>Notifications</p>
       </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="small"
+          aria-label="Home"
+          color="inherit"
+        >
+          <Link to="/yelp" className="custom-link">Yelp</Link >
+        </IconButton>
+      </MenuItem>
+
+      <MenuItem>
+        <IconButton
+          size="small"
+          aria-label="Home"
+          color="inherit"
+        >
+          <Link to="/events/concerts" className="custom-link" >Concerts</Link>
+        </IconButton>
+      </MenuItem>
+
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -198,12 +145,15 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
       </MenuItem>
     </Menu>
   );
-  
+
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1 }} className="NavBar" >
+      <AppBar position="fixed" style={{ height: '75px', width: '100%', 
+      // backgroundColor: "red"
+      }} >
         <Toolbar>
+
           <IconButton
             size="large"
             edge="start"
@@ -211,7 +161,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
+            <img src="/logo.png" alt="App logo"  className="navbar-logo" />
+
           </IconButton>
           <Typography
             variant="h6"
@@ -219,34 +171,57 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            Date Night
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent= {savedEventCount} color="error" >
-              <Link to="/events/saved" className="custom-link" >  <FavoriteIcon /> </Link>
-               
+              <Badge badgeContent={savedEventCount} color="error" sx={{
+                '& .MuiBadge-badge': {
+                  fontSize: '0.6rem',
+                  padding: '0 3px'
+                }
+              }} >
+                <Link to="/events/saved" className="custom-link" >  <FavoriteIcon /> </Link>
+
               </Badge>
             </IconButton>
-            {/* <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
+            <IconButton
+              size="small"
+              aria-label="Home"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton> */}
+
+              <Link to="/" className="custom-link">Home</Link>
+
+            </IconButton>
+
+            <IconButton
+              size="small"
+              aria-label="Home"
+              color="inherit"
+            >
+              <Link to="/yelp" className="custom-link">Yelp</Link >
+            </IconButton>
+
+            <IconButton
+              size="small"
+              aria-label="Home"
+              color="inherit"
+            >
+
+              <Link to="/events/concerts" className="custom-link" >Concerts</Link>
+
+            </IconButton>
+
+
+
+
+
+
+
+            <p style={{ padding: "10px" }}>Welcome {userName}! </p>
             <IconButton
               size="large"
               edge="end"

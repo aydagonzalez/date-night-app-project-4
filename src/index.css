@@ -205,6 +205,7 @@ button[type="submit"] {
   /* border-radius: 6px; */
   font-size: 1.2rem; 
   margin-right: .1rem; 
+  padding-left: 0vmin;
 }
 
 .stateDropdown {
@@ -224,12 +225,15 @@ button[type="submit"] {
   color: white; 
   border: none;
   /* border-radius: 6px; */
-  height: 2rem;
+  height: 2em;
   text-align: center;
   font-size: 1rem;
   border-radius: 0;
   padding: 0 1rem; 
   padding-top: 1px;
+  /* border-radius-right: 8px;  */
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   cursor: pointer; 
 }
 
@@ -294,3 +298,18 @@ background-color: #b786df;
   color: inherit; /* Inherits color from parent, removing the default blue */
 }
 
+.NavBar {
+  background-color: #968c84;
+  /* margin-left: 5rem; */
+  /* margin-left: 5rem; */
+  /* margin-right: 5rem; */
+
+
+}
+
+
+.navbar-logo {
+  height: 70px; 
+  margin-right: -20px;
+  width: auto;
+}

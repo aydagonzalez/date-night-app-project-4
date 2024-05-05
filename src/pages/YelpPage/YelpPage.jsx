@@ -50,6 +50,7 @@ export default function YelpPage({ getEvents }) {
 
             <form className="search-forms" onSubmit={handleSubmit}>
                 {/* <label > Search: </label> */}
+                <SearchIcon />
                 <input name='search' placeholder="Search a place or type of food" className="search-input-form"  value={yelpDataValue.search} type="text" onChange={handleChange} />
                 <input name='location' placeholder="City"  className=" city-input-yelp"  value={yelpDataValue.location} type="text" onChange={handleChange} />
                 <button className="search-form-btn yelp-page-search-btn">Search</button>

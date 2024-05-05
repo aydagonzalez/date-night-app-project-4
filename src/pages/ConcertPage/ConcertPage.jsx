@@ -9,7 +9,7 @@ import { states } from '../../data.js'
 // import Option from '@mui/joy/Option';
 // import MenuItem from '@mui/material/MenuItem';
 // import InputLabel from '@mui/material/InputLabel'
-// import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from '@mui/icons-material/Search';
 import './ConcertPage.css'
 
 
@@ -64,6 +64,7 @@ export default function ConcertPage({ getEvents }) {
                 <div className="search-btn-form-container">
 
                     <form className="search-forms" onSubmit={handleSubmit}  >
+                    <SearchIcon />
                         <input require className="search-input-form" name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..." />
                         <select name="state" className="stateDropdown" onChange={handleChange} >
                             <option key="none" value="" >State</option>
