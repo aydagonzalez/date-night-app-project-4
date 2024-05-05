@@ -11,7 +11,6 @@ import Typography from '@mui/material/Typography';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
 // import logo from '../../../public/logo.png'
@@ -149,9 +148,14 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
 
   return (
     <Box sx={{ flexGrow: 1 }} className="NavBar" >
-      <AppBar position="fixed" style={{ height: '75px', width: '100%', 
+      <AppBar 
+      position="fixed" 
+      style={{ height: '75px', width: '100%', 
+      top: "-1rem",
       // backgroundColor: "red"
-      }} >
+      }} 
+      className="NavBar"
+      >
         <Toolbar>
 
           <IconButton

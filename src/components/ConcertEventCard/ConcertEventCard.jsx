@@ -73,7 +73,6 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                     />
                     <CardContent>
                         <Typography variant="body2" color="text.secondary">
-                            {/* {event.name} */}
                             {(event._embedded.venues) ? `${(event._embedded.venues[0].city.name)}, ${(event._embedded.venues[0].state.name)}` : " N/A"}
 
                         </Typography>

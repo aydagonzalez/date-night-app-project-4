@@ -161,7 +161,8 @@ button[type="submit"] {
 
 
 .EventCardContainer {
-  background-color: #b786df;
+  /* background-color: #b786df; */
+  /* background-color: white; */
   width: 90%;
   display: flex;
   /* flex-direction: row; */
@@ -257,8 +258,17 @@ button[type="submit"] {
 
 .saved-events-page{
   background-color: #b786df;
-  display: flex;
+  background-color: white;
+  /* display: flex; */
+  /* flex-wrap: wrap; */
   justify-content: center;
+  justify-items: center;
+  justify-self: center;
+
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
   gap: 2rem;
 }
 
@@ -269,7 +279,7 @@ button[type="submit"] {
 .saved-page-cards{
   display: flex;
   flex-wrap: wrap;
-  max-width: 50%;
+  max-width: 99%;
 
 }
 .search-btn-form-container{
@@ -303,8 +313,6 @@ background-color: #b786df;
   /* margin-left: 5rem; */
   /* margin-left: 5rem; */
   /* margin-right: 5rem; */
-
-
 }
 
 
@@ -312,4 +320,11 @@ background-color: #b786df;
   height: 70px; 
   margin-right: -20px;
   width: auto;
+  
 }
+
+
+.ToggleButtonGroup {
+  position: fixed;
+}
+

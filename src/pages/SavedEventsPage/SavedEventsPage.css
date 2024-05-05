@@ -1,8 +1,4 @@
 .MuiPaper-root {
-    background-color: red;
+    /* background-color: red; */
     margin: 1rem;
 }
-main > img {
-     height: 230px;
-}
-

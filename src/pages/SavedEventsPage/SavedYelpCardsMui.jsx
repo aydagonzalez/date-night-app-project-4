@@ -109,8 +109,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                             <h3>
                                 {/* {y.isClosed} <br />
                                 {y.openHours} <br /> */}
-                                {y.displayAddress} <br />
-                                {y.displayCity}, {y.displayCountry} <br />
+                                {y.displayAddress}, {y.displayCity}, {y.displayCountry} <br />
                                 Phone: {y.displayPhone} <br />
                                 <div style={{ textAlign: 'center' }}>
                                     <Stack spacing={1} style={{ display: 'inline-block' }}>
