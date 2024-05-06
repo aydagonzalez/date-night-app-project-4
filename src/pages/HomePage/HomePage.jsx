@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
-// import './HomePage.css'
-
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MobileStepper from '@mui/material/MobileStepper';
