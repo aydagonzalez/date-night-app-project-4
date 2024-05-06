@@ -97,12 +97,12 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                     </Box>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            <div className="concert-Event-item" key={idx * 5} >
+                            {/* <div className="concert-Event-item" key={idx * 5} > */}
                                 {e.name}
-                            </div>
+                            {/* </div> */}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <h3>
+                            <span>
                                 {e.venue} <br />
                                 {e.venueLocation} <br />
                                 {new Date(e.eventDate).toLocaleDateString()}&nbsp;
@@ -116,18 +116,18 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                                                 <option value="Visited- Loved It">Visited- Loved It</option>
                                                 <option value="Visited- Never want to go again">Visited- Never want to go again</option>
                                             </select>
-                                            <button className="xs-btn" type="submit-btn" onClick={a => {
+                                            <button className="xs-btn update-form-btns" type="submit-btn" onClick={a => {
                                                 a.preventDefault();
                                                 handleEventStatusUpdateSubmit(e._id);
                                             }} >Update</button>
                                         </form>
-                                        <button className="xs-btn"
+                                        <button className="xs-btn update-form-btns"
                                             style={{ visibility: edit ? 'visible' : 'hidden' }}
                                             onClick={handleCancelEdit} > Cancel</button>
                                     </div>
                                 }
 
-                            </h3>
+                            </span>
                         </Typography>
                     </CardContent>
                 </CardActionArea>

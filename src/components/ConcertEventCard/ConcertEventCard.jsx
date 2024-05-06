@@ -78,8 +78,8 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                         </Typography>
                     </CardContent>
                     <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon onClick={handleEventSave} />
+                        <IconButton onClick={handleEventSave} aria-label="add to favorites">
+                            <FavoriteIcon   className="favorite-icon" />
                         </IconButton>
                         <IconButton aria-label="share">
                             <a href={event.url} >< LinkIcon /></a>
@@ -96,13 +96,15 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
                             <Typography paragraph>
-                               
+                               <span>
+
                                     {(event._embedded.venues) ? event._embedded.venues[0].name : "N/A"}
                                     <div>Date: {new Date(event.dates.start.localDate).toLocaleDateString()}</div>
                                     <div>Time: {event.dates.start.localTime}</div>
                                     <div>Sale Starts: {new Date(event.sales.public.startDateTime).toLocaleDateString()}</div>
                                     <div>{new Date(event.sales.public.startDateTime).toLocaleTimeString()}</div>
                                     <div> <AccessibleIcon /> Accesibility: {(event.accessibility) ? event.accessibility.ticketLimit : "N/A"}</div>
+                               </span>
 
                             </Typography>
                         </CardContent>

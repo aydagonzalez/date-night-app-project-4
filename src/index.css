@@ -144,7 +144,7 @@ button.btn-sm {
 
 button.btn-xs {
   font-size: 1vmin;
-  padding: .4vmin .5vmin;
+  padding: 0vmin 0vmin;
 }
 
 button:disabled,
@@ -175,89 +175,96 @@ button[type="submit"] {
 .event-page-main {
   display: flex;
   flex-direction: column;
-  background-color: #F67F00;
+  /* background-color: #F67F00; */
   justify-content: center;
   justify-items: center;
   align-items: center;
 }
 
 
-/* This is for search bar ourline */
+
 .search-forms {
-  background-color: #ccc; 
+  background-color: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 80%;
-  margin: auto; 
-  padding: 0.5vmin 0vmin ;
-  border-radius: 8px; 
+  margin: auto;
+  padding: 0.5vmin 0vmin;
+  border-radius: 8px;
   padding-left: .5vmin;
   padding-right: .05vmin;
 }
 
 
 .search-input-form {
-  flex-grow: 2; 
+  flex-grow: 2;
   height: 2rem;
   padding: 0 1rem;
-  /* border: 1px solid #bbb; */
   border: none;
-  /* border-radius: 6px; */
-  font-size: 1.2rem; 
-  margin-right: .1rem; 
-  padding-left: 0vmin;
+  font-size: 1.2rem;
+  margin-right: .1rem;
+}
+
+.search-input-form:hover {
+  background-color: #e0e0e0;
+  border-color: #a0a0a0;
 }
 
 .stateDropdown {
-  width: 20%; 
+  width: 20%;
   height: 2rem;
   padding: 0 1rem;
   /* border: 1px solid #bbb;  */
-  border: none; 
+  border: none;
   /* border-radius: 6px; */
   cursor: pointer;
   display: inline-block;
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
 }
 
 .search-form-btn {
   background-color: #999;
-  color: white; 
+  color: white;
   border: none;
   /* border-radius: 6px; */
   height: 2em;
   text-align: center;
   font-size: 1rem;
   border-radius: 0;
-  padding: 0 1rem; 
+  padding: 0 1rem;
   padding-top: 1px;
   /* border-radius-right: 8px;  */
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
-.city-input-yelp{
+.city-input-yelp {
   /* background-color: #b786df; */
-  width: 20%; 
+  width: 20%;
   height: 2rem;
   padding: 0 1rem;
-  border: 1px solid #bbb; 
+  border: 1px solid #bbb;
   /* border-radius: 6px; */
   cursor: pointer;
   display: inline-block;
   border: none;
-  font-size: 1.2rem; 
-
-  /* margin-right: .1rem;  */
+  font-size: 1.2rem;
 }
+
+.city-input-yelp:hover {
+  background-color: #e0e0e0;
+  border-color: #a0a0a0;
+}
+
+
 .yelp-page-search-btn {
   margin: 0vmin;
 }
 
-.saved-events-page{
-  background-color: #b786df;
+.saved-events-page {
+  /* background-color: #b786df; */
   background-color: white;
   /* display: flex; */
   /* flex-wrap: wrap; */
@@ -276,16 +283,18 @@ button[type="submit"] {
   border: dashed black 1px;
 } */
 
-.saved-page-cards{
+.saved-page-cards {
   display: flex;
   flex-wrap: wrap;
   max-width: 99%;
 
 }
-.search-btn-form-container{
-width:100%;
-background-color: #b786df;
+
+.search-btn-form-container {
+  width: 100%;
+  background-color: #b786df;
 }
+
 /* .update-form-btns {
   background-color: #b786df;
   font-size: 10rem;
@@ -293,19 +302,25 @@ background-color: #b786df;
 } */
 
 .favorite-icon:hover {
-  color: red; /* Changes the icon color to red on hover */
+  color: red;
+  /* Changes the icon color to red on hover */
 }
 
 .menu-icon {
-  color: grey; /* Changes the icon color to red on hover */
+  color: grey;
+  /* Changes the icon color to red on hover */
 }
+
 .menu-icon:hover {
-  color: blue; /* Changes the icon color to red on hover */
+  color: blue;
+  /* Changes the icon color to red on hover */
 }
 
 .custom-link {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Inherits color from parent, removing the default blue */
+  text-decoration: none;
+  /* Removes underline */
+  color: inherit;
+  /* Inherits color from parent, removing the default blue */
 }
 
 .NavBar {
@@ -317,14 +332,55 @@ background-color: #b786df;
 
 
 .navbar-logo {
-  height: 70px; 
+  height: 70px;
   margin-right: -20px;
   width: auto;
-  
+
 }
 
 
 .ToggleButtonGroup {
   position: fixed;
+  /* margin: 3rem; */
 }
 
+/* Styles for the search button hover effect */
+.search-form-btn:hover {
+  background-color: #888;
+  color: #fff;
+}
+
+
+
+main .update-form-btns {
+  background-color: #b786df;
+  /* padding: -1vmin; */
+  /* margin: -1vmin; */
+  font-size: x-small;
+  /* width: 2rem; */
+}
+
+.yelp-search-options {
+  width: 95%;
+  background-color: #b786df;
+  display: flex;
+  justify-content: space-between;
+  gap: 2vmin;
+}
+
+.yelp-search-options > p {
+background-color: yellow;
+border: solid grey 1px;
+border-radius: 10px;
+padding: 1vmin;
+}
+
+.carousel-box{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;  
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+}

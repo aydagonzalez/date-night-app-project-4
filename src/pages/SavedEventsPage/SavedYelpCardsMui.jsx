@@ -106,24 +106,24 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                             {y.name}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            <h3>
+                            <span>
                                 {/* {y.isClosed} <br />
-                                {y.openHours} <br /> */}
+                                {y.ospanenHours} <br /> */}
                                 {y.displayAddress}, {y.displayCity}, {y.displayCountry} <br />
                                 Phone: {y.displayPhone} <br />
-                                <div style={{ textAlign: 'center' }}>
+                                {/* <div style={{ textAlign: 'center' }}> */}
                                     <Stack spacing={1} style={{ display: 'inline-block' }}>
 
                                         <Rating name="half-rating-read" defaultValue={y.rating} precision={0.5} readOnly />
                                     </Stack>
-                                </div>
-                                Reviews: {y.reviewCount} <br />
+                                    <br />
+                                    ({y.reviewCount} reviews) <br />
                                 Price: {y.price} <br />
                                 {y.transaction}
                                 {y.transactions2} <br />
 
                                 {!edit ? y.status :
-                                    <div>
+                                    <span>
                                         <form  >
                                             <select name="status" value={statusFormValues.status} onChange={handleChange}>
                                                 <option value="Not Yet Visited">Not Yet Visited</option>
@@ -138,9 +138,9 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                                         <button className="btn update-form-btns"
                                             style={{ visibility: edit ? 'visible' : 'hidden' }}
                                             onClick={handleCancelEdit} > Cancel</button>
-                                    </div>
+                                    </span>
                                 }
-                            </h3>
+                            </span>
                         </Typography>
                     </CardContent>
                 </CardActionArea>
