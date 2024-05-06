@@ -2,19 +2,12 @@ import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
 import SearchIcon from '@mui/icons-material/Search';
+import React from "react";
 
-
-
-export default function YelpPage({ getEvents }) {
+export default function SearchOptions() {
     const [yelpData, setYelpData] = useState('');
     const [error, setError] = useState('');
     const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' });
-
-    function handleChange(evt) {
-        const { name, value } = evt.target;
-        setYelpDataValue({ ...yelpDataValue, [name]: value });
-        setError('');
-    }
 
     function handleOptionalYelpSearch(cat) {
         setYelpDataValue({ search: cat, location: "New york city"});
@@ -22,12 +15,7 @@ export default function YelpPage({ getEvents }) {
         setError('');
      }
 
-    function handleSubmit(evt) {
-        evt.preventDefault()
-        fetchAPIYelpData()
-    }
-
-    async function fetchAPIYelpData() {
+     async function fetchAPIYelpData() {
         const yelpDataNewValue = {
             location: yelpDataValue.location.replace(/\s/g, "%20"),
             search: yelpDataValue.search.replace(/\s/g, "%20")
@@ -47,26 +35,13 @@ export default function YelpPage({ getEvents }) {
             console.log(err)
         }
     }
-    // console.log("yelpData:", yelpData)
-    return (
+
+
+    return(
         <>
-
-
-
-            <main className="event-page-main">
-                <h1>Yelp PAGE</h1>
-                <div className="search-btn-form-container">
-
-                    <form className="search-forms" onSubmit={handleSubmit}>
-                        {/* <label > Search: </label> */}
-                        <SearchIcon />
-                        <input name='search' placeholder="Search a place or type of food" className="search-input-form" value={yelpDataValue.search} type="text" onChange={handleChange} />
-                        <input name='location' placeholder="City" className=" city-input-yelp" value={yelpDataValue.location} type="text" onChange={handleChange} />
-                        <button className="search-form-btn yelp-page-search-btn">Search</button>
-                    </form>
-                </div>
-                <div className="yelp-search-options">
-                    {/* <form className="search-forms" onSubmit={handleSubmit}> */}
+        {/* <h1>SearchOptions Component</h1> */}
+        <div className="yelp-search-options">
+  
                         <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p>
                         <p onClick={() => handleOptionalYelpSearch('Social Activies')} class="whitespace-pre ">Social Activities</p>
                         <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} class="whitespace-pre ">Hobbies and Passions</p>
@@ -74,20 +49,10 @@ export default function YelpPage({ getEvents }) {
                         <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} class="whitespace-pre ">Health and Wellbeing</p>
                         <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p>
                         <p onClick={() => handleOptionalYelpSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p>
-                    {/* </form> */}
+                        <p onClick={() => handleOptionalYelpSearch('Concerts')} class="whitespace-pre ">Concerts</p>
+
                 </div>
          
-
-                <div className="EventCardContainer">
-                    {(yelpData) ? (yelpData.businesses.map((b, idx) =>
-                        <YelpEventCard business={b} idx={idx} key={idx + 6} getEvents={getEvents} />
-                    ))
-                        : "Search anything in a city near you!"}
-
-                </div>
-                <p className="error-message">&nbsp;{error}</p>
-            </main>
         </>
-
     )
 }

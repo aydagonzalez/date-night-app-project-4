@@ -13,7 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MoreIcon from '@mui/icons-material/MoreVert';
-// import logo from '../../../public/logo.png'
+
 
 export default function NavBar({ user, setUser, events, savedYelpData }) {
   const savedEventCount = events.length + savedYelpData.length
@@ -166,8 +166,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             sx={{ mr: 2 }}
           >
             {/* <MenuIcon /> */}
+            <Link to="/" className="custom-link">
             <img src="/logo.png" alt="App logo"  className="navbar-logo" />
-
+            </Link>
           </IconButton>
           <Typography
             variant="h6"
@@ -175,7 +176,10 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
+                        <Link to="/" className="custom-link">
+
             Date Night
+                        </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />

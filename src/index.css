@@ -292,7 +292,7 @@ button[type="submit"] {
 
 .search-btn-form-container {
   width: 100%;
-  background-color: #b786df;
+  /* background-color: #b786df; */
 }
 
 /* .update-form-btns {
@@ -353,7 +353,7 @@ button[type="submit"] {
 
 
 main .update-form-btns {
-  background-color: #b786df;
+  /* background-color: #b786df; */
   /* padding: -1vmin; */
   /* margin: -1vmin; */
   font-size: x-small;
@@ -362,17 +362,21 @@ main .update-form-btns {
 
 .yelp-search-options {
   width: 95%;
-  background-color: #b786df;
+  /* background-color: #b786df; */
   display: flex;
   justify-content: space-between;
   gap: 2vmin;
 }
 
 .yelp-search-options > p {
-background-color: yellow;
+/* background-color: yellow; */
+background-color: #f0e68c; 
 border: solid grey 1px;
 border-radius: 10px;
 padding: 1vmin;
+}
+.yelp-search-options > p:hover {
+  background-color: #c0c0c0;
 }
 
 .carousel-box{
@@ -384,3 +388,9 @@ padding: 1vmin;
   justify-content: center;
   text-align: center; 
 }
+
+.carousel-labels {
+  width: max-content;
+  padding: 1rem;
+}
+

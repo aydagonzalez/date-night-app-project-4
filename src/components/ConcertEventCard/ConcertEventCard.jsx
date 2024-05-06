@@ -50,7 +50,7 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
             getEvents()
         } catch (error) {
             console.log("error:", error)
-            setError('Save Concert Failed - Try Again Ayda');
+            setError('Save Concert Failed - Try Again');
         }
     }
     return (
@@ -60,7 +60,8 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                     <CardHeader
                         action={
                             <IconButton aria-label="settings">
-                                <MoreVertIcon />
+                                {/* <MoreVertIcon /> */}
+                                <div> <AccessibleIcon /> {(event.accessibility) ? (event.accessibility.ticketLimit) : "N/A"}</div>
                             </IconButton>}
                             
                         title={event.name}
@@ -82,7 +83,7 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                             <FavoriteIcon   className="favorite-icon" />
                         </IconButton>
                         <IconButton aria-label="share">
-                            <a href={event.url} >< LinkIcon /></a>
+                            <a href={event.url} >< LinkIcon className="menu-icon"  /></a>
                         </IconButton>
                         <ExpandMore
                             expand={expanded}

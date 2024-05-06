@@ -2,13 +2,7 @@ import { useState, useEffect } from "react";
 import * as eventsService from '../../utilities/events-service';
 import ConcertEventCard from '../../components/ConcertEventCard/ConcertEventCard'
 import { states } from '../../data.js'
-// import Box from '@mui/joy/Box';
-// import FormControl from '@mui/material/FormControl';
-// import Input from '@mui/joy/Input';
-// import Select from '@mui/joy/Select';
-// import Option from '@mui/joy/Option';
-// import MenuItem from '@mui/material/MenuItem';
-// import InputLabel from '@mui/material/InputLabel'
+
 import SearchIcon from '@mui/icons-material/Search';
 import './ConcertPage.css'
 
@@ -24,7 +18,7 @@ export default function ConcertPage({ getEvents }) {
         const { name, value } = evt.target;
         console.log(name, value)
         setParameters({ ...parameters, [name]: value });
-        // console.log(name, value)
+        console.log(name, value)
         setError('');
     }
 
@@ -51,11 +45,43 @@ export default function ConcertPage({ getEvents }) {
             setConcertData(concertDataResponse)
             setParameters({ keyword: '', state: '' })
         } catch (error) {
-            console.error('the Request to Concert Data failed:', error);
+            console.error('the Request to Data failed:', error);
             throw error;
         }
     }
 
+    function handleOptionalConcertSearch(cat) {
+        // const newParams = { keyword: cat}
+        console.log(cat)
+        // console.log(parameters.keyword, parameters.state)
+        fetchOptionalConcertData(cat)
+        // setParameters({ keyword: '', state: ""})
+        setError('');
+    }
+
+
+    async function fetchOptionalConcertData(cat ) {
+        const token = eventsService.getConcertTokenCredentials();
+        const keywordAnd = cat ? "&keyword=" + cat : ''
+        const stateAnd = "&stateCode=ny"
+        const url = `https://app.ticketmaster.com/discovery/v2/events.json?${keywordAnd}${stateAnd}&apikey=`
+
+        console.log("url:", url);
+        try {
+            const concertDataRequest = await fetch(`${url}${token}`);
+            // console.log("fetch(url, token) in Concert Data Request:", url, token);
+            if (!concertDataRequest.ok) {
+                throw new Error('Bad request fetching concert data');
+            }
+            const concertDataResponse = await concertDataRequest.json();
+            // console.log("concertDataResponse", concertDataResponse);
+            setConcertData(concertDataResponse)
+            setParameters({ keyword: '', state: '' })
+        } catch (error) {
+            console.error('the Request to Data failed:', error);
+            throw error;
+        }
+    }
 
     return (
         <>
@@ -74,6 +100,18 @@ export default function ConcertPage({ getEvents }) {
                         </select>
                         <button className="search-form-btn" type="submit">Search</button>
                     </form>
+                </div>
+
+                <div className="yelp-search-options">
+                    {/* <form className="search-forms" onSubmit={handleSubmit}> */}
+                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
+                        <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
+                        <p onClick={() => handleOptionalConcertSearch('sports')} class="whitespace-pre ">Sports</p>
+                        <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} class="whitespace-pre ">Art and Theater</p>
+                        <p onClick={() => handleOptionalConcertSearch('family')} class="whitespace-pre ">Family</p>
+                        {/* <p onClick={() => handleOptionalConcertSear ch('Technology')} class="whitespace-pre ">Technology</p> */}
+                        {/* <p onClick={() => handleOptionalConcertSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p> */}
+                    {/* </form> */}
                 </div>
 
                 <div className="EventCardContainer">

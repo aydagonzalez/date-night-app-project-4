@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
 import './HomePage.css'
-import CarouselYelp from '../../components/CarouselYelp/CarouselYelp'
 
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -11,8 +10,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import SwipeableViews from 'react-swipeable-views';
-import { autoPlay } from 'react-swipeable-views-utils';
+import SearchOptions from "../../components/SearchOptions/SearchOptions";
+
+
 
 export default function HomePage({ getEvents }) {
     const [error, setError] = useState('');
@@ -72,20 +72,18 @@ export default function HomePage({ getEvents }) {
         <>
             <main className="MainHomePage" >
                 <div className="yelp-container-home-page">
-                    <Link to="/yelp"><h1>YELP</h1></Link>
-
-                    <div>
-                        Moving imgS?
-                    </div>
+                    <Link to="/yelp" ><h1>YELP</h1></Link>
                 </div>
-            
+
                 <div className="concert-container-home-page">
                     <Link to="/events/concerts"><h1>CON</h1></Link>
                 </div>
-
             </main>
 
-            <Box sx={{ maxWidth: 800, flexGrow: 1 }}  className= "carousel-box">
+            <div>
+                <SearchOptions />
+            </div>
+            <Box sx={{ maxWidth: 800, flexGrow: 1 }} className="carousel-box">
                 <Paper
                     square
                     elevation={0}
@@ -97,42 +95,42 @@ export default function HomePage({ getEvents }) {
                         bgcolor: 'background.default',
                     }}
                 >
-                    <Typography>{images[activeStep].label}</Typography>
+                    <Typography className="carousel-labels">{images[activeStep].label}</Typography>
                 </Paper>
 
                 {images.map((step, index) => (
                     <div key={step.label}>
                         {Math.abs(activeStep - index) <= 0 ? (
-                              <>
-                            <Box
-                                component="img"
-                                sx={{
-                                    height: 500,
-                                    display: 'block',
-                                    maxWidth: 700,
-                                    overflow: 'hidden',
-                                    width: '100%',
-                                }}
-                                src={step.imgPath}
-                                alt={step.label}
-                            />
-                             <Typography
-                                sx={{
-                                    // position: 'absolute',
-                                    // top: 230,
-                                    // bottom: 530,
-                                    // bottom: 10,,
-                                    // textAlign: "center",
-                                    // left: 20,
-                                    color: 'white',
-                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                    padding: '10px',
-                                    borderRadius: '4px',
-                                }}
-                            >
-                                {step.summary}
-                            </Typography>
-                        </>
+                            <>
+                                <Box
+                                    component="img"
+                                    sx={{
+                                        height: 500,
+                                        display: 'block',
+                                        maxWidth: 700,
+                                        overflow: 'hidden',
+                                        width: '100%',
+                                    }}
+                                    src={step.imgPath}
+                                    alt={step.label}
+                                />
+                                <Typography
+                                    sx={{
+                                        // position: 'absolute',
+                                        // top: 230,
+                                        // bottom: 530,
+                                        // bottom: 10,,
+                                        // textAlign: "center",
+                                        // left: 20,
+                                        color: 'white',
+                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                        padding: '10px',
+                                        borderRadius: '4px',
+                                    }}
+                                >
+                                    {step.summary}
+                                </Typography>
+                            </>
 
                         ) : null}
                     </div>
