@@ -76,6 +76,8 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                             style={{ height: "230px" }}
                         />
                         <SpeedDial
+                        className='mui-speedial-btn'
+                        // style={{ backgroundColor: "var(--cadet-grey)" }}
                             ariaLabel="SpeedDial tooltip example"
                             sx={{ position: 'absolute', bottom: 16, right: 16 }}
                             icon={<SpeedDialIcon openIcon={<EditIcon />} />}

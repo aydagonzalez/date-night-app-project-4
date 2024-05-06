@@ -148,13 +148,17 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
 
   return (
     <Box sx={{ flexGrow: 1 }} className="NavBar" >
-      <AppBar 
-      position="fixed" 
-      style={{ height: '75px', width: '100%', 
-      top: "-1rem",
-      backgroundColor: "#9AADBF"
-      }} 
-      className="NavBar"
+      <AppBar
+        position="fixed"
+        style={{
+          height: '75px', width: '100%',
+          top: "-1rem",
+          backgroundColor: "#6d98ba",
+          // borderRadius: "10px"
+
+        }}
+
+        className="NavBar"
       >
         <Toolbar>
 
@@ -164,10 +168,13 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            style={{
+              borderRadius: "1px"
+            }}
           >
             {/* <MenuIcon /> */}
             <Link to="/" className="custom-link">
-            <img src="/logo.png" alt="App logo"  className="navbar-logo" />
+              <img src="/logo.png" alt="App logo" className="navbar-logo" />
             </Link>
           </IconButton>
           <Typography
@@ -176,21 +183,26 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-                        <Link to="/" className="custom-link">
+            <Link to="/" className="custom-link">
 
-            Date Night
-                        </Link>
+              Date Night
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show new notifications" color="inherit">
+            <IconButton size="large" aria-label="show new notifications" color="inherit"
+              style={{
+                borderRadius: "10px"
+              }} >
               <Badge badgeContent={savedEventCount} color="error" sx={{
                 '& .MuiBadge-badge': {
                   fontSize: '0.6rem',
                   padding: '0 3px'
                 }
-              }} >
+              }}
+
+              >
                 <Link to="/events/saved" className="custom-link" >  <FavoriteIcon /> </Link>
 
               </Badge>
@@ -199,6 +211,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               size="small"
               aria-label="Home"
               color="inherit"
+              style={{
+                borderRadius: "10px"
+              }}
             >
 
               <Link to="/" className="custom-link">Home</Link>
@@ -209,6 +224,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               size="small"
               aria-label="Home"
               color="inherit"
+              style={{
+                borderRadius: "10px"
+              }}
             >
               <Link to="/yelp" className="custom-link">Yelp</Link >
             </IconButton>
@@ -217,18 +235,14 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               size="small"
               aria-label="Home"
               color="inherit"
+              style={{
+                borderRadius: "10px"
+              }}
             >
 
               <Link to="/events/concerts" className="custom-link" >Concerts</Link>
 
             </IconButton>
-
-
-
-
-
-
-
             <p style={{ padding: "10px" }}>Welcome {userName}! </p>
             <IconButton
               size="large"
@@ -238,6 +252,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
+              style={{
+                borderRadius: "10px"
+              }}
             >
               <AccountCircle />
             </IconButton>

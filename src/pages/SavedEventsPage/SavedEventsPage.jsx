@@ -22,7 +22,7 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
 
     return (
         <>
-            {/* <h1>Saved Page</h1> */}
+
             <div className="toggle">
 
             <ToggleButtonGroup
@@ -32,11 +32,11 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
                     exclusive
                     onChange={handleChange}
                     aria-label="Platform">
-                    <ToggleButton value="yelp">Yelp Search</ToggleButton>
-                    <ToggleButton value="concert">Concerts</ToggleButton>
+                    <ToggleButton value="yelp">Yelp Collections</ToggleButton>
+                    <ToggleButton value="concert">Ticket Master Collections</ToggleButton>
                 </ToggleButtonGroup>
             </div>
-
+            <h1 className="saved-page-padding-top">Saved Collections</h1>
 
             {alignment === 'yelp' ?
                 (<div key="101" className="saved-events-page">

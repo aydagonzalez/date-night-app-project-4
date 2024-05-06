@@ -102,7 +102,7 @@ export default function ConcertPage({ getEvents }) {
                     </form>
                 </div>
 
-                <div className="yelp-search-options">
+                <div className="yelpPage-search-options">
                     {/* <form className="search-forms" onSubmit={handleSubmit}> */}
                         <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
                         <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>

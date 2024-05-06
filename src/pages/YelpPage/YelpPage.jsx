@@ -17,10 +17,10 @@ export default function YelpPage({ getEvents }) {
     }
 
     function handleOptionalYelpSearch(cat) {
-        setYelpDataValue({ search: cat, location: "New york city"});
+        setYelpDataValue({ search: cat, location: "New york city" });
         fetchAPIYelpData()
         setError('');
-     }
+    }
 
     function handleSubmit(evt) {
         evt.preventDefault()
@@ -32,7 +32,7 @@ export default function YelpPage({ getEvents }) {
             location: yelpDataValue.location.replace(/\s/g, "%20"),
             search: yelpDataValue.search.replace(/\s/g, "%20")
         }
-    
+
         console.log("yelpDataNewValue", yelpDataNewValue)
         try {
             const yelpDataReq = await eventsAPI.fetchYelpData(yelpDataNewValue)
@@ -50,11 +50,8 @@ export default function YelpPage({ getEvents }) {
     // console.log("yelpData:", yelpData)
     return (
         <>
-
-
-
             <main className="event-page-main">
-               <div></div>
+                <div></div>
                 <div className="search-btn-form-container">
 
                     <form className="search-forms" onSubmit={handleSubmit}>
@@ -65,18 +62,18 @@ export default function YelpPage({ getEvents }) {
                         <button className="search-form-btn yelp-page-search-btn">Search</button>
                     </form>
                 </div>
-                <div className="yelp-search-options">
+                <div className="yelpPage-search-options">
                     {/* <form className="search-forms" onSubmit={handleSubmit}> */}
-                        <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p>
-                        <p onClick={() => handleOptionalYelpSearch('Social Activies')} class="whitespace-pre ">Social Activities</p>
-                        <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} class="whitespace-pre ">Hobbies and Passions</p>
-                        <p onClick={() => handleOptionalYelpSearch('Sports and Fitness')} class="whitespace-pre ">Sports and Fitness</p>
-                        <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} class="whitespace-pre ">Health and Wellbeing</p>
-                        <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p>
-                        <p onClick={() => handleOptionalYelpSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p>
+                    <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p>
+                    <p onClick={() => handleOptionalYelpSearch('Social Activies')} class="whitespace-pre ">Social Activities</p>
+                    <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} class="whitespace-pre ">Hobbies and Passions</p>
+                    <p onClick={() => handleOptionalYelpSearch('Sports and Fitness')} class="whitespace-pre ">Sports and Fitness</p>
+                    <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} class="whitespace-pre ">Health and Wellbeing</p>
+                    {/* <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p> */}
+                    <p onClick={() => handleOptionalYelpSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p>
                     {/* </form> */}
                 </div>
-         
+
 
                 <div className="EventCardContainer">
                     {(yelpData) ? (yelpData.businesses.map((b, idx) =>

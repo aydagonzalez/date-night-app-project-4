@@ -69,8 +69,10 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                             image={e.imageUrl}
                             alt={e.name}
                         />
-                        <SpeedDial
-                            ariaLabel="SpeedDial tooltip example"
+                        <SpeedDial 
+                        className='mui-speedial-btn'
+                            ariaLabel="SpeedDial tooltip"
+                
                             sx={{ position: 'absolute', bottom: 16, right: 16 }}
                             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
                             onClose={() => setOpen(false)}

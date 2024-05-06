@@ -4,11 +4,13 @@
   --tan-1: #FBF9F6;
   --tan-2: #E7E2DD;
   --tan-3: #E2D9D1;
-  --tan-4: #b786df;
+  --tan-4: #9aadbf88;
   --orange: #f63500;
   --text-light: #968c84;
   --text-dark: #615954;
   --purple-tint: #ccc1ce;
+  --cadet-grey :#9aadbf;
+  --cadet-grey-rgba: #97CAD114; 
 
 }
 
@@ -217,9 +219,7 @@ button[type="submit"] {
   width: 20%;
   height: 2rem;
   padding: 0 1rem;
-  /* border: 1px solid #bbb;  */
   border: none;
-  /* border-radius: 6px; */
   cursor: pointer;
   display: inline-block;
   font-size: 1.2rem;
@@ -229,7 +229,6 @@ button[type="submit"] {
   background-color: #999;
   color: white;
   border: none;
-  /* border-radius: 6px; */
   height: 2em;
   text-align: center;
   font-size: 1rem;
@@ -266,43 +265,29 @@ button[type="submit"] {
 }
 
 .saved-events-page {
-  /* background-color: #b786df; */
   background-color: white;
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   justify-content: center;
   justify-items: center;
   justify-self: center;
-
   align-items: center;
   align-content: center;
   align-self: center;
   text-align: center;
   gap: 2rem;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
-/* * {
-  border: dashed black 1px;
-} */
 
 .saved-page-cards {
   display: flex;
   flex-wrap: wrap;
   max-width: 99%;
-
 }
 
 .search-btn-form-container {
   width: 100%;
-  /* background-color: #b786df; */
 }
 
-/* .update-form-btns {
-  background-color: #b786df;
-  font-size: 10rem;
-
-} */
 
 .favorite-icon:hover {
   color: red;
@@ -327,15 +312,13 @@ button[type="submit"] {
 }
 
 .NavBar {
-  background-color: #968c84;
-  /* margin-left: 5rem; */
-  /* margin-left: 5rem; */
-  /* margin-right: 5rem; */
+  /* background-color: #968c84; */
+  z-index: 2;
 }
 
 
 .navbar-logo {
-  height: 70px;
+  height: 80px;
   margin-right: -20px;
   width: auto;
 
@@ -343,8 +326,9 @@ button[type="submit"] {
 
 
 .ToggleButtonGroup {
-  position: fixed;
-  /* margin: 3rem; */
+  /* position: fixed; */
+  display: flex;
+  flex-direction: row;
 }
 
 /* Styles for the search button hover effect */
@@ -356,16 +340,13 @@ button[type="submit"] {
 
 
 main .update-form-btns {
-  /* background-color: #b786df; */
-  /* padding: -1vmin; */
-  /* margin: -1vmin; */
   font-size: x-small;
-  /* width: 2rem; */
+  background-color: var(--cadet-grey);
 }
 
 .yelp-search-options {
   width: 95%;
-  /* background-color: #b786df; */
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -373,12 +354,20 @@ main .update-form-btns {
 }
 
 .yelp-search-options > p {
-/* background-color: yellow; */
-/* background-color: #f0e68c;  */
-border: solid grey 1px;
+display: flex;
+justify-content: center; 
+align-items: center;
+border: solid #6d98ba 1px;
 border-radius: 10px;
 padding: 1vmin;
+justify-content: center;
+justify-items: center;
+justify-self: center;
+align-items: center;
+align-content: center;
+text-align: center; 
 }
+
 .yelp-search-options > p:hover {
   background-color: #c0c0c0;
 }
@@ -396,15 +385,26 @@ padding: 1vmin;
 .carousel-labels {
   width: max-content;
   padding: 1rem;
+  font-size: 10rem;
+  color: #6d98ba;
+  font-weight: bold;
+}
+
+.saved-page-padding-top {
+  margin-top: 5rem;
 }
 
 .toggle {
-  /* position: relative; */
-  /* margin: auto;   */
-  align-items: center;
+  margin-top: 4rem;
+  position: absolute;
+  /* top: 4.5rem;  */
+  /* left: 85%; */
+  z-index: 1; 
+  align-items: center; 
   justify-content: center;
   text-align: center; 
-
+  padding: -10px;
+  margin: 1px;
 }
 
 .HomePage-section {
@@ -416,14 +416,41 @@ padding: 1vmin;
   gap: 1vmin;
 }
 .yelp-container-home-page, .concert-container-home-page {
-  background-color: azure;
+  background-color: var(--cadet-grey-rgba);
   width : 15rem;
-  /* justify-content: space-evenly; */
   justify-content: center;
   justify-items: center;
-  /* align-content: center; */
   padding: 1rem;
   align-content: space-between;
+  border-radius: 10px;
+}
+
+.yelpPage-search-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 1rem;
+  width: 95%;
+  gap: 2vmin;
+  margin-top: 10px;
 
 
+}
+
+.yelpPage-search-options > p {
+border-radius: 10px;
+padding: 3vmin;
+background-color: var(--cadet-grey-rgba);
+}
+.yelpPage-search-options > p:hover {
+  background-color: #c0c0c0;
+}
+
+
+.mui-speedial-btn > button {
+  background-color: var(--cadet-grey);
+}
+.mui-speedial-btn > button:hover {
+  background-color: var(--cadet-grey);
 }

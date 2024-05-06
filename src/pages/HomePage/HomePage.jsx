@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
-import './HomePage.css'
+// import './HomePage.css'
 
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SearchOptions from "../../components/SearchOptions/SearchOptions";
+import ConcertPageOptions from "../../components/SearchOptions/ConcertPageOptions";
 
 
 
@@ -41,7 +42,6 @@ export default function HomePage({ getEvents }) {
             label: "Go to a Concert", summary: "Experience the thrill of live music at a concert, feel the beat and the energy of the crowd. ",
             imgPath: "../concert.png"
         },
-        // {label: "", summary: ""},
     ]
 
     useEffect(() => {
@@ -67,133 +67,115 @@ export default function HomePage({ getEvents }) {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    function handleOptionalConcertSearch(cat) {
-        // const newParams = { keyword: cat}
-        console.log(cat)
-        // fetchOptionalConcertData(cat)
-        // console.log(parameters.keyword, parameters.state)
-        // setParameters({ keyword: '', state: ""})
-        setError('');
-    }
-
-
 
     return (
         <>
-        <section className="HomePage-section">
+            <section className="HomePage-section">
 
 
-            <main className="MainHomePage" >
+                {/* <main className="MainHomePage" > */}
                 <div className="yelp-container-home-page">
-                    <Link to="/yelp" ><h1>Yelp Engine Search</h1></Link>
+                    <Link to="/yelp" ><h1>Yelp Search Engine</h1></Link>
                     <div>
-                <SearchOptions />
-            </div>
+                        <SearchOptions />
+                    </div>
                 </div>
 
-            </main>
+                {/* </main> */}
 
-        <div>
-
-    
-            <Box sx={{ maxWidth: 1000, flexGrow: 1 }} className="carousel-box">
-                <Paper
-                    square
-                    elevation={0}
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        height: 50,
-                        pl: 2,
-                        bgcolor: 'background.default',
-                    }}
-                >
-                    <Typography className="carousel-labels">{images[activeStep].label}</Typography>
-                </Paper>
-
-                {images.map((step, index) => (
-                    <div key={step.label}>
-                        {Math.abs(activeStep - index) <= 0 ? (
-                            <>
-                                <Box
-                                    component="img"
-                                    sx={{
-                                        height: 700,
-                                        display: 'block',
-                                        maxWidth: 1000,
-                                        overflow: 'hidden',
-                                        width: '100%',
-                                    }}
-                                    src={step.imgPath}
-                                    alt={step.label}
-                                />
-                                <Typography
-                                    sx={{
-                                        // position: 'absolute',
-                                        // top: 230,
-                                        // bottom: 530,
-                                        // bottom: 10,,
-                                        // textAlign: "center",
-                                        // left: 20,
-                                        color: 'white',
-                                        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-                                        padding: '10px',
-                                        borderRadius: '4px',
-                                    }}
-                                >
-                                    {step.summary}
-                                </Typography>
-                            </>
-
-                        ) : null}
-                    </div>
-                ))}
-
-                <MobileStepper
-                    steps={maxSteps}
-                    position="static"
-                    activeStep={activeStep}
-                    nextButton={
-                        <Button
-                            size="small"
-                            onClick={handleNext}
-                            disabled={activeStep === maxSteps - 1}
+                <div> 
+                    <Box sx={{ maxWidth: 1000, flexGrow: 1 }} className="carousel-box">
+                        <Paper
+                            square
+                            elevation={0}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                height: 50,
+                                pl: 2,
+                                bgcolor: 'background.default',
+                            }}
                         >
-                            Next
-                            {theme.direction === 'rtl' ? (
-                                <KeyboardArrowLeft />
-                            ) : (
-                                <KeyboardArrowRight />
-                            )}
-                        </Button>
-                    }
-                    backButton={
-                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                            {theme.direction === 'rtl' ? (
-                                <KeyboardArrowRight />
-                            ) : (
-                                <KeyboardArrowLeft />
-                            )}
-                            Back
-                        </Button>
-                    }
-                />
-            </Box>
+                            <Typography className="carousel-labels"
+                                style={{ fontSize: "2.5rem" }}
+                            >{images[activeStep].label}</Typography>
+                        </Paper>
 
-            </div>
-            <div className="concert-container-home-page">
+                        {images.map((step, index) => (
+                            <div key={step.label}>
+                                {Math.abs(activeStep - index) <= 0 ? (
+                                    <>
+                                        <Box
+                                            component="img"
+                                            sx={{
+                                                height: 700,
+                                                display: 'block',
+                                                maxWidth: 1000,
+                                                overflow: 'hidden',
+                                                width: '100%',
+                                            }}
+                                            src={step.imgPath}
+                                            alt={step.label}
+                                        />
+                                        <Typography
+                                            sx={{
+                                                // position: 'absolute',
+                                                // top: 230,
+                                                // bottom: 530,
+                                                // bottom: 10,,
+                                                // textAlign: "center",
+                                                // left: 20,
+                                                color: 'white',
+                                                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                                padding: '10px',
+                                                borderRadius: '4px',
+                                            }}
+                                        >
+                                            {step.summary}
+                                        </Typography>
+                                    </>
+
+                                ) : null}
+                            </div>
+                        ))}
+
+                        <MobileStepper
+                            steps={maxSteps}
+                            position="static"
+                            activeStep={activeStep}
+                            nextButton={
+                                <Button
+                                    size="small"
+                                    onClick={handleNext}
+                                    disabled={activeStep === maxSteps - 1}
+                                >
+                                    Next
+                                    {theme.direction === 'rtl' ? (
+                                        <KeyboardArrowLeft />
+                                    ) : (
+                                        <KeyboardArrowRight />
+                                    )}
+                                </Button>
+                            }
+                            backButton={
+                                <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                                    {theme.direction === 'rtl' ? (
+                                        <KeyboardArrowRight />
+                                    ) : (
+                                        <KeyboardArrowLeft />
+                                    )}
+                                    Back
+                                </Button>
+                            }
+                        />
+                    </Box>
+
+                </div>
+                <div className="concert-container-home-page">
                     <Link to="/events/concerts"><h1>Ticket Master Search</h1></Link>
                     <div className="yelp-search-options">
-                    {/* <form className="search-forms" onSubmit={handleSubmit}> */}
-                        <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
-                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
-                        <p onClick={() => handleOptionalConcertSearch('sports')} class="whitespace-pre ">Sports</p>
-                        <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} class="whitespace-pre ">Art and Theater</p>
-                        <p onClick={() => handleOptionalConcertSearch('family')} class="whitespace-pre ">Family</p>
-                        {/* <p onClick={() => handleOptionalConcertSear ch('Technology')} class="whitespace-pre ">Technology</p> */}
-                        {/* <p onClick={() => handleOptionalConcertSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p> */}
-                    {/* </form> */}
-                </div>
+                        <ConcertPageOptions />
+                    </div>
                 </div>
             </section>
         </>
