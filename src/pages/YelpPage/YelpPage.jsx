@@ -54,7 +54,7 @@ export default function YelpPage({ getEvents }) {
 
 
             <main className="event-page-main">
-                <h1>Yelp PAGE</h1>
+               <div></div>
                 <div className="search-btn-form-container">
 
                     <form className="search-forms" onSubmit={handleSubmit}>

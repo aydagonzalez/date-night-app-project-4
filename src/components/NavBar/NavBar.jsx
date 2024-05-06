@@ -152,7 +152,7 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
       position="fixed" 
       style={{ height: '75px', width: '100%', 
       top: "-1rem",
-      // backgroundColor: "red"
+      backgroundColor: "#9AADBF"
       }} 
       className="NavBar"
       >
@@ -184,7 +184,7 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+            <IconButton size="large" aria-label="show new notifications" color="inherit">
               <Badge badgeContent={savedEventCount} color="error" sx={{
                 '& .MuiBadge-badge': {
                   fontSize: '0.6rem',

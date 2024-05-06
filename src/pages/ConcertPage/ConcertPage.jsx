@@ -86,7 +86,7 @@ export default function ConcertPage({ getEvents }) {
     return (
         <>
             <main className="event-page-main">
-                <h1> Concert PAge</h1>
+     
                 <div className="search-btn-form-container">
 
                     <form className="search-forms" onSubmit={handleSubmit}  >
@@ -104,8 +104,8 @@ export default function ConcertPage({ getEvents }) {
 
                 <div className="yelp-search-options">
                     {/* <form className="search-forms" onSubmit={handleSubmit}> */}
-                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
                         <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
+                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
                         <p onClick={() => handleOptionalConcertSearch('sports')} class="whitespace-pre ">Sports</p>
                         <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} class="whitespace-pre ">Art and Theater</p>
                         <p onClick={() => handleOptionalConcertSearch('family')} class="whitespace-pre ">Family</p>

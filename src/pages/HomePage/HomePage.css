@@ -1,26 +1,18 @@
-.MainHomePage {
+/* .MainHomePage {
     background-color: aquamarine;
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
-    /* align-self: center; */
-    /* align-self: center; */
-    /* text-align: center; */
     margin-top: 2rem;
     border: dashed 1px black;
     gap:3%;
     justify-content: space-evenly;
-}
+} */
 
 .MainHomePage div {}
 
-.yelp-container-home-page, .concert-container-home-page {
-    background-color: azure;
-    width : 300rem;
-    justify-content: space-evenly;
 
-}
 
 section img {
     /* width:  500px */

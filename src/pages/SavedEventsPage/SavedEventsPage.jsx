@@ -22,8 +22,8 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
 
     return (
         <>
-            <h1>Saved Page</h1>
-            <div>
+            {/* <h1>Saved Page</h1> */}
+            <div className="toggle">
 
             <ToggleButtonGroup
                     className="ToggleButtonGroup"

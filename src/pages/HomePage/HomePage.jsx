@@ -67,23 +67,36 @@ export default function HomePage({ getEvents }) {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
+    function handleOptionalConcertSearch(cat) {
+        // const newParams = { keyword: cat}
+        console.log(cat)
+        // fetchOptionalConcertData(cat)
+        // console.log(parameters.keyword, parameters.state)
+        // setParameters({ keyword: '', state: ""})
+        setError('');
+    }
+
+
 
     return (
         <>
+        <section className="HomePage-section">
+
+
             <main className="MainHomePage" >
                 <div className="yelp-container-home-page">
-                    <Link to="/yelp" ><h1>YELP</h1></Link>
-                </div>
-
-                <div className="concert-container-home-page">
-                    <Link to="/events/concerts"><h1>CON</h1></Link>
-                </div>
-            </main>
-
-            <div>
+                    <Link to="/yelp" ><h1>Yelp Engine Search</h1></Link>
+                    <div>
                 <SearchOptions />
             </div>
-            <Box sx={{ maxWidth: 800, flexGrow: 1 }} className="carousel-box">
+                </div>
+
+            </main>
+
+        <div>
+
+    
+            <Box sx={{ maxWidth: 1000, flexGrow: 1 }} className="carousel-box">
                 <Paper
                     square
                     elevation={0}
@@ -105,9 +118,9 @@ export default function HomePage({ getEvents }) {
                                 <Box
                                     component="img"
                                     sx={{
-                                        height: 500,
+                                        height: 700,
                                         display: 'block',
-                                        maxWidth: 700,
+                                        maxWidth: 1000,
                                         overflow: 'hidden',
                                         width: '100%',
                                     }}
@@ -167,7 +180,22 @@ export default function HomePage({ getEvents }) {
                 />
             </Box>
 
-
+            </div>
+            <div className="concert-container-home-page">
+                    <Link to="/events/concerts"><h1>Ticket Master Search</h1></Link>
+                    <div className="yelp-search-options">
+                    {/* <form className="search-forms" onSubmit={handleSubmit}> */}
+                        <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
+                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
+                        <p onClick={() => handleOptionalConcertSearch('sports')} class="whitespace-pre ">Sports</p>
+                        <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} class="whitespace-pre ">Art and Theater</p>
+                        <p onClick={() => handleOptionalConcertSearch('family')} class="whitespace-pre ">Family</p>
+                        {/* <p onClick={() => handleOptionalConcertSear ch('Technology')} class="whitespace-pre ">Technology</p> */}
+                        {/* <p onClick={() => handleOptionalConcertSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p> */}
+                    {/* </form> */}
+                </div>
+                </div>
+            </section>
         </>
     )
 }

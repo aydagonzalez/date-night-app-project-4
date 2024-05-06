@@ -9,6 +9,7 @@
   --text-light: #968c84;
   --text-dark: #615954;
   --purple-tint: #ccc1ce;
+
 }
 
 *,
@@ -24,7 +25,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--purple-tint);
+  background-color: var(--white);
   padding: 2vmin;
   height: 100vh;
 }
@@ -179,6 +180,7 @@ button[type="submit"] {
   justify-content: center;
   justify-items: center;
   align-items: center;
+  margin-top: 5rem;
 }
 
 
@@ -277,6 +279,7 @@ button[type="submit"] {
   align-self: center;
   text-align: center;
   gap: 2rem;
+  margin-top: 5rem;
 }
 
 /* * {
@@ -303,24 +306,24 @@ button[type="submit"] {
 
 .favorite-icon:hover {
   color: red;
-  /* Changes the icon color to red on hover */
+
 }
 
 .menu-icon {
   color: grey;
-  /* Changes the icon color to red on hover */
+
 }
 
 .menu-icon:hover {
   color: blue;
-  /* Changes the icon color to red on hover */
+
 }
 
 .custom-link {
   text-decoration: none;
-  /* Removes underline */
+
   color: inherit;
-  /* Inherits color from parent, removing the default blue */
+  
 }
 
 .NavBar {
@@ -364,13 +367,14 @@ main .update-form-btns {
   width: 95%;
   /* background-color: #b786df; */
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   gap: 2vmin;
 }
 
 .yelp-search-options > p {
 /* background-color: yellow; */
-background-color: #f0e68c; 
+/* background-color: #f0e68c;  */
 border: solid grey 1px;
 border-radius: 10px;
 padding: 1vmin;
@@ -382,7 +386,7 @@ padding: 1vmin;
 .carousel-box{
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   margin: auto;  
   align-items: center;
   justify-content: center;
@@ -394,3 +398,32 @@ padding: 1vmin;
   padding: 1rem;
 }
 
+.toggle {
+  /* position: relative; */
+  /* margin: auto;   */
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+
+}
+
+.HomePage-section {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: row;
+  /* height: 100vh; */
+  justify-content: center;
+  gap: 1vmin;
+}
+.yelp-container-home-page, .concert-container-home-page {
+  background-color: azure;
+  width : 15rem;
+  /* justify-content: space-evenly; */
+  justify-content: center;
+  justify-items: center;
+  /* align-content: center; */
+  padding: 1rem;
+  align-content: space-between;
+
+
+}

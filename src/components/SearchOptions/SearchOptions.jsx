@@ -42,14 +42,14 @@ export default function SearchOptions() {
         {/* <h1>SearchOptions Component</h1> */}
         <div className="yelp-search-options">
   
-                        <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p>
                         <p onClick={() => handleOptionalYelpSearch('Social Activies')} class="whitespace-pre ">Social Activities</p>
                         <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} class="whitespace-pre ">Hobbies and Passions</p>
                         <p onClick={() => handleOptionalYelpSearch('Sports and Fitness')} class="whitespace-pre ">Sports and Fitness</p>
                         <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} class="whitespace-pre ">Health and Wellbeing</p>
-                        <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p>
+                        {/* <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p> */}
                         <p onClick={() => handleOptionalYelpSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p>
-                        <p onClick={() => handleOptionalYelpSearch('Concerts')} class="whitespace-pre ">Concerts</p>
+                        {/* <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p> */}
+                        {/* <p onClick={() => handleOptionalYelpSearch('Concerts')} class="whitespace-pre ">Concerts</p> */}
 
                 </div>
          
