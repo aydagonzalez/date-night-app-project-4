@@ -36,7 +36,7 @@ Date Night is a blend of convenience, personalization, and a wide array of optio
 
 # Getting Started
 
-<!-- [Click to visit the Date Night App!](https://date-night-app-57a5365aa17a.herokuapp.com/) -->
+[Click to visit the Date Night App!](https://date-night-app-57a5365aa17a.herokuapp.com/)
 
 # Next Steps
 

@@ -20,6 +20,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, }) {
         { icon: <UpdateIcon />, name: 'Update' },
         { icon: <DeleteIcon />, name: 'Delete' },]
 
+        
     async function handleEventDelete(id) {
         try {
             const deleteEvent = await eventsAPI.deleteYelpEvent(id)
@@ -48,7 +49,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, }) {
     async function handleEventStatusUpdateSubmit(id) {
         // console.log("updating")
         try {
-            console.log(statusFormValues)
+            // console.log(statusFormValues)
             const statusUpdate = statusFormValues
             const updateEvent = await eventsAPI.updateYelpEvent({ id, statusUpdate })
             // console.log("updateEvent", updateEvent)
@@ -62,6 +63,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, }) {
 
     return (
         <main>
+            
             <Card sx={{ width: 345 }}>
                 <CardActionArea>
                     <Box sx={{ height: 280, transform: 'translateZ(0px)', flexGrow: 1 }}>

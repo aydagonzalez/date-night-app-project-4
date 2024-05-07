@@ -18,6 +18,8 @@ export default function App() {
   const [savedYelpData, setSavedYelpData] = useState([]);
 
   async function getEvents() {
+
+    if (user) {
     const allEventsIndex = await eventsAPI.indexEvents()
     // console.log("ALL Events in App page:", allEventsIndex)
     setEvents(allEventsIndex)
@@ -25,7 +27,7 @@ export default function App() {
     // console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
     setSavedYelpData(allYelpRestaurantsIndex)
   }
-
+  }
   useEffect(function () {
     getEvents()
   }, []);
