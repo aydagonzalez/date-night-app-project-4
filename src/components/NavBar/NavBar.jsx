@@ -17,6 +17,8 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 
 export default function NavBar({ user, setUser, events, savedYelpData }) {
   const savedEventCount = events.length + savedYelpData.length
+  console.log(events.length, savedYelpData.length)
+
   const userName = user.name.charAt(0).toUpperCase() + user.name.slice(1)
   function handleLogOut() {
     userService.logOut();

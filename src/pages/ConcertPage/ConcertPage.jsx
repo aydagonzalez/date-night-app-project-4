@@ -52,7 +52,7 @@ export default function ConcertPage({ getEvents }) {
             // console.log("concertDataResponse", concertDataResponse);
             setConcertData(concertDataResponse)
             setParameters({ keyword: '', state: '' })
-            console.log("STATE:", parameters.keyword, parameters.state)
+            // console.log("STATE:", parameters.keyword, parameters.state)
         } catch (error) {
             console.error('the Request to Data failed:', error);
             throw error;

@@ -61,11 +61,11 @@ async function create(req, res) {
 async function index(req, res) {
     if (req.user) {
 
-        const user = await User.findById(req.user)
-        const userID = user._id
+        // const user = await User.findById(req.user)
+        // const userID = user._id
         // console.log("DID YOU REACH INDEX FXN?")
         // const concerts = await Concert.find({})
-        const restaurants = await Yelp.find({user : userID})
+        const restaurants = await Yelp.find({user : req.user._id})
         // console.log("concerts:", concerts)
         res.json(restaurants)
     }

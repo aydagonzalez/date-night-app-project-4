@@ -21,9 +21,6 @@ Date Night is a blend of convenience, personalization, and a wide array of optio
 - JavaScript
 - HTML
 - CSS
-- MongoDB
-- Express
-- Node.js
 - Trello
 - Heroku
 - Git
@@ -31,6 +28,10 @@ Date Night is a blend of convenience, personalization, and a wide array of optio
 - Visual Studios Code
 - Yelp API
 - Ticket Master API
+- Materialize UI
+- MongoDB
+- Express
+- Node.js
 - API Authentication
 
 

@@ -13,10 +13,10 @@ module.exports = {
 
 async function index(req, res) {
   if (req.user) {
-
-    const user = await User.findById(req.user)
-    const userID = user._id
-    const concerts = await Concert.find({user : userID})
+console.log(req.user)
+    // const user = await User.findById(req.user)
+    // const userID = user._id
+    const concerts = await Concert.find({user : req.user._id})
     res.json(concerts)
   }
 }

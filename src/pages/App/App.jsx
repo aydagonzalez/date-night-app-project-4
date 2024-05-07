@@ -16,9 +16,9 @@ export default function App() {
   const [user, setUser] = useState(getUser())
   const [events, setEvents] = useState([]);
   const [savedYelpData, setSavedYelpData] = useState([]);
+  // console.log("USER",user)
 
   async function getEvents() {
-
     if (user) {
     const allEventsIndex = await eventsAPI.indexEvents()
     // console.log("ALL Events in App page:", allEventsIndex)
@@ -27,13 +27,18 @@ export default function App() {
     // console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
     setSavedYelpData(allYelpRestaurantsIndex)
   }
-  }
+}
+// console.log(events)
+
   useEffect(function () {
+    // console.log("USE EFFECT RUNNING")
     getEvents()
-  }, []);
+  }, [user]);
+
   useEffect(function () {
     // console.log("refreshing2")
   }, [events])
+
 
 
 
@@ -46,7 +51,7 @@ export default function App() {
           {/* <HomePage user={user} /> */}
           <Routes>
             <Route path="/events/ticketmaster" element={<ConcertPage getEvents={getEvents} />} />
-            <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
+            <Route path="/events/saved" element={<SavedEventsPage  user={user} getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
             <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
             <Route path="/" element={<HomePage />} />
           </Routes>

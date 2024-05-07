@@ -10,7 +10,7 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 
-export default function SavedEvents({ getEvents, events, setEvents, savedYelpData }) {
+export default function SavedEvents({ getEvents, events, setEvents, savedYelpData, user }) {
     const [error, setError] = useState('');
     const [alignment, setAlignment] = useState('yelp');
 
@@ -20,6 +20,11 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
         }
     }
 
+    useEffect(() => {
+        if (user) {
+            getEvents()
+        }
+    }, [user])
 
     return (
         <>

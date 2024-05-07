@@ -30,7 +30,7 @@ export default function YelpEventCard({ business, idx, getEvents }) {
 
     async function handleEventSave(evt) {
         evt.preventDefault();
-        console.log("SEE ME? Handle Event Save Clicked")
+        // console.log("SEE ME? Handle Event Save Clicked")
         const yelpDataModel = {
             name: business.name,
             imageUrl: business.image_url,
@@ -48,13 +48,13 @@ export default function YelpEventCard({ business, idx, getEvents }) {
             menuUrl: business.attributes.menu_url || (business.url) || "N/A",
 
         }
-        console.log("yelpDataModel:", yelpDataModel)
+        // console.log("yelpDataModel:", yelpDataModel)
         try {
             const yelpDataCreate = await eventsAPI.createYelpEvent(yelpDataModel)
-            console.log("yelpDataCreate:", yelpDataCreate)
+            // console.log("yelpDataCreate:", yelpDataCreate)
             getEvents()
         } catch (error) {
-            console.log("error:", error)
+            // console.log("error:", error)
             setError('Search Failed - Try Again');
         }
     }
