@@ -15,17 +15,15 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
     const [alignment, setAlignment] = useState('yelp');
 
     function handleChange(event, newAlignment) {
-        if (newAlignment !== null) { 
+        if (newAlignment !== null) {
             setAlignment(newAlignment);
         }
     }
 
     return (
         <>
-
             <div className="toggle">
-
-            <ToggleButtonGroup
+                <ToggleButtonGroup
                     className="ToggleButtonGroup"
                     color="primary"
                     value={alignment}
@@ -54,7 +52,7 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
                         )}
                     </div>
                 </div>)
-                
+
             }
         </>
     )

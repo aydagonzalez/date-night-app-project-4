@@ -69,10 +69,10 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                             image={e.imageUrl}
                             alt={e.name}
                         />
-                        <SpeedDial 
-                        className='mui-speedial-btn'
+                        <SpeedDial
+                            className='mui-speedial-btn'
                             ariaLabel="SpeedDial tooltip"
-                
+
                             sx={{ position: 'absolute', bottom: 16, right: 16 }}
                             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
                             onClose={() => setOpen(false)}
@@ -83,7 +83,7 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                                 tooltipOpen
                                 onClick={a => {
                                     a.preventDefault();
-                                    console.log(e._id)
+                                    // console.log(e._id)
                                     handleEventDelete(e._id);
                                 }}
                             />
@@ -100,7 +100,7 @@ export default function SavedConcertCardsMui({ e, idx, getEvents, events, }) {
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             {/* <div className="concert-Event-item" key={idx * 5} > */}
-                                {e.name}
+                            {e.name}
                             {/* </div> */}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">

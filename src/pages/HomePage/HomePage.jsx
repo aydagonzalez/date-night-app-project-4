@@ -11,18 +11,8 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SearchOptions from "../../components/SearchOptions/SearchOptions";
 import ConcertPageOptions from "../../components/SearchOptions/ConcertPageOptions";
 
-
-
 export default function HomePage({ getEvents }) {
-    const [error, setError] = useState('');
-    // const [events, setEvents] = useState([]);
 
-    // async function getEvents() {
-    //     const allEventsIndex = await eventsAPI.indexEvents()
-    //     console.log("ALL Events:", allEventsIndex)
-    //     // notesRef.current = [(newNote.map(note => note.text))];
-    //     setEvents(allEventsIndex)
-    // }
     const images = [
         {
             label: "Dinner at a Rooftop Restaurant", summary: "Enjoy a romantic dinner with a view at the top-rated rooftop restaurants in your city.",
@@ -69,19 +59,14 @@ export default function HomePage({ getEvents }) {
     return (
         <>
             <section className="HomePage-section">
-
-
-                {/* <main className="MainHomePage" > */}
                 <div className="yelp-container-home-page">
-                    <Link to="/yelp" className="custom-link" ><h1>Yelp Search Engine</h1></Link>
+                    <Link to="/yelp" className="custom-link" ><h1 style={{ color: "#828a95" }}>Yelp Search Engine</h1></Link>
                     <div>
                         <SearchOptions />
                     </div>
                 </div>
 
-                {/* </main> */}
-
-                <div> 
+                <div>
                     <Box sx={{ maxWidth: 1000, flexGrow: 1 }} className="carousel-box">
                         <Paper
                             square
@@ -95,7 +80,7 @@ export default function HomePage({ getEvents }) {
                             }}
                         >
                             <Typography className="carousel-labels"
-                                style={{ fontSize: "2.5rem" }}
+                                style={{ fontSize: "2.5rem", fontWeight: "bold" }}
                             >{images[activeStep].label}</Typography>
                         </Paper>
 
@@ -117,12 +102,6 @@ export default function HomePage({ getEvents }) {
                                         />
                                         <Typography
                                             sx={{
-                                                // position: 'absolute',
-                                                // top: 230,
-                                                // bottom: 530,
-                                                // bottom: 10,,
-                                                // textAlign: "center",
-                                                // left: 20,
                                                 color: 'white',
                                                 backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                                 padding: '10px',
@@ -147,7 +126,7 @@ export default function HomePage({ getEvents }) {
                                     onClick={handleNext}
                                     disabled={activeStep === maxSteps - 1}
                                 >
-                                    Next
+                                    
                                     {theme.direction === 'rtl' ? (
                                         <KeyboardArrowLeft />
                                     ) : (
@@ -162,7 +141,7 @@ export default function HomePage({ getEvents }) {
                                     ) : (
                                         <KeyboardArrowLeft />
                                     )}
-                                    Back
+                                    
                                 </Button>
                             }
                         />
@@ -170,7 +149,7 @@ export default function HomePage({ getEvents }) {
 
                 </div>
                 <div className="concert-container-home-page">
-                    <Link to="/events/ticketmaster" className="custom-link"><h1>Ticket Master Search</h1></Link>
+                    <Link to="/events/ticketmaster" className="custom-link"><h1 style={{ color: "#828a95" }}>Ticket Master Search</h1></Link>
                     <div className="yelp-search-options">
                         <ConcertPageOptions />
                     </div>

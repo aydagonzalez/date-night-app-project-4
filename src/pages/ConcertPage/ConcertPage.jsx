@@ -14,19 +14,12 @@ export default function ConcertPage({ getEvents }) {
     const [parameters, setParameters] = useState({ keyword: '', state: '' })
     const location = useLocation()
     const { category } = location.state || {};
-    console.log("category", category)
+    // console.log("category", category)
 
     // useEffect(() => {
     //     if (!category) return;
     //     fetchConcertData({ keyword: category, state: "ny" });
     // }, [category]);
-
-    function handleOptionalTMSearch(cat) {
-        setParameters({ keyword: cat, state: "ny" });
-        console.log("parameters", parameters)
-        fetchOptionalConcertData()
-        setError('');
-    }
 
 
     function handleChange(evt) {
@@ -47,8 +40,8 @@ export default function ConcertPage({ getEvents }) {
         const keywordAnd = parameters.keyword ? "&keyword=" + parameters.keyword : ''
         const stateAnd = (parameters.state) ? "&stateCode=" + parameters.state : ''
         const url = `https://app.ticketmaster.com/discovery/v2/events.json?${keywordAnd}${stateAnd}&apikey=`
+        // console.log("url:", url);
 
-        console.log("url:", url);
         try {
             const concertDataRequest = await fetch(`${url}${token}`);
             // console.log("fetch(url, token) in Concert Data Request:", url, token);
@@ -59,6 +52,7 @@ export default function ConcertPage({ getEvents }) {
             // console.log("concertDataResponse", concertDataResponse);
             setConcertData(concertDataResponse)
             setParameters({ keyword: '', state: '' })
+            console.log("STATE:", parameters.keyword, parameters.state)
         } catch (error) {
             console.error('the Request to Data failed:', error);
             throw error;
@@ -66,13 +60,13 @@ export default function ConcertPage({ getEvents }) {
     }
 
     async function fetchOptionalConcertData({ keyword, state }) {
-        console.log("HEHEHEHE",keyword, state )
+        // console.log("keyword, state", keyword, state)
         const token = eventsService.getConcertTokenCredentials();
         const keywordAnd = keyword ? "&keyword=" + keyword : ''
         const stateAnd = (state) ? "&stateCode=" + state : ''
         const url = `https://app.ticketmaster.com/discovery/v2/events.json?${keywordAnd}${stateAnd}&apikey=`
 
-        console.log("url:", url);
+        // console.log("url:", url);
         try {
             const concertDataRequest = await fetch(`${url}${token}`);
             // console.log("fetch(url, token) in Concert Data Request:", url, token);
@@ -90,20 +84,21 @@ export default function ConcertPage({ getEvents }) {
     }
 
 
+
     function handleOptionalConcertSearch(cat) {
-        console.log(cat)
+        // console.log(cat)
         fetchOptionalConcertData(cat)
         // setParameters({ keyword: '', state: ""})
         setError('');
     }
 
-    async function fetchOptionalConcertData(cat ) {
+    async function fetchOptionalConcertData(cat) {
         const token = eventsService.getConcertTokenCredentials();
         const keywordAnd = cat ? "&keyword=" + cat : ''
         const stateAnd = "&stateCode=ny"
         const url = `https://app.ticketmaster.com/discovery/v2/events.json?${keywordAnd}${stateAnd}&apikey=`
 
-        console.log("url:", url);
+        // console.log("url:", url);
         try {
             const concertDataRequest = await fetch(`${url}${token}`);
             // console.log("fetch(url, token) in Concert Data Request:", url, token);
@@ -125,11 +120,11 @@ export default function ConcertPage({ getEvents }) {
             <main className="event-page-main">
                 <div className="search-btn-form-container">
 
-                    <form className="search-forms" onSubmit={handleSubmit}  >
-                    <SearchIcon />
+                    <form className="search-forms" onSubmit={handleSubmit} key={235} >
+                        <SearchIcon />
                         <input require className="search-input-form" name='keyword' value={parameters.keyword} type="text" onChange={handleChange} placeholder="Search Concert..." />
-                        <select name="state" className="stateDropdown" onChange={handleChange} >
-                            <option key="none" value="" >State</option>
+                        <select name="state" className="stateDropdown" onChange={handleChange}   value={parameters.state} >
+                            <option key="none" value="" >Select State</option>
                             {states.map((state) =>
                                 <option key={state.code} value={state.code}>{state.name}</option>
                             )}
@@ -139,11 +134,11 @@ export default function ConcertPage({ getEvents }) {
                 </div>
 
                 <div className="yelpPage-search-options">
-                        <p onClick={() => handleOptionalConcertSearch('concerts')} class="whitespace-pre ">Concerts</p>
-                        <p onClick={() => handleOptionalConcertSearch('musicals')} class="whitespace-pre ">Musicals</p>
-                        <p onClick={() => handleOptionalConcertSearch('sports')} class="whitespace-pre ">Sports</p>
-                        <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} class="whitespace-pre ">Art and Theater</p>
-                        <p onClick={() => handleOptionalConcertSearch('family')} class="whitespace-pre ">Family</p>
+                    <p onClick={() => handleOptionalConcertSearch('concerts')} className="whitespace-pre ">Concerts</p>
+                    <p onClick={() => handleOptionalConcertSearch('musicals')} className="whitespace-pre ">Musicals</p>
+                    <p onClick={() => handleOptionalConcertSearch('sports')} className="whitespace-pre ">Sports</p>
+                    <p onClick={() => handleOptionalConcertSearch('art%20and%20theater')} className="whitespace-pre ">Art and Theater</p>
+                    <p onClick={() => handleOptionalConcertSearch('family')} className="whitespace-pre ">Family</p>
 
                 </div>
 

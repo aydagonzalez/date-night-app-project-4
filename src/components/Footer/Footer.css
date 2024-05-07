@@ -28,3 +28,17 @@ ul {
     align-content: center;
     list-style-type: none;
 }
+
+
+footer {
+font: inherit;
+text-size-adjust: 100%;
+font-variation-settings: inherit;
+line-height: 1;
+margin: 0px;
+display: block;
+padding: 60px 0;
+justify-content: center;
+text-align: center;
+justify-items: center;
+}

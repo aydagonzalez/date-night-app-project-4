@@ -19,10 +19,10 @@ export default function App() {
 
   async function getEvents() {
     const allEventsIndex = await eventsAPI.indexEvents()
-    console.log("ALL Events in App page:", allEventsIndex)
+    // console.log("ALL Events in App page:", allEventsIndex)
     setEvents(allEventsIndex)
     const allYelpRestaurantsIndex = await eventsAPI.indexYelpEvents()
-    console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
+    // console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
     setSavedYelpData(allYelpRestaurantsIndex)
   }
 
@@ -30,7 +30,7 @@ export default function App() {
     getEvents()
   }, []);
   useEffect(function () {
-    console.log("refreshing2")
+    // console.log("refreshing2")
   }, [events])
 
 

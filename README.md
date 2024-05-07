@@ -41,5 +41,5 @@ Date Night is a blend of convenience, personalization, and a wide array of optio
 # Next Steps
 
 - I would like to improve the app by providing personalized suggestions based on user preferences and location
-- I'd liek to add a sort feature
-- Also 
+- I'd liek to add a sort feature, by status, date, rating, and/or distance
+- Another further enhacement is 

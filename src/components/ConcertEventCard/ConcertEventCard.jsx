@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import { useState } from "react";
 import * as eventsAPI from '../../utilities/events-api';
@@ -43,10 +42,10 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
             timezone: event.dates.timezone,
             accessibility: (event.accessibility) ? event.accessibility.ticketLimit : ""
         }
-        console.log(concertData)
+        // console.log(concertData)
         try {
             const concert = await eventsAPI.createConcertEvent(concertData)
-            console.log("concert:", concert)
+            // console.log("concert:", concert)
             getEvents()
         } catch (error) {
             console.log("error:", error)
@@ -102,8 +101,8 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
                                     {(event._embedded.venues) ? event._embedded.venues[0].name : "N/A"}
                                     <div>Date: {new Date(event.dates.start.localDate).toLocaleDateString()}</div>
                                     <div>Time: {event.dates.start.localTime}</div>
-                                    <div>Sale Starts: {new Date(event.sales.public.startDateTime).toLocaleDateString()}</div>
-                                    <div>{new Date(event.sales.public.startDateTime).toLocaleTimeString()}</div>
+                                    {/* <div>Sale Starts: {event.sales.public.startDateTime}</div> */}
+                                    {/* <div>{new Date(event.sales.public.startDateTime).toLocaleTimeString()}</div> */}
                                     <div> <AccessibleIcon /> Accesibility: {(event.accessibility) ? event.accessibility.ticketLimit : "N/A"}</div>
                                </span>
 

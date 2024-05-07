@@ -11,8 +11,6 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
 export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
-    const [yelp, setYelp] =useState(true)
-
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(false);
     const [statusFormValues, setStatusFormValues] = useState('');
@@ -42,7 +40,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
 
     function handleChange(evt) {
         const { name, value } = evt.target;
-        console.log("statusFormValues",statusFormValues)
+        console.log("statusFormValues", statusFormValues)
         setStatusFormValues({ ...statusFormValues, [name]: value });
         setError('');
     }
@@ -76,8 +74,8 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                             style={{ height: "230px" }}
                         />
                         <SpeedDial
-                        className='mui-speedial-btn'
-                        // style={{ backgroundColor: "var(--cadet-grey)" }}
+                            className='mui-speedial-btn'
+                            // style={{ backgroundColor: "var(--cadet-grey)" }}
                             ariaLabel="SpeedDial tooltip example"
                             sx={{ position: 'absolute', bottom: 16, right: 16 }}
                             icon={<SpeedDialIcon openIcon={<EditIcon />} />}
@@ -89,7 +87,7 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                                 tooltipOpen
                                 onClick={a => {
                                     a.preventDefault();
-                                    console.log(y._id)
+                                    // console.log(y._id)
                                     handleEventDelete(y._id);
                                 }}
                             />
@@ -114,12 +112,12 @@ export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
                                 {y.displayAddress}, {y.displayCity}, {y.displayCountry} <br />
                                 Phone: {y.displayPhone} <br />
                                 {/* <div style={{ textAlign: 'center' }}> */}
-                                    <Stack spacing={1} style={{ display: 'inline-block' }}>
+                                <Stack spacing={1} style={{ display: 'inline-block' }}>
 
-                                        <Rating name="half-rating-read" defaultValue={y.rating} precision={0.5} readOnly />
-                                    </Stack>
-                                    <br />
-                                    ({y.reviewCount} reviews) <br />
+                                    <Rating name="half-rating-read" defaultValue={y.rating} precision={0.5} readOnly />
+                                </Stack>
+                                <br />
+                                ({y.reviewCount} reviews) <br />
                                 Price: {y.price} <br />
                                 {y.transaction}
                                 {y.transactions2} <br />

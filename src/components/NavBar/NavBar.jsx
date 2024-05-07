@@ -172,7 +172,6 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               borderRadius: "1px"
             }}
           >
-            {/* <MenuIcon /> */}
             <Link to="/" className="custom-link">
               <img src="/logo.png" alt="App logo" className="navbar-logo" />
             </Link>
@@ -197,11 +196,10 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               }} >
               <Badge badgeContent={savedEventCount} color="error" sx={{
                 '& .MuiBadge-badge': {
-                  fontSize: '0.6rem',
+                  fontSize: '0.8rem',
                   padding: '0 3px'
                 }
               }}
-
               >
                 <Link to="/events/saved" className="custom-link" >  <FavoriteIcon /> </Link>
 
@@ -252,9 +250,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-              style={{ 
+              style={{
                 borderRadius: "10px"
-                }} 
+              }}
             >
               <AccountCircle />
             </IconButton>

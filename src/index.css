@@ -241,6 +241,7 @@ button[type="submit"] {
   cursor: pointer;
 }
 
+
 .city-input-yelp {
   /* background-color: #b786df; */
   width: 20%;
@@ -331,13 +332,11 @@ button[type="submit"] {
   flex-direction: row;
 }
 
-/* Styles for the search button hover effect */
+/* Style for the search button hovering effect */
 .search-form-btn:hover {
   background-color: #888;
   color: #fff;
 }
-
-
 
 main .update-form-btns {
   font-size: x-small;
@@ -346,11 +345,16 @@ main .update-form-btns {
 
 .yelp-search-options {
   width: 95%;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   gap: 2vmin;
+  justify-items: center;
+  align-self: center;
+}
+
+.yelp-search-options p {
+  text-align: center;
 }
 
 .yelp-search-options > p {
@@ -360,12 +364,6 @@ align-items: center;
 border: solid #6d98ba 1px;
 border-radius: 10px;
 padding: 1vmin;
-justify-content: center;
-justify-items: center;
-justify-self: center;
-align-items: center;
-align-content: center;
-text-align: center; 
 }
 
 .yelp-search-options > p:hover {
@@ -423,6 +421,8 @@ text-align: center;
   padding: 1rem;
   align-content: space-between;
   border-radius: 10px;
+  text-align: center;
+  padding-top: 4.5rem;
 }
 
 .yelpPage-search-options {
@@ -434,8 +434,6 @@ text-align: center;
   width: 95%;
   gap: 2vmin;
   margin-top: 10px;
-
-
 }
 
 .yelpPage-search-options > p {
@@ -453,4 +451,8 @@ background-color: var(--cadet-grey-rgba);
 }
 .mui-speedial-btn > button:hover {
   background-color: var(--cadet-grey);
+}
+
+.whitespace-pre {
+  color:#3d6b8e
 }
