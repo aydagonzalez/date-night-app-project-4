@@ -10,7 +10,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
-export default function SavedYelpCardsMui({ y, idx, getEvents, events, }) {
+export default function SavedYelpCardsMui({ y, idx, getEvents, }) {
     const [error, setError] = useState('');
     const [edit, setEdit] = useState(false);
     const [statusFormValues, setStatusFormValues] = useState('');

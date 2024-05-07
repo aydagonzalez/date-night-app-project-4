@@ -13,10 +13,17 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 export default function SavedEvents({ getEvents, events, setEvents, savedYelpData }) {
     const [error, setError] = useState('');
     const [alignment, setAlignment] = useState('yelp');
+    const [sortOrder, setSortOrder] = useState('true')
 
     function handleChange(event, newAlignment) {
         if (newAlignment !== null) {
             setAlignment(newAlignment);
+        }
+    }
+
+    function sortEventsByRating(events) {
+        if (sortOrder === "true") {
+        return events.slice().sort((a, b) => b.rating - a.rating);
         }
     }
 
@@ -33,6 +40,13 @@ export default function SavedEvents({ getEvents, events, setEvents, savedYelpDat
                     <ToggleButton value="yelp">Yelp Collections</ToggleButton>
                     <ToggleButton value="concert">Ticket Master Collections</ToggleButton>
                 </ToggleButtonGroup>
+
+                {/* <FormGroup>
+    <FormControlLabel
+        control={<Switch checked={sortOrder === 'desc'} onChange={() => setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc')} />}
+        label="Sort Descending"
+    /> */}
+{/* </FormGroup> */}
             </div>
             <h1 className="saved-page-padding-top">Saved Collections</h1>
 

@@ -40,6 +40,6 @@ Date Night is a blend of convenience, personalization, and a wide array of optio
 
 # Next Steps
 
-- I would like to improve the app by providing personalized suggestions based on user preferences and location
-- I'd liek to add a sort feature, by status, date, rating, and/or distance
-- Another further enhacement is 
+- I would like to improve the app by providing personalized suggestions based on user preferences and location. I will need to implement the collection of user preferences either during sign-up or through user interactions within the app. This could include preferred event types, favorite locations, and budget preferences. Additionally, a user profile section where users can update their preferences anytime.
+- Another further enhacement is to use geolocation APIs to fetch the user's current location and suggest events nearby, to offer suggestions based on the users proximity.
+- I would also like to add a sort feature, by status, date, rating, and/or distance.
