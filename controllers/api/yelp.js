@@ -19,7 +19,8 @@ async function search(req, res) {
         console.log("REQ-BODY-SEARCH:", req.body.search)
         console.log("REQ-BODY-LOCATION:", req.body.location)
         // New%20York%20City
-        const key = process.env.REACT_APP_YELPKEY
+        // const key = process.env.REACT_APP_YELPKEY
+        const key = process.env.REACT_APP_TEMPYELPKEY
         const url = `https://api.yelp.com/v3/businesses/search?location=${req.body.location}&term=${req.body.search}&sort_by=best_match&limit=20`
         const yelpApiDataRequest = await fetch(url, {
             headers: {

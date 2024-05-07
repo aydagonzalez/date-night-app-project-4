@@ -1,0 +1,30 @@
+footer {
+    position: relative;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    padding: 10px 0;
+    background-color: #6d98ba;
+    color: azure;
+    box-shadow: 5px 0 5px 2px #888888;
+    margin-top: 5%;
+    /* left: -1%; */
+    /* right: 1%; */
+    justify-items: center;
+    align-items: center;
+}
+
+.footer-imgs {
+    width: 30px;
+}
+ul {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-content: center;
+    list-style-type: none;
+}

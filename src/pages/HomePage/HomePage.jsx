@@ -73,7 +73,7 @@ export default function HomePage({ getEvents }) {
 
                 {/* <main className="MainHomePage" > */}
                 <div className="yelp-container-home-page">
-                    <Link to="/yelp" ><h1>Yelp Search Engine</h1></Link>
+                    <Link to="/yelp" className="custom-link" ><h1>Yelp Search Engine</h1></Link>
                     <div>
                         <SearchOptions />
                     </div>
@@ -170,7 +170,7 @@ export default function HomePage({ getEvents }) {
 
                 </div>
                 <div className="concert-container-home-page">
-                    <Link to="/events/concerts"><h1>Ticket Master Search</h1></Link>
+                    <Link to="/events/ticketmaster" className="custom-link"><h1>Ticket Master Search</h1></Link>
                     <div className="yelp-search-options">
                         <ConcertPageOptions />
                     </div>

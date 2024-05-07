@@ -126,7 +126,7 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
           aria-label="Home"
           color="inherit"
         >
-          <Link to="/events/concerts" className="custom-link" >Concerts</Link>
+          <Link to="/events/ticketmaster" className="custom-link" >Ticket Master</Link>
         </IconButton>
       </MenuItem>
 
@@ -240,7 +240,7 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               }}
             >
 
-              <Link to="/events/concerts" className="custom-link" >Concerts</Link>
+              <Link to="/events/ticketmaster" className="custom-link" >Ticket Master</Link>
 
             </IconButton>
             <p style={{ padding: "10px" }}>Welcome {userName}! </p>
@@ -252,9 +252,9 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
               color="inherit"
-              style={{
+              style={{ 
                 borderRadius: "10px"
-              }}
+                }} 
             >
               <AccountCircle />
             </IconButton>

@@ -1,5 +1,6 @@
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
+import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
 import ConcertPage from '../ConcertPage/ConcertPage';
 // import RestaurantPage from '../RestaurantPage/RestaurantPage';
@@ -42,13 +43,15 @@ export default function App() {
           <NavBar user={user} setUser={setUser} events={events} savedYelpData={savedYelpData}   />
           {/* <HomePage user={user} /> */}
           <Routes>
-            <Route path="/events/concerts" element={<ConcertPage getEvents={getEvents} />} />
+            <Route path="/events/ticketmaster" element={<ConcertPage getEvents={getEvents} />} />
             <Route path="/events/saved" element={<SavedEventsPage getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
             <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
             <Route path="/" element={<HomePage />} />
           </Routes>
+          <Footer user={user} setUser={setUser} events={events} savedYelpData={savedYelpData}   />
         </>
         : <AuthPage setUser={setUser} />}
+        
     </main>
   );
 }

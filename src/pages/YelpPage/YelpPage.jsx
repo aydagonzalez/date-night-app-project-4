@@ -2,16 +2,27 @@ import { useState, useEffect } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
 import SearchIcon from '@mui/icons-material/Search';
-
+import { useLocation } from "react-router-dom";
 
 
 export default function YelpPage({ getEvents }) {
-    const [yelpData, setYelpData] = useState('');
-    const [error, setError] = useState('');
-    const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' });
+    const [yelpData, setYelpData] = useState('')
+    const [error, setError] = useState('')
+    const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' })
+    const location = useLocation()
+    const { category } = location.state || {};
+    console.log("category", category)
+
+    useEffect(() => {
+        if (!category) return;
+        handleOptionalYelpSearch(category);
+        console.log ("USE EFFECT")
+    }, [category]);
+
 
     function handleChange(evt) {
         const { name, value } = evt.target;
+        console.log("FROM HOME PAGE:", name, value)
         setYelpDataValue({ ...yelpDataValue, [name]: value });
         setError('');
     }
@@ -50,6 +61,7 @@ export default function YelpPage({ getEvents }) {
     // console.log("yelpData:", yelpData)
     return (
         <>
+         
             <main className="event-page-main">
                 <div></div>
                 <div className="search-btn-form-container">
@@ -64,13 +76,13 @@ export default function YelpPage({ getEvents }) {
                 </div>
                 <div className="yelpPage-search-options">
                     {/* <form className="search-forms" onSubmit={handleSubmit}> */}
-                    <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} class="whitespace-pre ">Travel and Outdoor</p>
-                    <p onClick={() => handleOptionalYelpSearch('Social Activies')} class="whitespace-pre ">Social Activities</p>
-                    <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} class="whitespace-pre ">Hobbies and Passions</p>
-                    <p onClick={() => handleOptionalYelpSearch('Sports and Fitness')} class="whitespace-pre ">Sports and Fitness</p>
-                    <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} class="whitespace-pre ">Health and Wellbeing</p>
+                    <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} className="whitespace-pre ">Travel and Outdoor</p>
+                    <p onClick={() => handleOptionalYelpSearch('Social Activies')} className="whitespace-pre ">Social Activities</p>
+                    <p onClick={() => handleOptionalYelpSearch('Hobbies and Passions')} className="whitespace-pre ">Hobbies and Passions</p>
+                    <p onClick={() => handleOptionalYelpSearch('Sports and Fitness')} className="whitespace-pre ">Sports and Fitness</p>
+                    <p onClick={() => handleOptionalYelpSearch('Health and Wellbeing')} className="whitespace-pre ">Health and Wellbeing</p>
                     {/* <p onClick={() => handleOptionalYelpSearch('Technology')} class="whitespace-pre ">Technology</p> */}
-                    <p onClick={() => handleOptionalYelpSearch('Art and Culture')} class="whitespace-pre ">Art and Culture</p>
+                    <p onClick={() => handleOptionalYelpSearch('Art and Culture')} className="whitespace-pre ">Art and Culture</p>
                     {/* </form> */}
                 </div>
 
