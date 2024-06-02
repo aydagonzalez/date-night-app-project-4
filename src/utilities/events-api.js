@@ -28,26 +28,26 @@ export async function updateEvent({ id, statusUpdate }) {
 
 
 export async function fetchYelpData(yelpDataValue) {
-  // console.log("getting Yelp")
+  console.log("getting Yelp")
   return sendRequest(YELP_URL, 'POST', yelpDataValue)
 }
 
 export async function createYelpEvent(yelpDataModel) {
-  // console.log("creating yelpDataModel")
+  console.log("creating yelpDataModel")
   return sendRequest(`${YELP_URL}/create`, 'POST', yelpDataModel)
 }
 
 export async function indexYelpEvents() {
-  // console.log("getting Concerts data")
+  // console.log("getting Yelp events data")
   return sendRequest(YELP_URL, 'GET')
 }
 
 export async function deleteYelpEvent(id) {
-  // console.log("deleting")
+  console.log("deleting")
   return sendRequest(`${YELP_URL}/${id}`, 'DELETE')
 }
 
 export async function updateYelpEvent({ id, statusUpdate }) {
-  // console.log("id, edit:", id, statusUpdate)
+  console.log("id, edit:", id, statusUpdate)
   return sendRequest(`${YELP_URL}/${id}`, 'PUT', statusUpdate)
 }

@@ -7,7 +7,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // Insert ensureLoggedIn on all routes that need protecting
 router.post('/create', ensureLoggedIn, yelpCtrl.create);
 
-router.post('/', ensureLoggedIn, yelpCtrl.search);
+router.post('/', yelpCtrl.search);
 
 router.get('/', ensureLoggedIn, yelpCtrl.index);
 

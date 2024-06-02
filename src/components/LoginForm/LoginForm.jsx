@@ -5,8 +5,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
+import { useNavigate } from 'react-router-dom';
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -17,6 +16,8 @@ import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';;
 export default function LoginForm({ setUser, setUseHasAccount }) {
     // const [userLogin, setUserLogin] = useState(true)
+
+    const navigate = useNavigate();
     const [error, setError] = useState('');
     const [credentials, setCredentials] = useState({
         email: '',
@@ -40,7 +41,8 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
         try {
             const user = await usersService.login(credentials);
             setUser(user);
-            console.log(user)
+            navigate('/');
+            // console.log(user)
             // console.log(user)
         } catch {
             setError('Log In Failed - Try Again');
@@ -158,8 +160,15 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                             onClick={handleSetUserLoginClick}
                                         >
                                             {"Don't have an account? Sign Up"}
-                                        </button>
+                                        </button> <br />
+
                                     </Grid>
+                                    <p style={{ textAlign: "left" }}>
+                                        As a trial, sign in with the following credentials: <br />
+                                        Email address: trial@mail.com <br />
+                                        Password: trial
+                                    </p>
+
                                     <div>
                                         <p className="error-message">&nbsp;{error}</p>
                                     </div>

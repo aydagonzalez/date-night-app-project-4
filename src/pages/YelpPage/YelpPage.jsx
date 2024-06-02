@@ -38,12 +38,28 @@ export default function YelpPage({ getEvents, user }) {
             try { if (!yelpDataReq.ok) throw new Error('Error fetching data'); }
             catch (error) { console.log(error) }
             setYelpData(yelpDataReq)
+            console.log("yelpDataReq", yelpDataReq)
             setYelpDataValue({ search: '', location: '' })
             setError('')
         } catch (err) {
             console.log(err)
+            setError(err.message); 
         }
     }
+
+//     try {
+//         const yelpDataReq = await eventsAPI.fetchYelpData(yelpDataNewValue);
+//         if (!yelpDataReq.ok) { 
+//             throw new Error('Error fetching data');
+//         }
+//         const yelpData = await yelpDataReq.json(); // Assuming the response needs to be converted to JSON
+//         setYelpData(yelpDataReq);
+//         setYelpDataValue({ search: '', location: '' });
+//         setError(''); 
+//     } catch (error) {
+//         console.error(error);
+//         setError(error.message); 
+// }}
 
     return (
         <>
@@ -69,7 +85,7 @@ export default function YelpPage({ getEvents, user }) {
                     {(yelpData) ? (yelpData.businesses.map((b, idx) =>
                         <YelpEventCard business={b} idx={idx} key={idx + 6} getEvents={getEvents} user={user} />
                     ))
-                        : "Search May be Unavailable :("}
+                        : "Search anything you are intererest in!"}
                 </div>
                 <p className="error-message">&nbsp;{error}</p>
             </main>

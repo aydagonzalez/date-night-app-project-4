@@ -7,12 +7,13 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
   // used to include a data payload, set headers, etc. 
   const options = { method };
   if (payload) {
-    // console.log("payload:", payload)
+    console.log("payload:", payload)
     options.headers = { 'Content-Type': 'application/json' };
     options.body = JSON.stringify(payload);
-        // console.log("payload- options.body:",    options.body)
+        console.log("payload- options.body:",    options.body)
   }
   const token = getToken();
+  console.log("TOKEN:", token)
   if (token) {
     // Ensure the headers object exists
     options.headers = options.headers || {};
@@ -22,7 +23,7 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
   }
   
   const res = await fetch(url, options);
-    // console.log("fetch(url, options):", url, options)
+    console.log("fetch(url, options):", url, options)
   // res.ok will be false if the status code set to 4xx in the controller action
   if (res.ok) return res.json();
   throw new Error('Bad Request');

@@ -411,8 +411,11 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
                         borderRadius: "10px"
                       }}
                     >
-                      <Link to="/yelp" className="custom-link">Yelp</Link >
+
+                      <Link to="/events/ticketmaster" className="custom-link" >Ticket Master</Link>
+
                     </IconButton>
+
 
                     <IconButton
                       size="small"
@@ -422,10 +425,10 @@ export default function NavBar({ user, setUser, events, savedYelpData }) {
                         borderRadius: "10px"
                       }}
                     >
-
-                      <Link to="/events/ticketmaster" className="custom-link" >Ticket Master</Link>
-
+                      <Link to="/yelp" className="custom-link">Yelp</Link >
                     </IconButton>
+
+
                     <p style={{ padding: "10px" }}> </p>
                     <IconButton
                       size="large"

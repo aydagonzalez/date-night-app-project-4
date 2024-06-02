@@ -21,9 +21,11 @@ async function search(req, res) {
         });
         console.log("fetch(url, key):", url, key);
         if (!yelpApiDataRequest.ok) {
-            throw new Error('Bad request fetching yelpApi data');
+            console.error(`Yelp API error: ${yelpApiDataRequest.status} - ${yelpApiDataRequest.statusText}`);
+            throw new Error(`Failed to fetch Yelp data: ${yelpApiDataRequest.statusText}`);
         }
         const yelpApiDataResponse = await yelpApiDataRequest.json();
+        console.log(yelpApiDataResponse)
         res.status(200).json(yelpApiDataResponse)
     } catch (error) {
         console.log("ERROR:", error)
