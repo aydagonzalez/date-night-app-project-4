@@ -44,10 +44,7 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} events={events} savedYelpData={savedYelpData} />
           <Routes>
-
             <Route path="/events/saved" element={<SavedEventsPage user={user} getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
-
-  
           </Routes>
           <Footer user={user} setUser={setUser} events={events} savedYelpData={savedYelpData} />
         </>

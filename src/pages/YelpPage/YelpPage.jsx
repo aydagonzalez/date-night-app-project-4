@@ -69,7 +69,7 @@ export default function YelpPage({ getEvents, user }) {
                     {(yelpData) ? (yelpData.businesses.map((b, idx) =>
                         <YelpEventCard business={b} idx={idx} key={idx + 6} getEvents={getEvents} user={user} />
                     ))
-                        : "Search anything in a city near you!"}
+                        : "Search May be Unavailable :("}
                 </div>
                 <p className="error-message">&nbsp;{error}</p>
             </main>

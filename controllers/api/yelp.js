@@ -1,8 +1,6 @@
 const User = require('../../models/user')
 const Yelp = require('../../models/yelp')
 
-
-
 module.exports = {
     search,
     create,
@@ -23,7 +21,7 @@ async function search(req, res) {
         });
         console.log("fetch(url, key):", url, key);
         if (!yelpApiDataRequest.ok) {
-            throw new Error('Bad request fetching yelpApi data, AG look at Controller Pg:');
+            throw new Error('Bad request fetching yelpApi data');
         }
         const yelpApiDataResponse = await yelpApiDataRequest.json();
         res.status(200).json(yelpApiDataResponse)
