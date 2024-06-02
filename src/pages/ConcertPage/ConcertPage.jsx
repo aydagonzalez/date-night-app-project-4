@@ -8,18 +8,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import './ConcertPage.css'
 
 
-export default function ConcertPage({ getEvents }) {
+export default function ConcertPage({ getEvents, user }) {
     const [concertData, setConcertData] = useState('');
     const [error, setError] = useState('');
     const [parameters, setParameters] = useState({ keyword: '', state: '' })
     const location = useLocation()
     const { category } = location.state || {};
-    // console.log("category", category)
-
-    // useEffect(() => {
-    //     if (!category) return;
-    //     fetchConcertData({ keyword: category, state: "ny" });
-    // }, [category]);
 
 
     function handleChange(evt) {
@@ -145,7 +139,7 @@ export default function ConcertPage({ getEvents }) {
                 <div className="EventCardContainer">
                     {concertData && concertData._embedded ? (concertData._embedded.events.map((event, idx) =>
 
-                        <ConcertEventCard getEvents={getEvents} key={idx} idx={idx} event={event} />
+                        <ConcertEventCard  user={user} getEvents={getEvents} key={idx} idx={idx} event={event} />
                     ))
                         : "What are you interested in viewing today?"}
                 </div>

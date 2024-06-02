@@ -1,6 +1,8 @@
 import * as React from "react";
+import { Link } from "react-router-dom"
 import { useState } from "react";
 import * as eventsAPI from '../../utilities/events-api';
+import Tooltip from '@mui/material/Tooltip';
 import { styled } from "@mui/material/styles";
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from "@mui/material";
 import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
@@ -8,7 +10,7 @@ import RestaurantMenuIcon from '@mui/icons-material/RestaurantMenu';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
-export default function YelpEventCard({ business, idx, getEvents }) {
+export default function YelpEventCard({ business, idx, getEvents, user }) {
     const [error, setError] = useState('');
     const [expanded, setExpanded] = React.useState(false);
 
@@ -85,9 +87,24 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing onClick={handleEventSave}  >
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon className="favorite-icon" />
-                    </IconButton>
+
+                {user ?
+                        <>
+                            <IconButton onClick={handleEventSave} aria-label="add to favorites">
+                                <FavoriteIcon className="favorite-icon" />
+                            </IconButton>
+                        </>
+                        :
+                        <>
+                            <Tooltip title="Login to Save" placement="top">
+                                <IconButton component={Link} to="/login" aria-label="add to favorites">
+                                    <FavoriteIcon className="favorite-icon" />
+                                </IconButton>
+                            </Tooltip>
+                        </>
+                    }
+
+
                     <IconButton aria-label="share">
                         <a href={(business.attributes.menu_url) ? (business.attributes.menu_url) : (business.url)}  > <RestaurantMenuIcon className="menu-icon" /></a>
                     </IconButton>
@@ -104,18 +121,17 @@ export default function YelpEventCard({ business, idx, getEvents }) {
                     <CardContent>
                         <Typography paragraph>
                             <span>
-                           
-                                    <Stack spacing={1} style={{ display: 'inline-block' }}>
+                                <Stack spacing={1} style={{ display: 'inline-block' }}>
 
-                                        <Rating name="half-rating-read" defaultValue={business.rating} precision={0.5} readOnly />
-                                    </Stack> <br />
+                                    <Rating name="half-rating-read" defaultValue={business.rating} precision={0.5} readOnly />
+                                </Stack> <br />
 
                                 Rating: {(business.rating) ? (business.rating) : " N/A"} Reviews: {(business.review_count) ? (business.review_count) : " N/A"}  <br />
-                               {(business.location.display_address) ? (business.location.display_address.join(', ')) : " N/A"}  <br />
-                              Phone: {(business.display_phone) ? (business.display_phone) : " N/A"}  <br />
-                              Open 24 hours: {(business.open24_hours) ? (business.open24_hours) : "N/A"}  <br />
-                              Price: {(business.price) ? (business.price) : " N/A"}  <br />
-                              {(business.transactions) ? (business.transactions[0]) : ""} {(business.transactions) ? (business.transactions[1]) : ""} <br />
+                                {(business.location.display_address) ? (business.location.display_address.join(', ')) : " N/A"}  <br />
+                                Phone: {(business.display_phone) ? (business.display_phone) : " N/A"}  <br />
+                                Open 24 hours: {(business.open24_hours) ? (business.open24_hours) : "N/A"}  <br />
+                                Price: {(business.price) ? (business.price) : " N/A"}  <br />
+                                {(business.transactions) ? (business.transactions[0]) : ""} {(business.transactions) ? (business.transactions[1]) : ""} <br />
                                 {/* <div>is_closed:{(business.is_closed) ? (business.is_closed) : "N/A"}</div> */}
                                 {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.url) : " N/A"} </div> */}
                                 {/* <div>attributes.menu_url:{(business.attributes.menu_url) ? (business.attributes.menu_url) : (business.url)} </div> */}

@@ -1,12 +1,14 @@
 import * as React from "react";
+import { Link } from "react-router-dom"
 import { useState } from "react";
 import * as eventsAPI from '../../utilities/events-api';
 import { styled } from "@mui/material/styles";
+import Tooltip from '@mui/material/Tooltip';
 import { Card, CardHeader, CardMedia, CardContent, CardActions, Collapse, IconButton, Typography } from "@mui/material";
 import { Favorite as FavoriteIcon, ExpandMore as ExpandMoreIcon, MoreVert as MoreVertIcon, Link as LinkIcon, Accessible as AccessibleIcon } from "@mui/icons-material";
 // import './ConcertEventCard.css';
 
-export default function ConcertEventCard({ event, idx, getEvents }) {
+export default function ConcertEventCard({ event, idx, getEvents, user }) {
     const [error, setError] = useState('');
     const [expanded, setExpanded] = React.useState(false);
 
@@ -24,7 +26,6 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
             duration: theme.transitions.duration.shortest,
         }),
     }));
-
 
     const imgRatio3_2 = event.images.find(img => img.ratio === '3_2')
     const imgUrl = imgRatio3_2.url
@@ -55,61 +56,75 @@ export default function ConcertEventCard({ event, idx, getEvents }) {
     return (
         <div className="EventCard">
             {/* <div> */}
-                <Card sx={{ maxWidth: 500 }}>
-                    <CardHeader
-                        action={
-                            <IconButton aria-label="settings">
-                                {/* <MoreVertIcon /> */}
-                                <div> <AccessibleIcon /> {(event.accessibility) ? (event.accessibility.ticketLimit) : "N/A"}</div>
-                            </IconButton>}
-                            
-                        title={event.name}
-                    />
-                    <CardMedia
-                        component="img"
-                        height=""
-                        image={(imgUrl) ? imgUrl : (event.images[0].url)}
-                        alt={event.name}
-                    />
+            <Card sx={{ maxWidth: 500 }}>
+                <CardHeader
+                    action={
+                        <IconButton aria-label="settings">
+                            {/* <MoreVertIcon /> */}
+                            <div> <AccessibleIcon /> {(event.accessibility) ? (event.accessibility.ticketLimit) : "N/A"}</div>
+                        </IconButton>}
+
+                    title={event.name}
+                />
+                <CardMedia
+                    component="img"
+                    height=""
+                    image={(imgUrl) ? imgUrl : (event.images[0].url)}
+                    alt={event.name}
+                />
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {(event._embedded.venues) ? `${(event._embedded.venues[0].city.name)}, ${(event._embedded.venues[0].state.name)}` : " N/A"}
+
+                    </Typography>
+                </CardContent>
+                <CardActions disableSpacing>
+                    {user ?
+                        <>
+                            <IconButton onClick={handleEventSave} aria-label="add to favorites">
+                                <FavoriteIcon className="favorite-icon" />
+                            </IconButton>
+                        </>
+                        :
+                        <>
+                            <Tooltip title="Login to Save" placement="top">
+                                <IconButton component={Link} to="/login" aria-label="add to favorites">
+                                    <FavoriteIcon className="favorite-icon" />
+                                </IconButton>
+                            </Tooltip>
+                        </>
+                    }
+
+
+                    <IconButton aria-label="share">
+                        <a href={event.url} >< LinkIcon className="menu-icon" /></a>
+                    </IconButton>
+                    <ExpandMore
+                        expand={expanded}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                    >
+                        <ExpandMoreIcon />
+                    </ExpandMore>
+                </CardActions>
+                <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                            {(event._embedded.venues) ? `${(event._embedded.venues[0].city.name)}, ${(event._embedded.venues[0].state.name)}` : " N/A"}
+                        <Typography paragraph>
+                            <span>
+
+                                {(event._embedded.venues) ? event._embedded.venues[0].name : "N/A"}
+                                <div>Date: {new Date(event.dates.start.localDate).toLocaleDateString()}</div>
+                                <div>Time: {event.dates.start.localTime}</div>
+                                {/* <div>Sale Starts: {event.sales.public.startDateTime}</div> */}
+                                {/* <div>{new Date(event.sales.public.startDateTime).toLocaleTimeString()}</div> */}
+                                <div> <AccessibleIcon /> Accesibility: {(event.accessibility) ? event.accessibility.ticketLimit : "N/A"}</div>
+                            </span>
 
                         </Typography>
                     </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton onClick={handleEventSave} aria-label="add to favorites">
-                            <FavoriteIcon   className="favorite-icon" />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <a href={event.url} >< LinkIcon className="menu-icon"  /></a>
-                        </IconButton>
-                        <ExpandMore
-                            expand={expanded}
-                            onClick={handleExpandClick}
-                            aria-expanded={expanded}
-                            aria-label="show more"
-                        >
-                            <ExpandMoreIcon />
-                        </ExpandMore>
-                    </CardActions>
-                    <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <CardContent>
-                            <Typography paragraph>
-                               <span>
-
-                                    {(event._embedded.venues) ? event._embedded.venues[0].name : "N/A"}
-                                    <div>Date: {new Date(event.dates.start.localDate).toLocaleDateString()}</div>
-                                    <div>Time: {event.dates.start.localTime}</div>
-                                    {/* <div>Sale Starts: {event.sales.public.startDateTime}</div> */}
-                                    {/* <div>{new Date(event.sales.public.startDateTime).toLocaleTimeString()}</div> */}
-                                    <div> <AccessibleIcon /> Accesibility: {(event.accessibility) ? event.accessibility.ticketLimit : "N/A"}</div>
-                               </span>
-
-                            </Typography>
-                        </CardContent>
-                    </Collapse>
-                </Card>
+                </Collapse>
+            </Card>
 
             {/* </div> */}
         </div>

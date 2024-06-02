@@ -15,8 +15,6 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';;
-
-
 export default function LoginForm({ setUser, setUseHasAccount }) {
     // const [userLogin, setUserLogin] = useState(true)
     const [error, setError] = useState('');
@@ -24,8 +22,6 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
         email: '',
         password: ''
     });
-
-
     function Copyright(props) {
         return (
             <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -38,20 +34,18 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
             </Typography>
         );
     }
-
     const defaultTheme = createTheme();
-
     async function handleSubmit(evt) {
         evt.preventDefault();
         try {
             const user = await usersService.login(credentials);
             setUser(user);
+            console.log(user)
             // console.log(user)
         } catch {
             setError('Log In Failed - Try Again');
         }
     }
-
     function handleChange(evt) {
         setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
         setError('');
@@ -59,7 +53,6 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
     function handleSetUserLoginClick() {
         setUseHasAccount(false)
     }
-
     return (
         <main>
             {/* <div>
@@ -74,7 +67,6 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                 </div>
                 <p className="error-message">&nbsp;{error}</p>
             </div> */}
-
             <ThemeProvider theme={defaultTheme}>
                 <Grid container component="main" sx={{ height: '90vh' }}>
                     <CssBaseline />
@@ -170,20 +162,14 @@ export default function LoginForm({ setUser, setUseHasAccount }) {
                                     </Grid>
                                     <div>
                                         <p className="error-message">&nbsp;{error}</p>
-
                                     </div>
                                 </Grid>
                                 <Copyright sx={{ mt: 5 }} />
                             </Box>
                         </Box>
-
                     </Grid>
-
                 </Grid>
             </ThemeProvider>
-
         </main>
-
     );
-
 }

@@ -4,23 +4,15 @@ import YelpEventCard from '../../components/YelpEventCard/YelpEventCard'
 import SearchIcon from '@mui/icons-material/Search';
 import { useLocation } from "react-router-dom";
 
-export default function YelpPage({ getEvents }) {
+export default function YelpPage({ getEvents, user }) {
     const [yelpData, setYelpData] = useState('')
     const [error, setError] = useState('')
     const [yelpDataValue, setYelpDataValue] = useState({ search: '', location: '' })
     const location = useLocation()
     const { category } = location.state || {};
-    // console.log("category", category)
-
-    // useEffect(() => {
-    //     if (!category) return;
-    //     handleOptionalYelpSearch(category);
-    //     console.log ("USE EFFECT")
-    // }, [category]);
 
     function handleChange(evt) {
         const { name, value } = evt.target;
-        // console.log("FROM HOME PAGE:", name, value)
         setYelpDataValue({ ...yelpDataValue, [name]: value });
         setError('');
     }
@@ -41,13 +33,10 @@ export default function YelpPage({ getEvents }) {
             location: yelpDataValue.location.replace(/\s/g, "%20"),
             search: yelpDataValue.search.replace(/\s/g, "%20")
         }
-
-        // console.log("yelpDataNewValue", yelpDataNewValue)
         try {
             const yelpDataReq = await eventsAPI.fetchYelpData(yelpDataNewValue)
             try { if (!yelpDataReq.ok) throw new Error('Error fetching data'); }
             catch (error) { console.log(error) }
-            // console.log("yelpDataReq", yelpDataReq)
             setYelpData(yelpDataReq)
             setYelpDataValue({ search: '', location: '' })
             setError('')
@@ -55,13 +44,12 @@ export default function YelpPage({ getEvents }) {
             console.log(err)
         }
     }
-    // console.log("yelpData:", yelpData)
+
     return (
         <>
             <main className="event-page-main">
                 <div></div>
                 <div className="search-btn-form-container">
-
                     <form className="search-forms" onSubmit={handleSubmit}>
                         <SearchIcon />
                         <input name='search' placeholder="Search a place or type of food" className="search-input-form" value={yelpDataValue.search} type="text" onChange={handleChange} />
@@ -77,10 +65,9 @@ export default function YelpPage({ getEvents }) {
                     <p onClick={() => handleOptionalYelpSearch('Art and Culture')} className="whitespace-pre ">Art and Culture</p>
                     <p onClick={() => handleOptionalYelpSearch('Travel and Outdoor')} className="whitespace-pre ">Travel and Outdoor</p>
                 </div>
-
                 <div className="EventCardContainer">
                     {(yelpData) ? (yelpData.businesses.map((b, idx) =>
-                        <YelpEventCard business={b} idx={idx} key={idx + 6} getEvents={getEvents} />
+                        <YelpEventCard business={b} idx={idx} key={idx + 6} getEvents={getEvents} user={user} />
                     ))
                         : "Search anything in a city near you!"}
                 </div>

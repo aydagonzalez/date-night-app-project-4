@@ -3,7 +3,6 @@ import NavBar from '../../components/NavBar/NavBar';
 import Footer from '../../components/Footer/Footer';
 import HomePage from '../HomePage/HomePage';
 import ConcertPage from '../ConcertPage/ConcertPage';
-// import RestaurantPage from '../RestaurantPage/RestaurantPage';
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
@@ -20,15 +19,12 @@ export default function App() {
 
   async function getEvents() {
     if (user) {
-    const allEventsIndex = await eventsAPI.indexEvents()
-    // console.log("ALL Events in App page:", allEventsIndex)
-    setEvents(allEventsIndex)
-    const allYelpRestaurantsIndex = await eventsAPI.indexYelpEvents()
-    // console.log("ALL YElp Events in App page:", allYelpRestaurantsIndex)
-    setSavedYelpData(allYelpRestaurantsIndex)
+      const allEventsIndex = await eventsAPI.indexEvents()
+      setEvents(allEventsIndex)
+      const allYelpRestaurantsIndex = await eventsAPI.indexYelpEvents()
+      setSavedYelpData(allYelpRestaurantsIndex)
+    }
   }
-}
-// console.log(events)
 
   useEffect(function () {
     // console.log("USE EFFECT RUNNING")
@@ -36,7 +32,6 @@ export default function App() {
   }, [user]);
 
   useEffect(function () {
-    // console.log("refreshing2")
   }, [events])
 
 
@@ -47,18 +42,29 @@ export default function App() {
     <main className="App">
       {user ?
         <>
-          <NavBar user={user} setUser={setUser} events={events} savedYelpData={savedYelpData}   />
-          {/* <HomePage user={user} /> */}
+          <NavBar user={user} setUser={setUser} events={events} savedYelpData={savedYelpData} />
           <Routes>
-            <Route path="/events/ticketmaster" element={<ConcertPage getEvents={getEvents} />} />
-            <Route path="/events/saved" element={<SavedEventsPage  user={user} getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
-            <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} />} />
-            <Route path="/" element={<HomePage />} />
+
+            <Route path="/events/saved" element={<SavedEventsPage user={user} getEvents={getEvents} events={events} setEvents={setEvents} savedYelpData={savedYelpData} />} />
+
+  
           </Routes>
-          <Footer user={user} setUser={setUser} events={events} savedYelpData={savedYelpData}   />
+          <Footer user={user} setUser={setUser} events={events} savedYelpData={savedYelpData} />
         </>
-        : <AuthPage setUser={setUser} />}
+        :
+        //  <AuthPage setUser={setUser} />
+        <>
         
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<AuthPage setUser={setUser} />} />
+            <Route path="/yelp" element={<YelpPage getEvents={getEvents} events={events} setEvents={setEvents} user={user} />} />
+            <Route path="/events/ticketmaster" element={<ConcertPage getEvents={getEvents} user={user} />} />
+          </Routes>
+        </>
+      }
+
     </main>
   );
 }
